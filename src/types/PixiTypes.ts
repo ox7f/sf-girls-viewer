@@ -1,5 +1,5 @@
 import type { Spine } from "pixi-spine";
-import type { FileMeta } from "@/types/FileTypes";
+import type { FileMeta } from "@/types";
 import { Container } from "pixi.js";
 
 export type ModifiedSpine = Spine & {

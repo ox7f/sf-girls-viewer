@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useSetAtom } from "jotai";
-import { entityMapAtom } from "@/atoms/atoms";
+import { entityMapAtom } from "@/atoms";
 
 export const DataInitializer = () => {
   const setEntityMap = useSetAtom(entityMapAtom);

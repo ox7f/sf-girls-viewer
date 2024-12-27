@@ -1,6 +1,5 @@
 "use client";
 
-import type { FC } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import Button from "@/components/common/Button/Button";
 
@@ -9,7 +8,7 @@ type Props = {
   onClick: () => void;
 };
 
-const SidebarToggleButton: FC<Props> = ({ isOpen, onClick }) => {
+const SidebarToggleButton = ({ isOpen, onClick }: Props) => {
   const buttonClass = isOpen ? "btn-transparent" : "btn-light";
   const Icon = isOpen ? FaMinus : FaPlus;
 

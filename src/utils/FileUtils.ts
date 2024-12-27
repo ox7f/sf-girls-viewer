@@ -2,11 +2,7 @@
 
 import fs from "fs";
 import path from "path";
-import {
-  type EntityMap,
-  type SpineConfig,
-  SubFolderName,
-} from "../types/FileTypes";
+import { type EntityMap, type SpineConfig, SubFolderName } from "../types";
 
 const ASSETS_PATH = path.join(process.cwd(), "public/assets");
 
@@ -46,7 +42,7 @@ const getFoldersContents = (path: string): string[] => {
 // Process spine files
 const processSpineFiles = (
   subEntityPath: string,
-  files: string[]
+  files: string[],
 ): SpineConfig => {
   const spines: SpineConfig = {};
 
@@ -77,13 +73,13 @@ const processSpineFiles = (
 const processImages = (
   subEntityPath: string,
   files: string[],
-  folderName: string
+  folderName: string,
 ): Record<string, string[]> => {
   const groupedFiles: Record<string, string[]> = {};
 
   files.forEach((file) => {
     const match = file.match(
-      /(.*?_(Mini|Portrait)_\d+)(?:_(Skin\d+))?(?:_Censored)?\.png/i
+      /(.*?_(Mini|Portrait)_\d+)(?:_(Skin\d+))?(?:_Censored)?\.png/i,
     );
 
     if (match) {

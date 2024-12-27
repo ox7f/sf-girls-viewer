@@ -1,7 +1,6 @@
 import Link from "next/link";
-import type { FC } from "react";
 
-export const Footer: FC = () => (
+export const Footer = () => (
   <footer className="footer grid-c-12 bg-white">
     <h6 className="footer__title uppercase">SF Girls Viewer</h6>
 

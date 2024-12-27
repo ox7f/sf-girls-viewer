@@ -9,15 +9,16 @@ import {
   fileAtom,
   pixiAnimationListAtom,
   selectedMenuTabAtom,
-} from "@/atoms/atoms";
-import type { DropdownState } from "@/types/DropdownTypes";
-import type { ModifiedSpine } from "@/types/PixiTypes";
+} from "@/atoms";
+
+import type { ModifiedSpine, DropdownState } from "@/types";
+
 import {
   getEntityOptions,
   getEntitySceneOptions,
   getSceneData,
-} from "@/utils/DropdownUtils";
-import { formatGroupLabel } from "@/utils/SelectUtils";
+  formatGroupLabel,
+} from "@/utils";
 
 export const PixiViewerSettingsScene = () => {
   const entityMap = useAtomValue(entityMapAtom);
@@ -129,5 +130,3 @@ export const PixiViewerSettingsScene = () => {
     </fieldset>
   );
 };
-
-export default PixiViewerSettingsScene;

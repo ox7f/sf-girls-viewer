@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { type FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 
@@ -10,7 +10,7 @@ const menuItems = [
   { name: "Scene", href: "/scene" },
 ];
 
-export const Header: FC = () => {
+export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {

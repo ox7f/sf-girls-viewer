@@ -1,4 +1,4 @@
-import { DropdownOption } from "@/types/DropdownTypes";
+import { DropdownOption } from "@/types";
 
 type Group = {
   label: string;

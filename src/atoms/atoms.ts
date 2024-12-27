@@ -1,8 +1,7 @@
 import { atom } from "jotai";
 import type { Application } from "pixi.js";
-import type { EntityMap, FileMeta } from "@/types/FileTypes";
-import type { ModifiedSpine } from "@/types/PixiTypes";
-import { menuItems } from "@/utils/DropdownUtils";
+import type { EntityMap, FileMeta, ModifiedSpine } from "@/types";
+import { menuItems } from "@/utils";
 
 export const pixiAppAtom = atom<Application | null>(null);
 export const pixiAnimationListAtom = atom<ModifiedSpine[]>([]);

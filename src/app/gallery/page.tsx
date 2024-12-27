@@ -2,16 +2,16 @@
 
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import { type FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import ReactImageGallery from "react-image-gallery";
 import { useAtomValue } from "jotai";
-import { entityMapAtom } from "@/atoms/atoms";
+import { entityMapAtom } from "@/atoms";
 import { Spinner } from "@/components/common/Spinner";
 import Button from "@/components/common/Button/Button";
-import { type EntityData, SubFolderName } from "@/types/FileTypes";
+import { type EntityData, SubFolderName } from "@/types";
 
-const GalleryPage: FC = () => {
+const GalleryPage = () => {
   const entityMap = useAtomValue(entityMapAtom);
 
   const [currentEntity, setCurrentEntity] = useState<EntityData | undefined>();
@@ -80,7 +80,11 @@ const GalleryPage: FC = () => {
       <h1 className="text-center mb-10">Gallery</h1>
       <ul className="row justify-center">
         {Object.entries(entityMap).map(([entityKey, entity]) => (
-          <li key={entityKey} onClick={() => openModal(entity.data)}>
+          <li
+            className="ml-5 cursor-pointer"
+            key={entityKey}
+            onClick={() => openModal(entity.data)}
+          >
             {entityKey}
           </li>
         ))}

@@ -1,10 +1,10 @@
-import { DropdownOption } from "@/types/DropdownTypes";
 import {
   type EntityData,
   type EntityMap,
   type SpineData,
   SubFolderName,
-} from "@/types/FileTypes";
+  DropdownOption,
+} from "@/types";
 
 export const menuItems = ["Scene", "Global"];
 

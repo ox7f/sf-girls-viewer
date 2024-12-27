@@ -2,17 +2,13 @@
 "use client";
 
 import { useAtom } from "jotai";
-import { type FC, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Application } from "pixi.js";
-import { fileAtom, pixiAnimationListAtom, pixiAppAtom } from "@/atoms/atoms";
-import { type FileMeta } from "@/types/FileTypes";
-import {
-  initializePixiApp,
-  addAnimation,
-  removeAnimation,
-} from "@/utils/PixiUtils";
+import { fileAtom, pixiAnimationListAtom, pixiAppAtom } from "@/atoms";
+import { type FileMeta } from "@/types";
+import { initializePixiApp, addAnimation, removeAnimation } from "@/utils";
 
-const PixiViewer: FC = () => {
+export const PixiViewer = () => {
   const pixiContainer = useRef<HTMLDivElement | null>(null);
 
   const [app, setApp] = useAtom(pixiAppAtom);
@@ -62,5 +58,3 @@ const PixiViewer: FC = () => {
 
   return <div ref={pixiContainer} />;
 };
-
-export default PixiViewer;

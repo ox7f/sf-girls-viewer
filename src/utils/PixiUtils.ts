@@ -5,20 +5,19 @@ import {
   Container,
   Sprite,
 } from "pixi.js";
-import { type ISkeletonData, ITrackEntry, Spine } from "pixi-spine";
-import type { ModifiedContainer, ModifiedSpine } from "@/types/PixiTypes";
-import type { FileMeta } from "@/types/FileTypes";
+import { type ISkeletonData, type ITrackEntry, Spine } from "pixi-spine";
+import { ModifiedContainer, ModifiedSpine, FileMeta } from "@/types";
 
 const addLive2D = async (
   app: Application,
-  file: FileMeta
+  file: FileMeta,
 ): Promise<undefined> => {
   console.log("TODO: Implement Live2D support", { app, file });
 };
 
 const addSpine = async (
   app: Application,
-  file: FileMeta
+  file: FileMeta,
 ): Promise<ModifiedSpine | undefined> => {
   try {
     const { spineData } = await Assets.load(`/${file.config.fileName}`);
@@ -69,7 +68,7 @@ const createContainer = (): Container => {
 
 const createSpineAnimation = (
   spineData: ISkeletonData,
-  scale: number
+  scale: number,
 ): Spine => {
   const animation = new Spine(spineData);
   animation.scale.set(scale);
@@ -87,14 +86,14 @@ const createSpineAnimation = (
 
 const addAdditionalSpine = async (
   container: ModifiedContainer,
-  additionalPath: string
+  additionalPath: string,
 ) => {
   console.log("TODO: implement me", additionalPath, container);
 };
 
 const addBackground = (
   container: ModifiedContainer,
-  backgroundPath: string
+  backgroundPath: string,
 ) => {
   const background = Sprite.from(backgroundPath);
 
@@ -106,7 +105,7 @@ const addBackground = (
 
 const addForeground = (
   container: ModifiedContainer,
-  foregroundPath: string
+  foregroundPath: string,
 ) => {
   const foreground = Sprite.from(foregroundPath);
 
@@ -118,7 +117,7 @@ const addForeground = (
 
 const setupInteractionEvents = (
   container: ModifiedContainer,
-  animation: ModifiedSpine
+  animation: ModifiedSpine,
 ) => {
   setupClickEvents(container, animation);
   setupDragEvents(container);
@@ -127,7 +126,7 @@ const setupInteractionEvents = (
 
 const setupClickEvents = (
   container: Container,
-  animation: ModifiedSpine
+  animation: ModifiedSpine,
 ): void => {
   const onTouch = () => {
     const currentAnimationName = (
@@ -218,7 +217,7 @@ export const addAnimation = async (app: Application, file: FileMeta) => {
 export const removeAnimation = (
   app: Application,
   file: FileMeta,
-  animationList: ModifiedSpine[]
+  animationList: ModifiedSpine[],
 ) =>
   animationList
     .filter((animation) => {

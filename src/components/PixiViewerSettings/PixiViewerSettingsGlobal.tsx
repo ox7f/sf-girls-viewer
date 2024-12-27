@@ -1,10 +1,10 @@
 "use client";
 
 import { useAtomValue } from "jotai";
-import { ChangeEvent, type FC, useState } from "react";
-import { pixiAppAtom } from "@/atoms/atoms";
+import { ChangeEvent, useState } from "react";
+import { pixiAppAtom } from "@/atoms";
 
-export const PixiViewerSettingsGlobal: FC = () => {
+export const PixiViewerSettingsGlobal = () => {
   const app = useAtomValue(pixiAppAtom);
 
   const [settings, setSettings] = useState({
@@ -82,5 +82,3 @@ export const PixiViewerSettingsGlobal: FC = () => {
     </fieldset>
   );
 };
-
-export default PixiViewerSettingsGlobal;

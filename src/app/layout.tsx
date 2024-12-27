@@ -6,8 +6,7 @@ import "pixi-spine";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { DataInitializer } from "@/components/DataInitializer";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Header, Footer } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "SF Girls Viewer",

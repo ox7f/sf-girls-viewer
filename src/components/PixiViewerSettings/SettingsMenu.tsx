@@ -1,12 +1,14 @@
 "use client";
 
 import { useAtom } from "jotai";
-import type { FC } from "react";
-import { selectedMenuTabAtom } from "@/atoms/atoms";
-import PixiViewerSettingsAnimation from "@/components/PixiViewerSettings/PixiViewerSettingsAnimation";
-import PixiViewerSettingsGlobal from "@/components/PixiViewerSettings/PixiViewerSettingsGlobal";
-import PixiViewerSettingsScene from "@/components/PixiViewerSettings/PixiViewerSettingsScene";
-import { menuItems } from "@/utils/DropdownUtils";
+import {
+  PixiViewerSettingsAnimation,
+  PixiViewerSettingsGlobal,
+  PixiViewerSettingsScene,
+} from "@/components/PixiViewerSettings";
+
+import { menuItems } from "@/utils";
+import { selectedMenuTabAtom } from "@/atoms";
 
 const tabComponents = {
   [menuItems[0]]: PixiViewerSettingsScene,
@@ -14,7 +16,7 @@ const tabComponents = {
   default: PixiViewerSettingsAnimation,
 };
 
-const SettingsMenu: FC = () => {
+export const SettingsMenu = () => {
   const [selectedTab, setSelectedTab] = useAtom(selectedMenuTabAtom);
 
   const renderTabContent = () => {
@@ -53,5 +55,3 @@ const SettingsMenu: FC = () => {
     </div>
   );
 };
-
-export default SettingsMenu;

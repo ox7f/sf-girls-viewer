@@ -1,11 +1,11 @@
 "use client";
 
-import { type FC, useState } from "react";
+import { useState } from "react";
 import ScreenshotButton from "@/components/common/Button/ScreenshotButton";
 import SidebarToggleButton from "@/components/common/Button/SidebarToggleButton";
-import SettingsMenu from "@/components/PixiViewerSettings/SettingsMenu";
+import { SettingsMenu } from "@/components/PixiViewerSettings";
 
-const PixiViewerSettings: FC = () => {
+export const PixiViewerSettings = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleSidebar = () => setIsOpen((prev) => !prev);
@@ -18,5 +18,3 @@ const PixiViewerSettings: FC = () => {
     </>
   );
 };
-
-export default PixiViewerSettings;

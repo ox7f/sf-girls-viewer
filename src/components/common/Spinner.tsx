@@ -1,6 +1,4 @@
-import type { FC } from "react";
-
-export const Spinner: FC = () => (
+export const Spinner = () => (
   <div className="animated loading hide-text">
     <p>...</p>
   </div>

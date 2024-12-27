@@ -2,21 +2,21 @@
 
 import { useAtomValue } from "jotai";
 import { type ISpineDebugRenderer, SpineDebugRenderer } from "pixi-spine";
-import { type ChangeEvent, type FC, useState } from "react";
+import { type ChangeEvent, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
 
-import { pixiAnimationListAtom } from "@/atoms/atoms";
-import { menuItems } from "@/utils/DropdownUtils";
+import { pixiAnimationListAtom } from "@/atoms";
+import { menuItems } from "@/utils";
 
 type Props = {
   selectedTab: string | number;
   setSelectedTab: (value: string | number) => void;
 };
 
-export const PixiViewerSettingsAnimation: FC<Props> = ({
+export const PixiViewerSettingsAnimation = ({
   selectedTab,
   setSelectedTab,
-}) => {
+}: Props) => {
   const animationList = useAtomValue(pixiAnimationListAtom);
   const animation = animationList.find(
     (listItem) => listItem.meta.index === selectedTab,
@@ -212,5 +212,3 @@ export const PixiViewerSettingsAnimation: FC<Props> = ({
     </div>
   );
 };
-
-export default PixiViewerSettingsAnimation;
