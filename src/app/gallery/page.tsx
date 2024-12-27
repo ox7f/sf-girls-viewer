@@ -78,13 +78,9 @@ const GalleryPage = () => {
   return (
     <div className="container mt-10">
       <h1 className="text-center mb-10">Gallery</h1>
-      <ul className="row justify-center">
+      <ul className="row justify-center u-col-gap-5 px-5">
         {Object.entries(entityMap).map(([entityKey, entity]) => (
-          <li
-            className="ml-5 cursor-pointer"
-            key={entityKey}
-            onClick={() => openModal(entity.data)}
-          >
+          <li key={entityKey} onClick={() => openModal(entity.data)}>
             {entityKey}
           </li>
         ))}

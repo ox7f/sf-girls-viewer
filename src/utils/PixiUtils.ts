@@ -132,15 +132,12 @@ const setupClickEvents = (
     const currentAnimationName = (
       animation.state.tracks[0] as ITrackEntry & { animation: { name: string } }
     ).animation.name;
+
     const idleAnimationName = currentAnimationName.replace("Touch", "Idle");
     const touchAnimationName = currentAnimationName.replace("Idle", "Touch");
 
-    if (currentAnimationName === idleAnimationName) {
-      animation.state.setAnimation(0, touchAnimationName, false);
-      animation.state.addAnimation(0, currentAnimationName, true, 0);
-    } else if (currentAnimationName === touchAnimationName) {
-      animation.state.setAnimation(0, idleAnimationName, false);
-    }
+    animation.state.setAnimation(0, touchAnimationName, false);
+    animation.state.addAnimation(0, idleAnimationName, true, 0);
   };
 
   container.on("click", onTouch);
