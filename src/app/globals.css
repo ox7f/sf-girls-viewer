@@ -1,0 +1,28 @@
+.fullscreen {
+  min-height: calc(100vh - 72px) !important;
+}
+
+.hero {
+  animation: animate-slide 30s linear infinite;
+  will-change: background-position;
+}
+
+.tooltip {
+  white-space: normal !important;
+}
+
+button:focus, input:focus {
+  box-shadow: none !important;
+}
+
+@keyframes animate-slide {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: -100px 0;
+  }
+  100% {
+    background-position: -200px 0;
+  }
+}
