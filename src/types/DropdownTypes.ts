@@ -5,3 +5,8 @@ export type DropdownOption = {
 };
 
 export type DropdownState = DropdownOption | null;
+
+export type DropdownSelection = {
+  entity: DropdownState;
+  scene: DropdownState;
+};

@@ -1,10 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useRef } from "react";
-import { Application } from "pixi.js";
-import { fileAtom, pixiAnimationListAtom, pixiAppAtom } from "@/atoms";
+import { Application, Color } from "pixi.js";
+import {
+  fileAtom,
+  pixiAnimationListAtom,
+  pixiAppAtom,
+  pixiAppSettingsGlobalAtom,
+} from "@/atoms";
 import { type FileMeta } from "@/types";
 import { initializePixiApp, addAnimation, removeAnimation } from "@/utils";
 
@@ -12,6 +17,7 @@ export const PixiViewer = () => {
   const pixiContainer = useRef<HTMLDivElement | null>(null);
 
   const [app, setApp] = useAtom(pixiAppAtom);
+  const appSettings = useAtomValue(pixiAppSettingsGlobalAtom);
   const [newFile, setNewFile] = useAtom(fileAtom);
   const [animationList, setAnimationList] = useAtom(pixiAnimationListAtom);
 
@@ -28,6 +34,13 @@ export const PixiViewer = () => {
       setAnimationList([]);
     };
   }, []);
+
+  useEffect(() => {
+    if (app) {
+      app.renderer.background.color = new Color(appSettings.backgroundColor);
+      app.renderer.background.alpha = appSettings.backgroundAlpha;
+    }
+  }, [appSettings]);
 
   useEffect(() => {
     if (app && newFile) {

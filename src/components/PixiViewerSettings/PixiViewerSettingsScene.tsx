@@ -1,18 +1,16 @@
 "use client";
 
-import { useAtomValue, useSetAtom } from "jotai";
-import { useState } from "react";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { FaEllipsisH, FaTimes } from "react-icons/fa";
 import Select from "react-select";
 import {
+  dropdownSelectionAtom,
   entityMapAtom,
   fileAtom,
   pixiAnimationListAtom,
   selectedMenuTabAtom,
 } from "@/atoms";
-
 import type { ModifiedSpine, DropdownState } from "@/types";
-
 import {
   getEntityOptions,
   getEntitySceneOptions,
@@ -26,37 +24,45 @@ export const PixiViewerSettingsScene = () => {
   const setNewFile = useSetAtom(fileAtom);
   const setSelectedTab = useSetAtom(selectedMenuTabAtom);
 
-  const [selectedEntity, setSelectedEntity] = useState<DropdownState>(null);
-  const [selectedScene, setSelectedScene] = useState<DropdownState>(null);
+  const [dropdownSelection, setDropdownSelection] = useAtom(
+    dropdownSelectionAtom,
+  );
 
   if (!entityMap) {
     return;
   }
 
   const entityOptions = getEntityOptions(entityMap);
-  const sceneOptions = getEntitySceneOptions(entityMap, selectedEntity?.value);
+  const sceneOptions = getEntitySceneOptions(
+    entityMap,
+    dropdownSelection.entity?.value,
+  );
 
-  const handleEntityChange = (option: DropdownState) => {
-    setSelectedEntity(option);
-    setSelectedScene(null);
-  };
+  const handleEntityChange = (option: DropdownState) =>
+    setDropdownSelection({
+      entity: option,
+      scene: null,
+    });
 
-  const handleSceneChange = (option: DropdownState) => setSelectedScene(option);
+  const handleSceneChange = (option: DropdownState) =>
+    setDropdownSelection((prev) => ({
+      ...prev,
+      scene: option,
+    }));
 
   const viewScene = (index: number) => {
-    if (!selectedEntity || !selectedScene) {
+    const entity = dropdownSelection.entity?.value;
+    const scene = dropdownSelection.scene?.value;
+
+    if (!entity || !scene) {
       return;
     }
 
     setNewFile({
-      config: getSceneData(
-        entityMap,
-        selectedEntity.value,
-        selectedScene.value,
-      ),
+      config: getSceneData(entityMap, entity, scene),
       index,
       method: "add",
-      name: selectedEntity.value,
+      name: entity,
       type: "spine",
     });
   };
@@ -98,7 +104,7 @@ export const PixiViewerSettingsScene = () => {
         <div style={{ width: "14.25rem" }}>
           <Select
             placeholder="Select Character"
-            value={selectedEntity}
+            value={dropdownSelection.entity}
             onChange={handleEntityChange}
             options={entityOptions}
             isSearchable={true}
@@ -110,7 +116,7 @@ export const PixiViewerSettingsScene = () => {
 
           <Select
             placeholder="Select Scene"
-            value={selectedScene}
+            value={dropdownSelection.scene}
             onChange={handleSceneChange}
             options={sceneOptions}
             isSearchable={true}
@@ -119,7 +125,7 @@ export const PixiViewerSettingsScene = () => {
           />
         </div>
         <button
-          disabled={!selectedScene}
+          disabled={!dropdownSelection.scene}
           className="btn btn-info mb-0"
           onClick={() => viewScene(animationList.length)}
         >

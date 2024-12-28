@@ -19,7 +19,9 @@ const createEntityOptions = (entityMap: EntityMap, type: string) =>
     .map(([key]) => mapToDropdownOption(key, type));
 
 const createSceneOptions = (data: EntityData, type: SubFolderName) =>
-  Object.keys(data[type] ?? {}).map((key) => mapToDropdownOption(key, type));
+  Object.keys(data[type] ?? {})
+    .filter((key) => !key.includes("Addition"))
+    .map((key) => mapToDropdownOption(key, type));
 
 export const getEntityOptions = (entityMap: EntityMap) => [
   {

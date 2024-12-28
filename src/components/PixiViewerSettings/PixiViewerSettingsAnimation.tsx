@@ -4,7 +4,6 @@ import { useAtomValue } from "jotai";
 import { type ISpineDebugRenderer, SpineDebugRenderer } from "pixi-spine";
 import { type ChangeEvent, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
-
 import { pixiAnimationListAtom } from "@/atoms";
 import { menuItems } from "@/utils";
 
@@ -138,7 +137,7 @@ export const PixiViewerSettingsAnimation = ({
               type="range"
               name="alpha"
               min="0"
-              max="1"
+              max="4"
               step={0.01}
               value={settings.scale}
               onChange={handleChange("scale")}
