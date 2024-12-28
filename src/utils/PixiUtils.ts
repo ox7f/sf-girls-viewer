@@ -132,19 +132,24 @@ const setupClickEvents = (
   animation: ModifiedSpine,
 ): void => {
   const onTouch = () => {
-    const currentAnimationName = (
-      animation.state.tracks[0] as ITrackEntry & { animation: { name: string } }
-    ).animation.name;
+    const currentAnimation = animation.state.tracks[0] as ITrackEntry & {
+      animation: { name: string };
+    };
+    const currentAnimationName = currentAnimation.animation.name;
 
     const [idle, touch] = [
       currentAnimationName.replace("Touch", "Idle"),
       currentAnimationName.replace("Idle", "Touch"),
     ];
 
-    if (animation.spineData.animations.length > 1) {
+    if (animation.state.hasAnimation(touch)) {
       animation.state.setAnimation(0, touch, false);
+      currentAnimation.listener = {
+        complete: () =>
+          animation.state.hasAnimation(idle) &&
+          animation.state.setAnimation(0, idle, false),
+      };
     }
-    animation.state.addAnimation(0, idle, true, 0);
   };
 
   container.on("click", onTouch);
