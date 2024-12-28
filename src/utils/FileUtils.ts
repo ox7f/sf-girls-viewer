@@ -58,10 +58,10 @@ const processSpineFiles = (
 
       spines[spineName] = {
         name: spineName,
-        fileName: "/" + getRelativePathIfExists(paths[0]),
-        background: "/" + getRelativePathIfExists(paths[1]),
-        foreground: "/" + getRelativePathIfExists(paths[2]),
-        addition: "/" + getRelativePathIfExists(paths[3]),
+        fileName: getRelativePathIfExists(paths[0]),
+        background: getRelativePathIfExists(paths[1]),
+        foreground: getRelativePathIfExists(paths[2]),
+        addition: getRelativePathIfExists(paths[3]),
       };
     }
   }
@@ -97,15 +97,17 @@ const processImages = (
           groupedFiles[skinName] = [];
         }
 
-        const fileName =
-          "/" + getRelativePathIfExists(path.join(subEntityPath, file));
+        const fileName = getRelativePathIfExists(
+          path.join(subEntityPath, file),
+        );
 
         if (fileName) {
           groupedFiles[skinName].push(fileName);
         }
       } else {
-        const fileName =
-          "/" + getRelativePathIfExists(path.join(subEntityPath, file));
+        const fileName = getRelativePathIfExists(
+          path.join(subEntityPath, file),
+        );
 
         if (fileName && !groupedFiles[baseKey].includes(fileName)) {
           groupedFiles[baseKey].push(fileName);

@@ -149,7 +149,7 @@ const setupDragEvents = (container: ModifiedContainer): void => {
   const onDragStart = (event: FederatedMouseEvent) => {
     dragTarget = container;
     dragTarget.alphaOriginal = dragTarget.alpha;
-    dragTarget.alpha = 0.75;
+    // dragTarget.alpha = 0.75;
     dragTarget.isDragging = true;
 
     const position = event.getLocalPosition(container);
