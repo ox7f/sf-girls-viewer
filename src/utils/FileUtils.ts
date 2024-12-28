@@ -1,3 +1,5 @@
+"use server";
+
 import fs from "fs";
 import path from "path";
 import { type EntityMap, type SpineConfig, SubFolderName } from "../types";
@@ -167,7 +169,7 @@ const loadAllEntities = (): EntityMap => {
   return entityMap;
 };
 
-export const generateEntityMap = () => {
+export const generateEntityMap = async (): Promise<undefined> => {
   const entityMap = loadAllEntities();
   const outputPath = path.join(ASSETS_PATH, "entityMap.json");
   fs.writeFile(outputPath, JSON.stringify(entityMap, null, 2), () => {});
