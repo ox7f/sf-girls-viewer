@@ -25,7 +25,8 @@ export const PixiViewerSettingsAnimation = ({
     alpha: animation?.parent.alpha ?? 0,
     angle: animation?.parent.angle ?? 0,
     scale: animation?.parent.scale.x ?? 1.1,
-    skew: animation?.parent.skew ?? 0,
+    skew: 0.5,
+    timeScale: 1,
     autoUpdate: true,
     allowClick: true,
     allowDrag: true,
@@ -51,7 +52,10 @@ export const PixiViewerSettingsAnimation = ({
           animation.parent.scale.set(parseFloat(value));
           break;
         case "skew":
-          animation.parent.skew.set(parseFloat(value));
+          animation.parent.skew.set(parseFloat(value) * Math.PI - Math.PI / 2);
+          break;
+        case "timeScale":
+          animation.state.timeScale = parseFloat(value);
           break;
       }
 
@@ -118,7 +122,7 @@ export const PixiViewerSettingsAnimation = ({
             />
           </div>
           <div className="tooltip" data-tooltip={`${settings.angle}°`}>
-            <label htmlFor="angle">Rotation</label>
+            <label htmlFor="angle">Angle</label>
             <input
               id="angle"
               type="range"
@@ -141,6 +145,35 @@ export const PixiViewerSettingsAnimation = ({
               step={0.01}
               value={settings.scale}
               onChange={handleChange("scale")}
+            />
+          </div>
+          <div className="tooltip" data-tooltip={settings.skew}>
+            <label htmlFor="skew">Skew</label>
+            <input
+              id="skew"
+              type="range"
+              name="skew"
+              min="0"
+              max="1"
+              step={0.01}
+              value={settings.skew}
+              onChange={handleChange("skew")}
+            />
+          </div>
+          <div
+            className="tooltip"
+            data-tooltip={`${Math.round(settings.timeScale * 100)} %`}
+          >
+            <label htmlFor="timeScale">Playback Speed</label>
+            <input
+              id="timeScale"
+              type="range"
+              name="timeScale"
+              min="0"
+              max="4"
+              step={0.05}
+              value={settings.timeScale}
+              onChange={handleChange("timeScale")}
             />
           </div>
           <div className="form-ext-control form-ext-checkbox">
@@ -185,8 +218,7 @@ export const PixiViewerSettingsAnimation = ({
         <p>
           <span>General</span>
           <span>data from root object</span>
-          Alpha, Scale, Skew, Rotation, Allow Click, Play Idle As Default
-          Animation, Show Background, Allow Drag & Drop
+          Alpha, Scale, Skew, Rotation, Allow Click, Allow Drag, Show Background
         </p>
 
         <p>
