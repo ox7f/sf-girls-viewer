@@ -1,7 +1,12 @@
+import { generateEntityMap } from "@/utils/FileUtils";
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig: () => Promise<NextConfig> = async () => {
+  generateEntityMap();
+
+  return {
+    reactStrictMode: true,
+  };
 };
 
 export default nextConfig;

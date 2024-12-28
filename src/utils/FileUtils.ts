@@ -6,7 +6,7 @@ import {
   type EntityMap,
   type SpineConfig,
   SubFolderName,
-} from "@/types/FileTypes";
+} from "../types/FileTypes";
 
 const ASSETS_PATH = path.join(process.cwd(), "public/assets");
 
@@ -46,7 +46,7 @@ const getFoldersContents = (path: string): string[] => {
 // Process spine files
 const processSpineFiles = (
   subEntityPath: string,
-  files: string[],
+  files: string[]
 ): SpineConfig => {
   const spines: SpineConfig = {};
 
@@ -62,10 +62,10 @@ const processSpineFiles = (
 
       spines[spineName] = {
         name: spineName,
-        fileName: getRelativePathIfExists(paths[0]),
-        background: getRelativePathIfExists(paths[1]),
-        foreground: getRelativePathIfExists(paths[2]),
-        addition: getRelativePathIfExists(paths[3]),
+        fileName: "/" + getRelativePathIfExists(paths[0]),
+        background: "/" + getRelativePathIfExists(paths[1]),
+        foreground: "/" + getRelativePathIfExists(paths[2]),
+        addition: "/" + getRelativePathIfExists(paths[3]),
       };
     }
   }
@@ -77,13 +77,13 @@ const processSpineFiles = (
 const processImages = (
   subEntityPath: string,
   files: string[],
-  folderName: string,
+  folderName: string
 ): Record<string, string[]> => {
   const groupedFiles: Record<string, string[]> = {};
 
   files.forEach((file) => {
     const match = file.match(
-      /(.*?_(Mini|Portrait)_\d+)(?:_(Skin\d+))?(?:_Censored)?\.png/i,
+      /(.*?_(Mini|Portrait)_\d+)(?:_(Skin\d+))?(?:_Censored)?\.png/i
     );
 
     if (match) {
@@ -101,17 +101,15 @@ const processImages = (
           groupedFiles[skinName] = [];
         }
 
-        const fileName = getRelativePathIfExists(
-          path.join(subEntityPath, file),
-        );
+        const fileName =
+          "/" + getRelativePathIfExists(path.join(subEntityPath, file));
 
         if (fileName) {
           groupedFiles[skinName].push(fileName);
         }
       } else {
-        const fileName = getRelativePathIfExists(
-          path.join(subEntityPath, file),
-        );
+        const fileName =
+          "/" + getRelativePathIfExists(path.join(subEntityPath, file));
 
         if (fileName && !groupedFiles[baseKey].includes(fileName)) {
           groupedFiles[baseKey].push(fileName);
@@ -158,8 +156,8 @@ const loadDataForEntity = (entityPath: string): EntityMap[string] => {
 };
 
 // Main function to load all entities from the file system
-export const loadAllEntities = async (): Promise<EntityMap> => {
-  const entityData = {} as EntityMap;
+const loadAllEntities = (): EntityMap => {
+  const entityMap = {} as EntityMap;
   const entityTypes = ["Agents", "Seekers"];
 
   entityTypes.forEach((entityType) => {
@@ -167,10 +165,16 @@ export const loadAllEntities = async (): Promise<EntityMap> => {
     entities.forEach((entity) => {
       const entityPath = path.join(ASSETS_PATH, entityType, entity);
       if (isDirectory(entityPath)) {
-        entityData[entity] = loadDataForEntity(entityPath);
+        entityMap[entity] = loadDataForEntity(entityPath);
       }
     });
   });
 
-  return entityData;
+  return entityMap;
+};
+
+export const generateEntityMap = () => {
+  const entityMap = loadAllEntities();
+  const outputPath = path.join(ASSETS_PATH, "entityMap.json");
+  fs.writeFile(outputPath, JSON.stringify(entityMap, null, 2), () => {});
 };
