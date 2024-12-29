@@ -243,7 +243,7 @@ export const addAnimation = async (app: Application, file: FileMeta) => {
 export const removeAnimation = (
   app: Application,
   file: FileMeta,
-  animationList: ModifiedSpine[],
+  animationList: Array<ModifiedLive2D | ModifiedSpine>,
 ) =>
   animationList
     .filter((animation) => {

@@ -1,12 +1,13 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import type { Application } from "pixi.js";
-import type {
-  DropdownSelection,
-  EntityMap,
-  FileMeta,
-  ModifiedSpine,
-  SettingsGlobal,
+import {
+  ModifiedLive2D,
+  type DropdownSelection,
+  type EntityMap,
+  type FileMeta,
+  type ModifiedSpine,
+  type SettingsGlobal,
 } from "../types";
 import { menuItems } from "../utils";
 
@@ -18,7 +19,9 @@ export const pixiAppSettingsGlobalAtom = atomWithStorage<SettingsGlobal>(
     backgroundColor: "#000000",
   },
 );
-export const pixiAnimationListAtom = atom<ModifiedSpine[]>([]);
+export const pixiAnimationListAtom = atom<
+  Array<ModifiedLive2D | ModifiedSpine>
+>([]);
 export const dropdownSelectionAtom = atom<DropdownSelection>({
   entity: null,
   scene: null,

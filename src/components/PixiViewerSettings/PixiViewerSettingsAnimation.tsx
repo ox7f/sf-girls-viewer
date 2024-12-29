@@ -7,6 +7,7 @@ import {
 import { type ChangeEvent, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
 import { pixiAnimationListAtom } from "../../atoms";
+import type { ModifiedSpine } from "../../types";
 import { menuItems, handleTouchAnimation } from "../../utils";
 
 type Props = {
@@ -21,7 +22,7 @@ export const PixiViewerSettingsAnimation = ({
   const animationList = useAtomValue(pixiAnimationListAtom);
   const animation = animationList.find(
     (listItem) => listItem.meta.index === selectedTab,
-  );
+  ) as ModifiedSpine; // TODO: fix for now => fix later so live2d also works here
 
   const [settings, setSettings] = useState({
     // general

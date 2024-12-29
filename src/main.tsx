@@ -4,7 +4,7 @@ import "cirrus-ui";
 import "pixi-spine";
 
 import { Provider } from "jotai";
-import { StrictMode } from "react";
+// import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
@@ -25,9 +25,9 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Provider>
-      <RouterProvider router={router} />
-    </Provider>
-  </StrictMode>,
+  // <StrictMode>
+  <Provider>
+    <RouterProvider router={router} />
+  </Provider>,
+  // </StrictMode>,
 );

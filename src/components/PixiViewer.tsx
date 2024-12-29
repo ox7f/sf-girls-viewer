@@ -25,13 +25,15 @@ export const PixiViewer = () => {
     pixiContainer.current?.appendChild(pixiApp.view as HTMLCanvasElement);
     setApp(pixiApp);
 
-    // return () => {
-    //   app?.destroy(true, true);
-    //   pixiContainer.current?.removeChild(app?.view as HTMLCanvasElement);
+    return () => {
+      if (app) {
+        app.destroy(true, true);
+        pixiContainer.current?.removeChild(app.view as HTMLCanvasElement);
 
-    //   setApp(null);
-    //   setAnimationList([]);
-    // };
+        setApp(null);
+        setAnimationList([]);
+      }
+    };
   }, []);
 
   useEffect(() => {
