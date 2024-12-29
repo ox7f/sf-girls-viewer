@@ -2,7 +2,7 @@
 
 import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useRef } from "react";
-import { Application, Color } from "pixi.js";
+import { type Application, Color } from "pixi.js";
 import {
   fileAtom,
   pixiAnimationListAtom,
@@ -26,9 +26,9 @@ export const PixiViewer = () => {
     setApp(pixiApp);
 
     return () => {
-      if (app) {
+      if (app && pixiContainer.current) {
         app.destroy(true, true);
-        pixiContainer.current?.removeChild(app.view as HTMLCanvasElement);
+        pixiContainer.current.removeChild(app.view as HTMLCanvasElement);
 
         setApp(null);
         setAnimationList([]);

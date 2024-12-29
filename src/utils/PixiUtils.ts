@@ -4,9 +4,11 @@ import {
   Assets,
   Container,
   Sprite,
+  Ticker,
 } from "pixi.js";
 import { Live2DModel } from "pixi-live2d-display/cubism4";
 import { type ISkeletonData, Spine } from "pixi-spine";
+import { handleTouchAnimation } from "./AnimationUtils";
 import type {
   ModifiedContainer,
   ModifiedSpine,
@@ -14,7 +16,6 @@ import type {
   ModifiedTrackEntry,
   ModifiedLive2D,
 } from "../types";
-import { handleTouchAnimation } from "./AnimationUtils";
 
 // TODO: scale should come from config file or mapper?
 // => something like a map that returns an offset for the entity?
@@ -29,12 +30,13 @@ const addLive2D = async (
   app: Application,
   file: FileMeta,
 ): Promise<ModifiedLive2D | undefined> => {
-  console.log("TODO: implement me", { app, file });
-  // return;
   try {
-    const model = (await Live2DModel.from(
-      `/${file.config.fileName}`,
-    )) as ModifiedLive2D;
+    const model = (await Live2DModel.from(`/${file.config.fileName}`, {
+      ticker: Ticker.shared,
+      idleMotionGroup: "Idle 1",
+    })) as ModifiedLive2D;
+
+    model.scale.set(DEFAULT_SCALE);
     model.meta = file;
 
     const container = createContainer() as ModifiedContainer;
@@ -43,7 +45,6 @@ const addLive2D = async (
     if (file.config.background) {
       addSprite(file.config.background, container);
     }
-
     container.addChild(model);
 
     if (file.config.foreground) {
@@ -51,11 +52,11 @@ const addLive2D = async (
     }
 
     centerContainer(container, app);
-    // setupInteractionEvents(container, model);
+    setupInteractionEvents(container, model);
 
     return model;
   } catch (error) {
-    console.error("Error loading Spine:", { error, file });
+    console.error("Error loading Live2D:", { error, file });
   }
 };
 
@@ -87,7 +88,7 @@ const addSpine = async (
       const additionalAnimation = createSpineAnimation(
         spineDataAddition,
       ) as ModifiedSpine;
-      setupClickEvents(container, additionalAnimation);
+      setupSpineClickEvents(container, additionalAnimation);
       container.addChild(additionalAnimation);
     }
 
@@ -155,14 +156,33 @@ const addSprite = (path: string, container: Container) => {
 
 const setupInteractionEvents = (
   container: ModifiedContainer,
-  animation: ModifiedSpine,
+  animation: ModifiedSpine | ModifiedLive2D,
 ) => {
-  setupClickEvents(container, animation);
+  const isLive2D = animation.meta.config.fileName?.includes(".model3.json");
+  if (isLive2D) {
+    setupLive2DClickEvents(animation as ModifiedLive2D);
+  } else {
+    setupSpineClickEvents(container, animation as ModifiedSpine);
+  }
   setupDragEvents(container);
   setupScrollEvents(container);
 };
 
-const setupClickEvents = (
+const setupLive2DClickEvents = (model: ModifiedLive2D): void => {
+  // like spine => currentAnimation and then replace Idle with Touch
+
+  model.on("pointerdown", () => {
+    const currentAnimationName =
+      model.internalModel.motionManager.state.currentGroup;
+    const newAnimationName = currentAnimationName?.replace("Idle", "Touch");
+
+    if (newAnimationName) {
+      model.motion(newAnimationName);
+    }
+  });
+};
+
+const setupSpineClickEvents = (
   container: Container,
   animation: ModifiedSpine,
 ): void => {
