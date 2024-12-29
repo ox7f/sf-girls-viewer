@@ -1,11 +1,21 @@
 "use client";
 
 import { useAtomValue } from "jotai";
-import { type ISpineDebugRenderer, SpineDebugRenderer } from "pixi-spine";
+import {
+  type IAnimation,
+  type ISkin,
+  type ISpineDebugRenderer,
+  SpineDebugRenderer,
+} from "pixi-spine";
 import { type ChangeEvent, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
 import { pixiAnimationListAtom } from "@/atoms";
 import { menuItems } from "@/utils";
+import {
+  extractAnimationNumber,
+  findIdleAnimation,
+  handleTouchAnimation,
+} from "@/utils/AnimationUtils";
 
 type Props = {
   selectedTab: string | number;
@@ -22,6 +32,7 @@ export const PixiViewerSettingsAnimation = ({
   );
 
   const [settings, setSettings] = useState({
+    // general
     alpha: animation?.parent.alpha ?? 0,
     angle: animation?.parent.angle ?? 0,
     scale: animation?.parent.scale.x ?? 1.1,
@@ -30,12 +41,18 @@ export const PixiViewerSettingsAnimation = ({
     autoUpdate: true,
     allowClick: true,
     allowDrag: true,
+    // debug
     debug: false,
   });
 
   if (!animation) {
     return;
   }
+
+  const animations = animation.spineData.animations;
+  const skins = animation.spineData.skins.filter(
+    (skin) => skin.name.toLowerCase() !== "default",
+  );
 
   const handleChange =
     (key: string) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -71,8 +88,6 @@ export const PixiViewerSettingsAnimation = ({
           animation.autoUpdate = checked;
           break;
         case "allowClick":
-          // TODO:
-          break;
         case "allowDrag":
           // TODO:
           break;
@@ -85,6 +100,31 @@ export const PixiViewerSettingsAnimation = ({
 
       setSettings((prev) => ({ ...prev, [key]: checked }));
     };
+
+  const playAnimation = (spineAnimation: IAnimation) => {
+    const animationNumber = extractAnimationNumber(spineAnimation.name);
+    const correspondingIdleAnimation = findIdleAnimation(
+      animation,
+      animationNumber,
+    );
+    const isTouchAnimation = spineAnimation.name.includes("Touch");
+
+    if (!animation.state.hasAnimation(spineAnimation.name)) {
+      return;
+    }
+
+    animation.state.setAnimation(0, spineAnimation.name, !isTouchAnimation);
+
+    if (isTouchAnimation) {
+      handleTouchAnimation(animation, correspondingIdleAnimation);
+    } else if (spineAnimation.name.includes("Idle")) {
+      animation.state.setAnimation(0, spineAnimation.name, true);
+    }
+  };
+
+  const changeSkin = (skin: ISkin) => {
+    animation.skeleton.setSkinByName(skin.name);
+  };
 
   const goBack = () => setSelectedTab(menuItems[0]);
 
@@ -190,17 +230,64 @@ export const PixiViewerSettingsAnimation = ({
           </div>
           <div className="form-ext-control form-ext-checkbox">
             <input
-              id="interactive"
+              id="allowClick"
               className="form-ext-input"
               type="checkbox"
               checked={settings.allowClick}
               onChange={handleToggle("allowClick")}
             />
-            <label className="form-ext-label" htmlFor="interactive">
-              Allow Click
+            <label className="form-ext-label" htmlFor="allowClick">
+              TODO: Allow Click
             </label>
           </div>
+          <div className="form-ext-control form-ext-checkbox">
+            <input
+              id="allowDrag"
+              className="form-ext-input"
+              type="checkbox"
+              checked={settings.allowDrag}
+              onChange={handleToggle("allowDrag")}
+            />
+            <label className="form-ext-label" htmlFor="allowDrag">
+              TODO: Allow Drag
+            </label>
+          </div>
+        </details>
 
+        {animations.length > 0 && (
+          <details className="accordion">
+            <summary className="accordion__summary u-no-outline">
+              Animations
+            </summary>
+            {animations.map((spineAnimation) => (
+              <button
+                key={spineAnimation.name}
+                className=" w-100p"
+                onClick={() => playAnimation(spineAnimation)}
+              >
+                {spineAnimation.name}
+              </button>
+            ))}
+          </details>
+        )}
+
+        {skins.length > 0 && (
+          <details className="accordion">
+            <summary className="accordion__summary u-no-outline">Skins</summary>
+            {skins.map((skin) => (
+              <button
+                key={skin.name}
+                className=" w-100p"
+                onClick={() => changeSkin(skin)}
+              >
+                {skin.name}
+              </button>
+            ))}
+          </details>
+        )}
+
+        <details className="accordion">
+          <summary className="accordion__summary u-no-outline">Debug</summary>
           <div className="form-ext-control form-ext-checkbox">
             <input
               id="debug"
@@ -210,35 +297,10 @@ export const PixiViewerSettingsAnimation = ({
               onChange={handleToggle("debug")}
             />
             <label className="form-ext-label" htmlFor="debug">
-              Debug
+              Debug Rendering
             </label>
           </div>
         </details>
-
-        <p>
-          <span>General</span>
-          <span>data from root object</span>
-          Alpha, Scale, Skew, Rotation, Allow Click, Allow Drag, Show Background
-        </p>
-
-        <p>
-          <span>Animations</span>
-          <span>data from SpineData</span>
-          List of Animations (Button?) <br />
-          List of Skins
-          <br />
-        </p>
-
-        <p>
-          <span>Parts</span>
-          <span>data from skeleton</span>
-          List of Parts with Slide for Alpha (possible?)
-        </p>
-
-        <p>
-          <span>Debug</span>
-          List of Parts with Slide for Alpha (possible?) Show FPS Option
-        </p>
       </fieldset>
     </div>
   );
