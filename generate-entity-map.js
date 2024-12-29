@@ -1,13 +1,10 @@
-"use server";
-
 import fs from "fs";
 import path from "path";
-import { type EntityMap, type SpineConfig, SubFolderName } from "../types";
 
 const ASSETS_PATH = path.join(process.cwd(), "public/assets");
 
 // Checks if a path exists and is a directory
-const isDirectory = (filePath: string): boolean => {
+const isDirectory = (filePath) => {
   try {
     return fs.existsSync(filePath) && fs.statSync(filePath).isDirectory();
   } catch {
@@ -16,7 +13,7 @@ const isDirectory = (filePath: string): boolean => {
 };
 
 // Returns the relative file path if it exists
-const getRelativePathIfExists = (filePath: string): string | undefined => {
+const getRelativePathIfExists = (filePath) => {
   try {
     return fs.existsSync(filePath)
       ? path
@@ -30,7 +27,7 @@ const getRelativePathIfExists = (filePath: string): string | undefined => {
 };
 
 // Returns the content of a directory
-const getFoldersContents = (path: string): string[] => {
+const getFoldersContents = (path) => {
   try {
     return fs.readdirSync(path);
   } catch (err) {
@@ -39,12 +36,8 @@ const getFoldersContents = (path: string): string[] => {
   }
 };
 
-// Process spine files
-const processSpineFiles = (
-  subEntityPath: string,
-  files: string[],
-): SpineConfig => {
-  const spines: SpineConfig = {};
+const processSpineFiles = (subEntityPath, files) => {
+  const spines = {};
 
   for (const spine of files) {
     if (spine.endsWith(".json")) {
@@ -70,13 +63,8 @@ const processSpineFiles = (
   return spines;
 };
 
-// Process png files
-const processImages = (
-  subEntityPath: string,
-  files: string[],
-  folderName: string,
-): Record<string, string[]> => {
-  const groupedFiles: Record<string, string[]> = {};
+const processImages = (subEntityPath, files, folderName) => {
+  const groupedFiles = {};
 
   files.forEach((file) => {
     const match = file.match(
@@ -120,14 +108,13 @@ const processImages = (
   return groupedFiles;
 };
 
-// Load data for a specific entity
-const loadDataForEntity = (entityPath: string): EntityMap[string] => {
+const loadDataForEntity = (entityPath) => {
   const data = {
-    [SubFolderName.CHIBI]: {},
-    [SubFolderName.MINI]: {},
-    [SubFolderName.PLAYROOM]: {},
-    [SubFolderName.PORTRAIT]: {},
-    [SubFolderName.SPINE]: {},
+    Chibi: {},
+    Mini: {},
+    Playroom: {},
+    Portrait: {},
+    Spine: {},
   };
   const type = entityPath.includes("Agents") ? "Agents" : "Seekers";
   const subFolders = getFoldersContents(entityPath);
@@ -138,13 +125,13 @@ const loadDataForEntity = (entityPath: string): EntityMap[string] => {
       const files = getFoldersContents(folderPath);
 
       switch (folder) {
-        case SubFolderName.PLAYROOM:
-        case SubFolderName.SPINE:
-        case SubFolderName.CHIBI:
+        case "Playroom":
+        case "Spine":
+        case "Chibi":
           data[folder] = processSpineFiles(folderPath, files);
           break;
-        case SubFolderName.MINI:
-        case SubFolderName.PORTRAIT:
+        case "Mini":
+        case "Portrait":
           data[folder] = processImages(folderPath, files, folder);
           break;
       }
@@ -154,9 +141,8 @@ const loadDataForEntity = (entityPath: string): EntityMap[string] => {
   return { data, type };
 };
 
-// Main function to load all entities from the file system
-const loadAllEntities = (): EntityMap => {
-  const entityMap = {} as EntityMap;
+const loadAllEntities = () => {
+  const entityMap = {};
   const entityTypes = ["Agents", "Seekers"];
 
   entityTypes.forEach((entityType) => {
@@ -172,8 +158,13 @@ const loadAllEntities = (): EntityMap => {
   return entityMap;
 };
 
-export const generateEntityMap = async (): Promise<undefined> => {
+const generateEntityMap = async () => {
   const entityMap = loadAllEntities();
   const outputPath = path.join(ASSETS_PATH, "entityMap.json");
   fs.writeFile(outputPath, JSON.stringify(entityMap, null, 2), () => {});
+  console.log("Config file generated at:", outputPath);
 };
+
+(async () => {
+  await generateEntityMap();
+})();

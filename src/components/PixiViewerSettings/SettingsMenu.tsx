@@ -1,14 +1,12 @@
-"use client";
-
 import { useAtom } from "jotai";
 import {
   PixiViewerSettingsAnimation,
   PixiViewerSettingsGlobal,
   PixiViewerSettingsScene,
-} from "@/components/PixiViewerSettings";
+} from "../../components/PixiViewerSettings";
 
-import { menuItems } from "@/utils";
-import { selectedMenuTabAtom } from "@/atoms";
+import { menuItems } from "../../utils";
+import { selectedMenuTabAtom } from "../../atoms";
 
 const tabComponents = {
   [menuItems[0]]: PixiViewerSettingsScene,

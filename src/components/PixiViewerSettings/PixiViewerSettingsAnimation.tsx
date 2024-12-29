@@ -1,5 +1,3 @@
-"use client";
-
 import { useAtomValue } from "jotai";
 import {
   type ISkin,
@@ -8,8 +6,8 @@ import {
 } from "pixi-spine";
 import { type ChangeEvent, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
-import { pixiAnimationListAtom } from "@/atoms";
-import { menuItems, handleTouchAnimation } from "@/utils";
+import { pixiAnimationListAtom } from "../../atoms";
+import { menuItems, handleTouchAnimation } from "../../utils";
 
 type Props = {
   selectedTab: string | number;

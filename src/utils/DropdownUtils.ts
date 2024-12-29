@@ -4,7 +4,7 @@ import {
   type SpineData,
   SubFolderName,
   DropdownOption,
-} from "@/types";
+} from "../types";
 
 export const menuItems = ["Scene", "Global"];
 

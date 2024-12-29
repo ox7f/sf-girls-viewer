@@ -11,7 +11,8 @@
   white-space: normal !important;
 }
 
-button:focus, input:focus {
+button:focus,
+input:focus {
   box-shadow: none !important;
 }
 

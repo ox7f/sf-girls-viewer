@@ -7,8 +7,8 @@ import type {
   FileMeta,
   ModifiedSpine,
   SettingsGlobal,
-} from "@/types";
-import { menuItems } from "@/utils";
+} from "../types";
+import { menuItems } from "../utils";
 
 export const pixiAppAtom = atom<Application | null>(null);
 export const pixiAppSettingsGlobalAtom = atomWithStorage<SettingsGlobal>(

@@ -1,15 +1,9 @@
-"use client";
-
+import type { FC } from "react";
 import { FaCoffee } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const GlobalError = ({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) => {
-  console.error("Something went wrong:", error);
+export const ErrorBoundary: FC = () => {
+  const navigate = useNavigate();
 
   return (
     <main>
@@ -32,7 +26,7 @@ const GlobalError = ({
               <div className="m-1" onClick={() => window.location.reload()}>
                 <button className="btn-primary">Refresh</button>
               </div>
-              <div className="m-1" onClick={reset}>
+              <div className="m-1" onClick={() => navigate("/")}>
                 <button className="btn-primary">Home</button>
               </div>
             </div>
@@ -43,4 +37,4 @@ const GlobalError = ({
   );
 };
 
-export default GlobalError;
+export default ErrorBoundary;

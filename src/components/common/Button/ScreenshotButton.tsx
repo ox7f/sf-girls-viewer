@@ -1,10 +1,8 @@
-"use client";
-
 import { useAtomValue } from "jotai";
 import { FaCamera } from "react-icons/fa";
 
-import { pixiAppAtom } from "@/atoms";
-import Button from "@/components/common/Button/Button";
+import { pixiAppAtom } from "../../../atoms";
+import Button from "../../../components/common/Button/Button";
 
 const ScreenshotButton = () => {
   const app = useAtomValue(pixiAppAtom);

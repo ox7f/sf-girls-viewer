@@ -5,14 +5,15 @@ import {
   Container,
   Sprite,
 } from "pixi.js";
-// import { Live2DModel } from "pixi-live2d-display";
+import { Live2DModel } from "pixi-live2d-display/cubism4";
 import { type ISkeletonData, Spine } from "pixi-spine";
 import type {
   ModifiedContainer,
   ModifiedSpine,
   FileMeta,
   ModifiedTrackEntry,
-} from "@/types";
+  ModifiedLive2D,
+} from "../types";
 import { handleTouchAnimation } from "./AnimationUtils";
 
 // TODO: scale should come from config file or mapper?
@@ -27,35 +28,35 @@ const DEFAULT_SCALE = 0.3;
 const addLive2D = async (
   app: Application,
   file: FileMeta,
-): Promise<undefined> => {
+): Promise<ModifiedLive2D | undefined> => {
   console.log("TODO: implement me", { app, file });
   // return;
-  // try {
-  //   const model = (await Live2DModel.from(
-  //     `/${file.config.fileName}`,
-  //   )) as ModifiedLive2D;
-  //   model.meta = file;
+  try {
+    const model = (await Live2DModel.from(
+      `/${file.config.fileName}`,
+    )) as ModifiedLive2D;
+    model.meta = file;
 
-  //   const container = createContainer() as ModifiedContainer;
-  //   app.stage.addChild(container);
+    const container = createContainer() as ModifiedContainer;
+    app.stage.addChild(container);
 
-  //   if (file.config.background) {
-  //     addSprite(file.config.background, container);
-  //   }
+    if (file.config.background) {
+      addSprite(file.config.background, container);
+    }
 
-  //   container.addChild(model);
+    container.addChild(model);
 
-  //   if (file.config.foreground) {
-  //     addSprite(file.config.foreground, container);
-  //   }
+    if (file.config.foreground) {
+      addSprite(file.config.foreground, container);
+    }
 
-  //   centerContainer(container, app);
-  //   // setupInteractionEvents(container, model);
+    centerContainer(container, app);
+    // setupInteractionEvents(container, model);
 
-  //   return model;
-  // } catch (error) {
-  //   console.error("Error loading Spine:", { error, file });
-  // }
+    return model;
+  } catch (error) {
+    console.error("Error loading Spine:", { error, file });
+  }
 };
 
 const addSpine = async (
@@ -235,8 +236,8 @@ export const addAnimation = async (app: Application, file: FileMeta) => {
   return file.type === "live2d"
     ? await addLive2D(app, file)
     : file.type === "spine"
-    ? await addSpine(app, file)
-    : console.warn(`Unsupported file type: ${file.type}`);
+      ? await addSpine(app, file)
+      : console.warn(`Unsupported file type: ${file.type}`);
 };
 
 export const removeAnimation = (

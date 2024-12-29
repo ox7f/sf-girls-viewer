@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-"use client";
 
 import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useRef } from "react";
@@ -9,9 +8,9 @@ import {
   pixiAnimationListAtom,
   pixiAppAtom,
   pixiAppSettingsGlobalAtom,
-} from "@/atoms";
-import type { FileMeta } from "@/types";
-import { initializePixiApp, addAnimation, removeAnimation } from "@/utils";
+} from "../atoms";
+import type { FileMeta } from "../types";
+import { initializePixiApp, addAnimation, removeAnimation } from "../utils";
 
 export const PixiViewer = () => {
   const pixiContainer = useRef<HTMLDivElement | null>(null);
@@ -26,13 +25,13 @@ export const PixiViewer = () => {
     pixiContainer.current?.appendChild(pixiApp.view as HTMLCanvasElement);
     setApp(pixiApp);
 
-    return () => {
-      pixiApp.destroy(true, true);
-      pixiContainer.current?.removeChild(pixiApp.view as HTMLCanvasElement);
+    // return () => {
+    //   app?.destroy(true, true);
+    //   pixiContainer.current?.removeChild(app?.view as HTMLCanvasElement);
 
-      setApp(null);
-      setAnimationList([]);
-    };
+    //   setApp(null);
+    //   setAnimationList([]);
+    // };
   }, []);
 
   useEffect(() => {

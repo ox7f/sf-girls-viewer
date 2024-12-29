@@ -1,8 +1,6 @@
-"use client";
-
 import { useAtom, useAtomValue } from "jotai";
 import { ChangeEvent } from "react";
-import { pixiAppAtom, pixiAppSettingsGlobalAtom } from "@/atoms";
+import { pixiAppAtom, pixiAppSettingsGlobalAtom } from "../../atoms";
 
 export const PixiViewerSettingsGlobal = () => {
   const app = useAtomValue(pixiAppAtom);

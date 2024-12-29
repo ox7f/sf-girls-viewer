@@ -1,7 +1,5 @@
-"use client";
-
 import { FaPlus, FaMinus } from "react-icons/fa";
-import Button from "@/components/common/Button/Button";
+import Button from "../../../components/common/Button/Button";
 
 type Props = {
   isOpen: boolean;

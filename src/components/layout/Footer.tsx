@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 export const Footer = () => (
   <footer className="footer grid-c-12 bg-white">
@@ -6,16 +6,13 @@ export const Footer = () => (
 
     <p className="subtitle mx-5">
       The source code is licensed{" "}
-      <Link
-        href="http://opensource.org/licenses/mit-license.php"
-        target="_blank"
-      >
+      <Link to="http://opensource.org/licenses/mit-license.php" target="_blank">
         MIT
       </Link>
       . The website content is licensed{" "}
       <Link
         rel="license"
-        href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+        to="http://creativecommons.org/licenses/by-nc-sa/4.0/"
         target="_blank"
       >
         CC BY-NC-SA 4.0
@@ -44,7 +41,7 @@ export const Footer = () => (
       {" by "}
       <Link
         className="utb utb-OLR"
-        href="https://discordapp.com/users/382197237842837514"
+        to="https://discordapp.com/users/382197237842837514"
         target="_blank"
         rel="noopener noreferrer"
       >

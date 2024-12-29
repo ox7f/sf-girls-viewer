@@ -1,5 +1,3 @@
-"use client";
-
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { FaEllipsisH, FaTimes } from "react-icons/fa";
 import Select from "react-select";
@@ -9,14 +7,14 @@ import {
   fileAtom,
   pixiAnimationListAtom,
   selectedMenuTabAtom,
-} from "@/atoms";
-import type { DropdownState, FileMeta } from "@/types";
+} from "../../atoms";
+import type { DropdownState, FileMeta } from "../../types";
 import {
   getEntityOptions,
   getEntitySceneOptions,
   getSceneData,
   formatGroupLabel,
-} from "@/utils";
+} from "../../utils";
 
 export const PixiViewerSettingsScene = () => {
   const entityMap = useAtomValue(entityMapAtom);

@@ -1,9 +1,6 @@
-"use client";
-
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const menuItems = [
   { name: "Gallery", href: "/gallery" },
@@ -28,7 +25,7 @@ export const Header = () => {
     >
       <div className="header-brand">
         <div className="nav-item no-hover">
-          <Link href="/" onClick={() => setIsOpen(false)}>
+          <Link to="/" onClick={() => setIsOpen(false)}>
             <h6 className="title">SF Girls Viewer</h6>
           </Link>
         </div>
@@ -48,7 +45,7 @@ export const Header = () => {
         <div className="nav-left">
           <div className="nav-item">
             <Link
-              href="https://github.com/ox7f/sf-girls-viewer"
+              to="https://github.com/ox7f/sf-girls-viewer"
               target="_blank"
               onClick={() => setIsOpen(false)}
             >
@@ -60,7 +57,7 @@ export const Header = () => {
 
           {menuItems.map((menuItem) => (
             <div className="nav-item" key={menuItem.name}>
-              <Link href={menuItem.href}>
+              <Link to={menuItem.href}>
                 <span>{menuItem.name}</span>
               </Link>
             </div>
@@ -70,11 +67,11 @@ export const Header = () => {
         <div className="nav-right">
           <div className="nav-item">
             <Link
-              href="https://www.buymeacoffee.com/ox7f"
+              to="https://www.buymeacoffee.com/ox7f"
               target="_blank"
               onClick={() => setIsOpen(false)}
             >
-              <Image
+              <img
                 src="/buymeacoffee.png"
                 alt="Buy Me A Coffee"
                 height={36}

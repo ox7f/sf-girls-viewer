@@ -1,9 +1,7 @@
-"use client";
-
 import { useState } from "react";
-import ScreenshotButton from "@/components/common/Button/ScreenshotButton";
-import SidebarToggleButton from "@/components/common/Button/SidebarToggleButton";
-import { SettingsMenu } from "@/components/PixiViewerSettings";
+import ScreenshotButton from "../../components/common/Button/ScreenshotButton";
+import SidebarToggleButton from "../../components/common/Button/SidebarToggleButton";
+import { SettingsMenu } from "../../components/PixiViewerSettings";
 
 export const PixiViewerSettings = () => {
   const [isOpen, setIsOpen] = useState(true);
