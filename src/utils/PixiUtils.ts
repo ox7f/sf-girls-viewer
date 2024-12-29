@@ -5,8 +5,15 @@ import {
   Container,
   Sprite,
 } from "pixi.js";
-import { type ISkeletonData, type ITrackEntry, Spine } from "pixi-spine";
-import { ModifiedContainer, ModifiedSpine, FileMeta } from "@/types";
+// import { Live2DModel } from "pixi-live2d-display";
+import { type ISkeletonData, Spine } from "pixi-spine";
+import type {
+  ModifiedContainer,
+  ModifiedSpine,
+  FileMeta,
+  ModifiedTrackEntry,
+} from "@/types";
+import { handleTouchAnimation } from "./AnimationUtils";
 
 // TODO: scale should come from config file or mapper?
 // => something like a map that returns an offset for the entity?
@@ -21,7 +28,34 @@ const addLive2D = async (
   app: Application,
   file: FileMeta,
 ): Promise<undefined> => {
-  console.log("TODO: Implement Live2D support", { app, file });
+  console.log("TODO: implement me", { app, file });
+  // return;
+  // try {
+  //   const model = (await Live2DModel.from(
+  //     `/${file.config.fileName}`,
+  //   )) as ModifiedLive2D;
+  //   model.meta = file;
+
+  //   const container = createContainer() as ModifiedContainer;
+  //   app.stage.addChild(container);
+
+  //   if (file.config.background) {
+  //     addSprite(file.config.background, container);
+  //   }
+
+  //   container.addChild(model);
+
+  //   if (file.config.foreground) {
+  //     addSprite(file.config.foreground, container);
+  //   }
+
+  //   centerContainer(container, app);
+  //   // setupInteractionEvents(container, model);
+
+  //   return model;
+  // } catch (error) {
+  //   console.error("Error loading Spine:", { error, file });
+  // }
 };
 
 const addSpine = async (
@@ -42,8 +76,7 @@ const addSpine = async (
     animation.meta = file;
 
     if (file.config.background) {
-      const background = addSprite(file.config.background);
-      container.addChild(background);
+      addSprite(file.config.background, container);
     }
 
     if (file.config.addition) {
@@ -60,32 +93,33 @@ const addSpine = async (
     container.addChild(animation);
 
     if (file.config.foreground) {
-      const foreground = addSprite(file.config.foreground);
-      container.addChild(foreground);
+      addSprite(file.config.foreground, container);
     }
 
-    const bounds = container.getLocalBounds();
-
-    // Center the container based on its content
-    container.pivot.set(
-      bounds.x + bounds.width / 2,
-      bounds.y + bounds.height / 2,
-    );
-    container.position.set(app.screen.width / 2, app.screen.height / 2);
-
+    centerContainer(container, app);
     setupInteractionEvents(container, animation);
 
     return animation;
   } catch (error) {
     console.error("Error loading Spine:", { error, file });
   }
-  return;
 };
 
 const createContainer = (): Container => {
   const container = new Container();
   container.eventMode = "dynamic";
   return container;
+};
+
+const centerContainer = (container: Container, app: Application) => {
+  const bounds = container.getLocalBounds();
+
+  container.pivot.set(
+    bounds.x + bounds.width / 2,
+    bounds.y + bounds.height / 2,
+  );
+
+  container.position.set(app.screen.width / 2, app.screen.height / 2);
 };
 
 const createSpineAnimation = (
@@ -112,10 +146,10 @@ const createSpineAnimation = (
   return animation;
 };
 
-const addSprite = (path: string) => {
+const addSprite = (path: string, container: Container) => {
   const sprite = Sprite.from(path);
   sprite.anchor.set(0.5, 0.5);
-  return sprite;
+  container.addChild(sprite);
 };
 
 const setupInteractionEvents = (
@@ -132,22 +166,10 @@ const setupClickEvents = (
   animation: ModifiedSpine,
 ): void => {
   const onTouch = () => {
-    const currentAnimation = animation.state.tracks[0] as ITrackEntry & {
-      animation: { name: string };
-    };
+    const currentAnimation = animation.state.tracks[0] as ModifiedTrackEntry;
     const currentAnimationName = currentAnimation.animation.name;
-
-    const [idle, touch] = [
-      currentAnimationName.replace("Touch", "Idle"),
-      currentAnimationName.replace("Idle", "Touch"),
-    ];
-
-    if (animation.state.hasAnimation(touch)) {
-      animation.state.setAnimation(0, touch, false);
-      currentAnimation.listener = {
-        complete: () => animation.state.setAnimation(0, idle, false),
-      };
-    }
+    const touchAnimationName = currentAnimationName.replace("Idle", "Touch");
+    handleTouchAnimation(animation, touchAnimationName);
   };
 
   container.on("click", onTouch);

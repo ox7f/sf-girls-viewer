@@ -49,6 +49,7 @@ const processSpineFiles = (
   for (const spine of files) {
     if (spine.endsWith(".json")) {
       const spineName = path.basename(spine, ".json");
+      const keyName = spineName.replace(".model3", "");
       const paths = [
         ".json",
         "_Background.png",
@@ -56,8 +57,8 @@ const processSpineFiles = (
         "_Addition.json",
       ].map((ext) => path.join(subEntityPath, `${spineName}${ext}`));
 
-      spines[spineName] = {
-        name: spineName,
+      spines[keyName] = {
+        name: keyName,
         fileName: getRelativePathIfExists(paths[0]),
         background: getRelativePathIfExists(paths[1]),
         foreground: getRelativePathIfExists(paths[2]),

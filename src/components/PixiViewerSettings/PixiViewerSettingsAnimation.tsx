@@ -2,7 +2,6 @@
 
 import { useAtomValue } from "jotai";
 import {
-  type IAnimation,
   type ISkin,
   type ISpineDebugRenderer,
   SpineDebugRenderer,
@@ -10,12 +9,7 @@ import {
 import { type ChangeEvent, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
 import { pixiAnimationListAtom } from "@/atoms";
-import { menuItems } from "@/utils";
-import {
-  extractAnimationNumber,
-  findIdleAnimation,
-  handleTouchAnimation,
-} from "@/utils/AnimationUtils";
+import { menuItems, handleTouchAnimation } from "@/utils";
 
 type Props = {
   selectedTab: string | number;
@@ -101,25 +95,8 @@ export const PixiViewerSettingsAnimation = ({
       setSettings((prev) => ({ ...prev, [key]: checked }));
     };
 
-  const playAnimation = (spineAnimation: IAnimation) => {
-    const animationNumber = extractAnimationNumber(spineAnimation.name);
-    const correspondingIdleAnimation = findIdleAnimation(
-      animation,
-      animationNumber,
-    );
-    const isTouchAnimation = spineAnimation.name.includes("Touch");
-
-    if (!animation.state.hasAnimation(spineAnimation.name)) {
-      return;
-    }
-
-    animation.state.setAnimation(0, spineAnimation.name, !isTouchAnimation);
-
-    if (isTouchAnimation) {
-      handleTouchAnimation(animation, correspondingIdleAnimation);
-    } else if (spineAnimation.name.includes("Idle")) {
-      animation.state.setAnimation(0, spineAnimation.name, true);
-    }
+  const playAnimation = (animationName: string) => {
+    handleTouchAnimation(animation, animationName);
   };
 
   const changeSkin = (skin: ISkin) => {
@@ -263,7 +240,7 @@ export const PixiViewerSettingsAnimation = ({
               <button
                 key={spineAnimation.name}
                 className=" w-100p"
-                onClick={() => playAnimation(spineAnimation)}
+                onClick={() => playAnimation(spineAnimation.name)}
               >
                 {spineAnimation.name}
               </button>

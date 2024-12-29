@@ -1,9 +1,9 @@
 import "./globals.css";
 import "cirrus-ui";
-
 import "pixi-spine";
 
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { DataInitializer } from "@/components/DataInitializer";
 import { Header, Footer } from "@/components/layout";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "A WIP Viewer for SF Girls",
 };
 
-const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (
     <html lang="en">
       <body>

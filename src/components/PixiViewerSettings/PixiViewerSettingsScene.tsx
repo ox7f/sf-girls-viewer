@@ -10,7 +10,7 @@ import {
   pixiAnimationListAtom,
   selectedMenuTabAtom,
 } from "@/atoms";
-import type { ModifiedSpine, DropdownState } from "@/types";
+import type { DropdownState, FileMeta } from "@/types";
 import {
   getEntityOptions,
   getEntitySceneOptions,
@@ -58,35 +58,38 @@ export const PixiViewerSettingsScene = () => {
       return;
     }
 
+    const config = getSceneData(entityMap, entity, scene);
+    const isLive2D = config.fileName?.includes(".model3.json");
+
     setNewFile({
-      config: getSceneData(entityMap, entity, scene),
+      config: config,
       index,
       method: "add",
       name: entity,
-      type: "spine",
+      type: isLive2D ? "live2d" : "spine",
     });
   };
 
-  const renderAnimationTile = (animation: ModifiedSpine, index: number) => (
+  const renderAnimationTile = (file: FileMeta, index: number) => (
     <div
       key={index}
       className="tile mt-1 u-border-1 u-round-xs border-gray-400 animated fadeIn"
     >
       <div className="tile__container p-1">
-        <p className="tile__title m-0">{animation.meta.name}</p>
-        <p className="tile__subtitle m-0">{animation.meta.config.name}</p>
+        <p className="tile__title m-0">{file.name}</p>
+        <p className="tile__subtitle m-0">{file.config.name}</p>
       </div>
       <div className="tile__buttons m-0 u-text-right">
         <div className="u-flex u-flex-column">
           <button
             className="outline btn-dark border-white"
-            onClick={() => setSelectedTab(animation.meta.index)}
+            onClick={() => setSelectedTab(file.index)}
           >
             <FaEllipsisH />
           </button>
           <button
             className="outline btn-danger border-white"
-            onClick={() => setNewFile({ ...animation.meta, method: "remove" })}
+            onClick={() => setNewFile({ ...file, method: "remove" })}
           >
             <FaTimes />
           </button>
@@ -132,7 +135,10 @@ export const PixiViewerSettingsScene = () => {
           View
         </button>
       </div>
-      {animationList.length > 0 && animationList.map(renderAnimationTile)}
+      {animationList.length > 0 &&
+        animationList.map((animation, index) =>
+          renderAnimationTile(animation.meta, index),
+        )}
     </fieldset>
   );
 };

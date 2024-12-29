@@ -1,6 +1,6 @@
-import type { Spine } from "pixi-spine";
+import type { Container } from "pixi.js";
+import type { ITrackEntry, Spine } from "pixi-spine";
 import type { FileMeta } from "@/types";
-import { Container } from "pixi.js";
 
 export type ModifiedSpine = Spine & {
   meta: FileMeta;
@@ -9,4 +9,8 @@ export type ModifiedSpine = Spine & {
 export type ModifiedContainer = Container & {
   alphaOriginal: number;
   isDragging: boolean;
+};
+
+export type ModifiedTrackEntry = ITrackEntry & {
+  animation: { name: string };
 };

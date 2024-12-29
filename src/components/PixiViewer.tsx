@@ -10,7 +10,7 @@ import {
   pixiAppAtom,
   pixiAppSettingsGlobalAtom,
 } from "@/atoms";
-import { type FileMeta } from "@/types";
+import type { FileMeta } from "@/types";
 import { initializePixiApp, addAnimation, removeAnimation } from "@/utils";
 
 export const PixiViewer = () => {
