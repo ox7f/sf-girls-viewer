@@ -145,9 +145,7 @@ const setupClickEvents = (
     if (animation.state.hasAnimation(touch)) {
       animation.state.setAnimation(0, touch, false);
       currentAnimation.listener = {
-        complete: () =>
-          animation.state.hasAnimation(idle) &&
-          animation.state.setAnimation(0, idle, false),
+        complete: () => animation.state.setAnimation(0, idle, false),
       };
     }
   };
