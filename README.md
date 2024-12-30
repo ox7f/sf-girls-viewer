@@ -19,3 +19,11 @@ bun dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+
+## Things to know
+
+When updating assets don't forget to run the following command afterwards:
+
+```bash
+npm run generate-entity-map
+```
