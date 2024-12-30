@@ -13,8 +13,15 @@ const getTouchAnimationName = (
 ): string | undefined =>
   animationName?.toLowerCase().replace("idle", isChibi ? "attack" : "Touch");
 
-export const setupLive2DClickEvents = (model: ModifiedLive2D): void => {
+export const setupLive2DClickEvents = (
+  container: ModifiedContainer,
+  model: ModifiedLive2D,
+): void => {
   model.on("pointerdown", () => {
+    if (!container.allowClick) {
+      return;
+    }
+
     const newAnimationName = getTouchAnimationName(
       model.internalModel.motionManager.state.currentGroup,
     );
@@ -113,7 +120,7 @@ export const setupInteractionEvents = (
   container.allowDrag = true;
 
   if (animation.meta.type === "live2d") {
-    setupLive2DClickEvents(animation as ModifiedLive2D);
+    setupLive2DClickEvents(container, animation as ModifiedLive2D);
   } else {
     setupSpineClickEvents(container, animation as ModifiedSpine);
   }
