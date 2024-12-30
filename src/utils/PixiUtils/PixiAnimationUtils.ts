@@ -10,7 +10,9 @@ const findIdleAnimation = (
   animationNumber: number | null,
 ): IAnimation | undefined => {
   if (!animationNumber) {
-    return;
+    return animation.spineData.animations.find((anim) =>
+      anim.name.toLowerCase().includes("idle"),
+    );
   }
 
   return animation.spineData.animations.find(
@@ -42,7 +44,7 @@ export const handleTouchAnimation = (
     animation,
     animationNumber,
   );
-  const isTouchAnimation = animationName.includes("Touch");
+  const isTouchAnimation = animationName.toLowerCase().includes("touch");
 
   if (!animation.state.hasAnimation(animationName)) {
     return;
@@ -52,7 +54,7 @@ export const handleTouchAnimation = (
 
   if (isTouchAnimation) {
     setupTouchAnimation(animation, correspondingIdleAnimation);
-  } else if (animationName.includes("Idle")) {
+  } else if (animationName.toLowerCase().includes("idle")) {
     animation.state.setAnimation(0, animationName, true);
   }
 };

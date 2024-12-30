@@ -1,4 +1,3 @@
-export type EntityType = "Agents" | "Seekers";
 export type FileType = "spine" | "live2d";
 
 export type FileMeta = {
@@ -9,20 +8,7 @@ export type FileMeta = {
   type: FileType;
 };
 
-export type SpineData = {
-  name?: string;
-  fileName?: string;
-  background?: string;
-  foreground?: string;
-  addition?: string;
-  // optional data for scenes like scaling?
-};
-
-export type SpineConfig = Record<string, SpineData>;
-
-export type MiniOrPortraitConfig = {
-  [key: string]: string[];
-};
+export type EntityType = "Agents" | "Seekers";
 
 export type EntityData = {
   [SubFolderName.CHIBI]?: SpineConfig;
@@ -37,6 +23,21 @@ export type EntityMap = {
     type: EntityType;
     data: EntityData;
   };
+};
+
+export type MiniOrPortraitConfig = {
+  [key: string]: string[];
+};
+
+export type SpineConfig = Record<string, SpineData>;
+
+export type SpineData = {
+  name?: string;
+  fileName?: string;
+  background?: string;
+  foreground?: string;
+  addition?: string;
+  // optional data for scenes like scaling?
 };
 
 export enum SubFolderName {

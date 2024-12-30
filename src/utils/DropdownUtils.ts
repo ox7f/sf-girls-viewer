@@ -43,6 +43,10 @@ export const getEntitySceneOptions = (
 
   return [
     {
+      label: "Chibi",
+      options: createSceneOptions(data, SubFolderName.CHIBI),
+    },
+    {
       label: "Spine",
       options: createSceneOptions(data, SubFolderName.SPINE),
     },
@@ -58,16 +62,24 @@ export const getSceneData = (
   entityName: string,
   sceneName: string,
 ): SpineData => {
-  const isPlayroom = sceneName.includes(SubFolderName.PLAYROOM);
+  const getFolderKey = (): keyof EntityData => {
+    if (sceneName.includes(SubFolderName.CHIBI)) {
+      return SubFolderName.CHIBI;
+    }
 
-  const sceneData =
-    entityData[entityName]?.data[
-      isPlayroom ? SubFolderName.PLAYROOM : SubFolderName.SPINE
-    ]?.[sceneName];
+    if (sceneName.includes(SubFolderName.PLAYROOM)) {
+      return SubFolderName.PLAYROOM;
+    }
+
+    return SubFolderName.SPINE;
+  };
+
+  const folderKey = getFolderKey();
+  const sceneData = entityData[entityName]?.data[folderKey]?.[sceneName];
 
   if (!sceneData) {
     throw new Error(`Scene "${sceneName}" not found in data.`);
   }
 
-  return sceneData;
+  return sceneData as SpineData;
 };

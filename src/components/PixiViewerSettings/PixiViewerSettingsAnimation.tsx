@@ -42,10 +42,11 @@ export const PixiViewerSettingsAnimation = ({
     return;
   }
 
-  const animations = animation.spineData.animations;
-  const skins = animation.spineData.skins.filter(
-    (skin) => skin.name.toLowerCase() !== "default",
-  );
+  const animations = animation?.spineData?.animations ?? [];
+  const skins =
+    animation?.spineData?.skins?.filter(
+      (skin) => skin.name.toLowerCase() !== "default",
+    ) ?? [];
 
   const handleChange =
     (key: string) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -121,163 +122,171 @@ export const PixiViewerSettingsAnimation = ({
         </div>
       </div>
 
-      <fieldset className="u-flex u-flex-column animated fadeIn">
-        <details className="accordion">
-          <summary className="accordion__summary u-no-outline">General</summary>
-          <div className="tooltip" data-tooltip={settings.alpha}>
-            <label htmlFor="alpha">Alpha</label>
-            <input
-              id="alpha"
-              type="range"
-              name="alpha"
-              min="0"
-              max="1"
-              step={0.01}
-              value={settings.alpha}
-              onChange={handleChange("alpha")}
-            />
-          </div>
-          <div className="tooltip" data-tooltip={`${settings.angle}°`}>
-            <label htmlFor="angle">Angle</label>
-            <input
-              id="angle"
-              type="range"
-              name="angle"
-              min="0"
-              max="360"
-              step={1}
-              value={settings.angle}
-              onChange={handleChange("angle")}
-            />
-          </div>
-          <div className="tooltip" data-tooltip={settings.scale}>
-            <label htmlFor="alpha">Scale</label>
-            <input
-              id="alpha"
-              type="range"
-              name="alpha"
-              min="0"
-              max="4"
-              step={0.01}
-              value={settings.scale}
-              onChange={handleChange("scale")}
-            />
-          </div>
-          <div className="tooltip" data-tooltip={settings.skew}>
-            <label htmlFor="skew">Skew</label>
-            <input
-              id="skew"
-              type="range"
-              name="skew"
-              min="0"
-              max="1"
-              step={0.01}
-              value={settings.skew}
-              onChange={handleChange("skew")}
-            />
-          </div>
-          <div
-            className="tooltip"
-            data-tooltip={`${Math.round(settings.timeScale * 100)} %`}
-          >
-            <label htmlFor="timeScale">Playback Speed</label>
-            <input
-              id="timeScale"
-              type="range"
-              name="timeScale"
-              min="0"
-              max="4"
-              step={0.05}
-              value={settings.timeScale}
-              onChange={handleChange("timeScale")}
-            />
-          </div>
-          <div className="form-ext-control form-ext-checkbox">
-            <input
-              id="autoUpdate"
-              className="form-ext-input"
-              type="checkbox"
-              checked={settings.autoUpdate}
-              onChange={handleToggle("autoUpdate")}
-            />
-            <label className="form-ext-label" htmlFor="autoUpdate">
-              Auto Update
-            </label>
-          </div>
-          <div className="form-ext-control form-ext-checkbox">
-            <input
-              id="allowClick"
-              className="form-ext-input"
-              type="checkbox"
-              checked={settings.allowClick}
-              onChange={handleToggle("allowClick")}
-            />
-            <label className="form-ext-label" htmlFor="allowClick">
-              TODO: Allow Click
-            </label>
-          </div>
-          <div className="form-ext-control form-ext-checkbox">
-            <input
-              id="allowDrag"
-              className="form-ext-input"
-              type="checkbox"
-              checked={settings.allowDrag}
-              onChange={handleToggle("allowDrag")}
-            />
-            <label className="form-ext-label" htmlFor="allowDrag">
-              TODO: Allow Drag
-            </label>
-          </div>
-        </details>
-
-        {animations.length > 0 && (
+      {animation.meta.type === "spine" && (
+        <fieldset className="u-flex u-flex-column animated fadeIn">
           <details className="accordion">
             <summary className="accordion__summary u-no-outline">
-              Animations
+              General
             </summary>
-            {animations.map((spineAnimation) => (
-              <button
-                key={spineAnimation.name}
-                className=" w-100p"
-                onClick={() => playAnimation(spineAnimation.name)}
-              >
-                {spineAnimation.name}
-              </button>
-            ))}
+            <div className="tooltip" data-tooltip={settings.alpha}>
+              <label htmlFor="alpha">Alpha</label>
+              <input
+                id="alpha"
+                type="range"
+                name="alpha"
+                min="0"
+                max="1"
+                step={0.01}
+                value={settings.alpha}
+                onChange={handleChange("alpha")}
+              />
+            </div>
+            <div className="tooltip" data-tooltip={`${settings.angle}°`}>
+              <label htmlFor="angle">Angle</label>
+              <input
+                id="angle"
+                type="range"
+                name="angle"
+                min="0"
+                max="360"
+                step={1}
+                value={settings.angle}
+                onChange={handleChange("angle")}
+              />
+            </div>
+            <div className="tooltip" data-tooltip={settings.scale}>
+              <label htmlFor="alpha">Scale</label>
+              <input
+                id="alpha"
+                type="range"
+                name="alpha"
+                min="0"
+                max="4"
+                step={0.01}
+                value={settings.scale}
+                onChange={handleChange("scale")}
+              />
+            </div>
+            <div className="tooltip" data-tooltip={settings.skew}>
+              <label htmlFor="skew">Skew</label>
+              <input
+                id="skew"
+                type="range"
+                name="skew"
+                min="0"
+                max="1"
+                step={0.01}
+                value={settings.skew}
+                onChange={handleChange("skew")}
+              />
+            </div>
+            <div
+              className="tooltip"
+              data-tooltip={`${Math.round(settings.timeScale * 100)} %`}
+            >
+              <label htmlFor="timeScale">Playback Speed</label>
+              <input
+                id="timeScale"
+                type="range"
+                name="timeScale"
+                min="0"
+                max="4"
+                step={0.05}
+                value={settings.timeScale}
+                onChange={handleChange("timeScale")}
+              />
+            </div>
+            <div className="form-ext-control form-ext-checkbox">
+              <input
+                id="autoUpdate"
+                className="form-ext-input"
+                type="checkbox"
+                checked={settings.autoUpdate}
+                onChange={handleToggle("autoUpdate")}
+              />
+              <label className="form-ext-label" htmlFor="autoUpdate">
+                Auto Update
+              </label>
+            </div>
+            <div className="form-ext-control form-ext-checkbox">
+              <input
+                id="allowClick"
+                className="form-ext-input"
+                type="checkbox"
+                checked={settings.allowClick}
+                onChange={handleToggle("allowClick")}
+              />
+              <label className="form-ext-label" htmlFor="allowClick">
+                TODO: Allow Click
+              </label>
+            </div>
+            <div className="form-ext-control form-ext-checkbox">
+              <input
+                id="allowDrag"
+                className="form-ext-input"
+                type="checkbox"
+                checked={settings.allowDrag}
+                onChange={handleToggle("allowDrag")}
+              />
+              <label className="form-ext-label" htmlFor="allowDrag">
+                TODO: Allow Drag
+              </label>
+            </div>
           </details>
-        )}
 
-        {skins.length > 0 && (
+          {animations.length > 0 && (
+            <details className="accordion">
+              <summary className="accordion__summary u-no-outline">
+                Animations
+              </summary>
+              {animations.map((spineAnimation) => (
+                <button
+                  key={spineAnimation.name}
+                  className=" w-100p"
+                  onClick={() => playAnimation(spineAnimation.name)}
+                >
+                  {spineAnimation.name}
+                </button>
+              ))}
+            </details>
+          )}
+
+          {skins.length > 0 && (
+            <details className="accordion">
+              <summary className="accordion__summary u-no-outline">
+                Skins
+              </summary>
+              {skins.map((skin) => (
+                <button
+                  key={skin.name}
+                  className=" w-100p"
+                  onClick={() => changeSkin(skin)}
+                >
+                  {skin.name}
+                </button>
+              ))}
+            </details>
+          )}
+
           <details className="accordion">
-            <summary className="accordion__summary u-no-outline">Skins</summary>
-            {skins.map((skin) => (
-              <button
-                key={skin.name}
-                className=" w-100p"
-                onClick={() => changeSkin(skin)}
-              >
-                {skin.name}
-              </button>
-            ))}
+            <summary className="accordion__summary u-no-outline">Debug</summary>
+            <div className="form-ext-control form-ext-checkbox">
+              <input
+                id="debug"
+                className="form-ext-input"
+                type="checkbox"
+                checked={settings.debug}
+                onChange={handleToggle("debug")}
+              />
+              <label className="form-ext-label" htmlFor="debug">
+                Debug Rendering
+              </label>
+            </div>
           </details>
-        )}
+        </fieldset>
+      )}
 
-        <details className="accordion">
-          <summary className="accordion__summary u-no-outline">Debug</summary>
-          <div className="form-ext-control form-ext-checkbox">
-            <input
-              id="debug"
-              className="form-ext-input"
-              type="checkbox"
-              checked={settings.debug}
-              onChange={handleToggle("debug")}
-            />
-            <label className="form-ext-label" htmlFor="debug">
-              Debug Rendering
-            </label>
-          </div>
-        </details>
-      </fieldset>
+      {animation.meta.type === "live2d" && <p>TODO: not implemented yet</p>}
     </div>
   );
 };
