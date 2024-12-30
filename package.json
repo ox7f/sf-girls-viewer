@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-entity-map && tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "format": "prettier --write .",
-    "generate-entity-map": "node ./generate-config.ts"
+    "generate-entity-map": "node generate-config.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
