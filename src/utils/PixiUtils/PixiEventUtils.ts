@@ -7,11 +7,17 @@ import type {
   ModifiedTrackEntry,
 } from "../../types";
 
+const getTouchAnimationName = (
+  animationName?: string,
+  isChibi = false,
+): string | undefined =>
+  animationName?.toLowerCase().replace("idle", isChibi ? "attack" : "Touch");
+
 export const setupLive2DClickEvents = (model: ModifiedLive2D): void => {
   model.on("pointerdown", () => {
-    const currentAnimationName =
-      model.internalModel.motionManager.state.currentGroup;
-    const newAnimationName = currentAnimationName?.replace("Idle", "Touch");
+    const newAnimationName = getTouchAnimationName(
+      model.internalModel.motionManager.state.currentGroup,
+    );
 
     if (newAnimationName) {
       model.motion(newAnimationName);
@@ -24,10 +30,19 @@ export const setupSpineClickEvents = (
   animation: ModifiedSpine,
 ): void => {
   const onTouch = () => {
-    const currentAnimation = animation.state.tracks[0] as ModifiedTrackEntry;
-    const currentAnimationName = currentAnimation.animation.name;
-    const touchAnimationName = currentAnimationName.replace("Idle", "Touch");
-    handleTouchAnimation(animation, touchAnimationName);
+    const currentAnimationName = (
+      animation.state.tracks[0] as ModifiedTrackEntry
+    ).animation.name;
+
+    const isChibi = animation.meta.config.fileName?.includes("Chibi");
+    const touchAnimationName = getTouchAnimationName(
+      currentAnimationName,
+      isChibi,
+    );
+
+    if (touchAnimationName) {
+      handleTouchAnimation(animation, touchAnimationName);
+    }
   };
 
   container.on("click", onTouch);

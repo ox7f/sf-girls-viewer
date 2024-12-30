@@ -5,33 +5,28 @@ const extractAnimationNumber = (name: string): number | null => {
   return match ? parseInt(match[0], 10) : null;
 };
 
+const findAnimationByName = (
+  animations: IAnimation[],
+  name: string,
+): IAnimation | undefined =>
+  animations.find((anim) =>
+    anim.name.toLowerCase().includes(name.toLowerCase()),
+  );
+
 const findIdleAnimation = (
   animation: Spine,
   animationNumber: number | null,
 ): IAnimation | undefined => {
-  if (!animationNumber) {
-    return animation.spineData.animations.find((anim) =>
-      anim.name.toLowerCase().includes("idle"),
-    );
-  }
-
-  return animation.spineData.animations.find(
-    (anim) => anim.name === `Idle ${animationNumber}`,
-  );
+  const idleName = animationNumber ? `Idle ${animationNumber}` : "idle";
+  return findAnimationByName(animation.spineData.animations, idleName);
 };
 
-const setupTouchAnimation = (
+const setupCompleteListener = (
   animation: Spine,
-  correspondingIdleAnimation?: IAnimation,
-) => {
-  if (!correspondingIdleAnimation) {
-    return;
-  }
-
+  idleAnimationName: string,
+): void => {
   animation.state.tracks[0].listener = {
-    complete: () => {
-      animation.state.setAnimation(0, correspondingIdleAnimation.name, true);
-    },
+    complete: () => animation.state.setAnimation(0, idleAnimationName, true),
   };
 };
 
@@ -44,7 +39,9 @@ export const handleTouchAnimation = (
     animation,
     animationNumber,
   );
-  const isTouchAnimation = animationName.toLowerCase().includes("touch");
+  const isTouchAnimation = ["touch", "attack"].some((key) =>
+    animationName.toLowerCase().includes(key),
+  );
 
   if (!animation.state.hasAnimation(animationName)) {
     return;
@@ -52,9 +49,7 @@ export const handleTouchAnimation = (
 
   animation.state.setAnimation(0, animationName, !isTouchAnimation);
 
-  if (isTouchAnimation) {
-    setupTouchAnimation(animation, correspondingIdleAnimation);
-  } else if (animationName.toLowerCase().includes("idle")) {
-    animation.state.setAnimation(0, animationName, true);
+  if (isTouchAnimation && correspondingIdleAnimation) {
+    setupCompleteListener(animation, correspondingIdleAnimation.name);
   }
 };
