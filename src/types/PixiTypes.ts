@@ -4,8 +4,9 @@ import type { FileMeta } from "../types";
 import { Live2DModel } from "pixi-live2d-display/cubism4";
 
 export type ModifiedContainer = Container & {
-  alphaOriginal: number;
-  isDragging: boolean;
+  allowClick?: boolean;
+  allowDrag?: boolean;
+  isDragging?: boolean;
 };
 
 export type ModifiedLive2D = Live2DModel & {

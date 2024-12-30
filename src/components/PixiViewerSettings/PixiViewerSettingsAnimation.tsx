@@ -7,7 +7,7 @@ import {
 import { type ChangeEvent, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa";
 import { pixiAnimationListAtom } from "../../atoms";
-import type { ModifiedSpine } from "../../types";
+import type { ModifiedContainer, ModifiedSpine } from "../../types";
 import { menuItems, handleTouchAnimation } from "../../utils";
 
 type Props = {
@@ -31,9 +31,9 @@ export const PixiViewerSettingsAnimation = ({
     scale: animation?.parent.scale.x ?? 1.1,
     skew: 0.5,
     timeScale: 1,
-    autoUpdate: true,
     allowClick: true,
     allowDrag: true,
+    autoUpdate: true,
     // debug
     debug: false,
   });
@@ -82,8 +82,10 @@ export const PixiViewerSettingsAnimation = ({
           animation.autoUpdate = checked;
           break;
         case "allowClick":
+          (animation.parent as ModifiedContainer).allowClick = checked;
+          break;
         case "allowDrag":
-          // TODO:
+          (animation.parent as ModifiedContainer).allowDrag = checked;
           break;
         case "debug":
           animation.debug = checked
@@ -198,18 +200,6 @@ export const PixiViewerSettingsAnimation = ({
             </div>
             <div className="form-ext-control form-ext-checkbox">
               <input
-                id="autoUpdate"
-                className="form-ext-input"
-                type="checkbox"
-                checked={settings.autoUpdate}
-                onChange={handleToggle("autoUpdate")}
-              />
-              <label className="form-ext-label" htmlFor="autoUpdate">
-                Auto Update
-              </label>
-            </div>
-            <div className="form-ext-control form-ext-checkbox">
-              <input
                 id="allowClick"
                 className="form-ext-input"
                 type="checkbox"
@@ -217,7 +207,7 @@ export const PixiViewerSettingsAnimation = ({
                 onChange={handleToggle("allowClick")}
               />
               <label className="form-ext-label" htmlFor="allowClick">
-                TODO: Allow Click
+                Allow Click
               </label>
             </div>
             <div className="form-ext-control form-ext-checkbox">
@@ -229,7 +219,19 @@ export const PixiViewerSettingsAnimation = ({
                 onChange={handleToggle("allowDrag")}
               />
               <label className="form-ext-label" htmlFor="allowDrag">
-                TODO: Allow Drag
+                Allow Drag
+              </label>
+            </div>
+            <div className="form-ext-control form-ext-checkbox">
+              <input
+                id="autoUpdate"
+                className="form-ext-input"
+                type="checkbox"
+                checked={settings.autoUpdate}
+                onChange={handleToggle("autoUpdate")}
+              />
+              <label className="form-ext-label" htmlFor="autoUpdate">
+                Auto Update Animation
               </label>
             </div>
           </details>

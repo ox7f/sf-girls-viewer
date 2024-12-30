@@ -39,7 +39,7 @@ export const handleTouchAnimation = (
     animation,
     animationNumber,
   );
-  const isTouchAnimation = ["touch", "attack"].some((key) =>
+  const isTouchAnimation = ["touch", "attack", "dead"].some((key) =>
     animationName.toLowerCase().includes(key),
   );
 

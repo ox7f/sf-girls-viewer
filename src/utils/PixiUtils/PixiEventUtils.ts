@@ -1,4 +1,4 @@
-import { Container, type FederatedMouseEvent } from "pixi.js";
+import type { FederatedMouseEvent } from "pixi.js";
 import { handleTouchAnimation } from "./PixiAnimationUtils";
 import type {
   ModifiedContainer,
@@ -26,10 +26,14 @@ export const setupLive2DClickEvents = (model: ModifiedLive2D): void => {
 };
 
 export const setupSpineClickEvents = (
-  container: Container,
+  container: ModifiedContainer,
   animation: ModifiedSpine,
 ): void => {
   const onTouch = () => {
+    if (!container.allowClick) {
+      return;
+    }
+
     const currentAnimationName = (
       animation.state.tracks[0] as ModifiedTrackEntry
     ).animation.name;
@@ -53,7 +57,7 @@ const setupDragEvents = (container: ModifiedContainer): void => {
 
   const onDragStart = (event: FederatedMouseEvent) => {
     dragTarget = container;
-    dragTarget.isDragging = true;
+    dragTarget.isDragging = Boolean(dragTarget.allowDrag);
 
     const position = event.getLocalPosition(container);
     dragTarget.pivot.set(position.x, position.y);
@@ -105,6 +109,9 @@ export const setupInteractionEvents = (
   container: ModifiedContainer,
   animation: ModifiedSpine | ModifiedLive2D,
 ) => {
+  container.allowClick = true;
+  container.allowDrag = true;
+
   if (animation.meta.type === "live2d") {
     setupLive2DClickEvents(animation as ModifiedLive2D);
   } else {
