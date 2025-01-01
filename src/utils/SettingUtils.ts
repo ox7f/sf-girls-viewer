@@ -1,9 +1,11 @@
-import { ModifiedLive2D, ModifiedSpine } from "../types";
+import type { Live2DModel } from "pixi-live2d-display";
+import type { Spine } from "pixi-spine";
+import type { ModifiedLive2D, ModifiedSpine } from "../types";
 
 const customSort = (arr: string[]): string[] => {
   return arr.sort((a, b) => {
-    const [_typeA, numA] = a.toLowerCase().split(" ");
-    const [_typeB, numB] = b.toLowerCase().split(" ");
+    const numA = a.toLowerCase().split(" ")[1];
+    const numB = b.toLowerCase().split(" ")[1];
 
     return parseInt(numA) - parseInt(numB);
   });
@@ -14,7 +16,7 @@ export const getIsLive2D = (
 ): boolean => animation?.meta.type === "live2d";
 
 export const getAnimations = (
-  animation: ModifiedLive2D | ModifiedSpine,
+  animation: Live2DModel | Spine,
   isLive2D: boolean,
 ): string[] => {
   let animations = [];
@@ -45,7 +47,7 @@ export const getAnimations = (
 };
 
 export const getSkins = (
-  animation: ModifiedLive2D | ModifiedSpine,
+  animation: Live2DModel | Spine,
   isLive2D: boolean,
 ): string[] => {
   if (isLive2D) {
@@ -53,7 +55,7 @@ export const getSkins = (
   }
 
   return (
-    (animation as ModifiedSpine)?.spineData?.skins
+    (animation as Spine)?.spineData?.skins
       ?.filter((skin) => skin.name.toLowerCase() !== "default")
       .map((skin) => skin.name) ?? []
   );
