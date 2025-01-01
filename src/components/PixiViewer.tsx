@@ -41,7 +41,7 @@ export const PixiViewer = () => {
       app.renderer.background.color = new Color(appSettings.backgroundColor);
       app.renderer.background.alpha = appSettings.backgroundAlpha;
     }
-  }, [appSettings]);
+  }, [app, appSettings]);
 
   useEffect(() => {
     if (app && newFile) {
