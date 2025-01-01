@@ -38,6 +38,7 @@ const SCENE_STYLE: SceneStyleType = {
   Kura_Playroom_Skin1: { scale: 0.1, x: 10 },
   Kura_Playroom_Skin2: { scale: 0.13 },
   Livia_Playroom_Wedding: { scale: 0.12, x: -300, y: -175 },
+  Mai_Playroom_Eri: { scale: 0.1, x: 80, y: 155 },
   Mai_Playroom_Skin1: { scale: 0.12 },
   Mai_Playroom_Wedding: { scale: 0.17, x: 10, y: 270 },
   Midori_Playroom_Skin1: { scale: 0.13, x: -20, y: 200 },
