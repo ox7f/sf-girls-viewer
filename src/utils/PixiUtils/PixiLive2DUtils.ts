@@ -4,7 +4,7 @@ import {
   addSprite,
   centerContainer,
   createContainer,
-  DEFAULT_SCALE,
+  setAnimationStyle,
 } from "./PixiElementUtils";
 import { setupInteractionEvents } from "./PixiEventUtils";
 import { FileMeta, ModifiedContainer, ModifiedLive2D } from "../../types";
@@ -33,17 +33,19 @@ const loadAndSetupLive2D = async (
       modelOptions,
     )) as ModifiedLive2D;
 
-    animation.anchor.set(0.5);
-    animation.scale.set(DEFAULT_SCALE);
-
     if (!animation) {
       throw new Error(`Invalid Live2D data at ${path}`);
     }
+
+    const animationName = isAdditional
+      ? file.config.name + "_Addition"
+      : file.config.name;
 
     if (!isAdditional) {
       animation.meta = file;
     }
 
+    setAnimationStyle(animation, animationName);
     playFirstAnimation(animation);
 
     return animation;

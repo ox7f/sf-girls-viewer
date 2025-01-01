@@ -8,19 +8,22 @@ import { FileMeta, ModifiedLive2D, ModifiedSpine } from "../../types";
 // or maybe just resize the background files so it fits the spine?
 // or calculate scale by width and height of spine to fit view + background/foreground?
 
-export const addAnimation = async (app: Application, file: FileMeta) => {
+export const addAnimation = async (
+  app: Application,
+  file: FileMeta,
+): Promise<ModifiedLive2D | ModifiedSpine | undefined> => {
   return file.type === "live2d"
     ? await addLive2D(app, file)
     : file.type === "spine"
       ? await addSpine(app, file)
-      : console.warn(`Unsupported file type: ${file.type}`);
+      : undefined;
 };
 
 export const removeAnimation = (
   app: Application,
   file: FileMeta,
   animationList: Array<ModifiedLive2D | ModifiedSpine>,
-) =>
+): Array<ModifiedLive2D | ModifiedSpine> =>
   animationList
     .filter((animation) => {
       const matches =

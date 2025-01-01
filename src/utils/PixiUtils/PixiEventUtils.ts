@@ -43,7 +43,7 @@ export const setupSpineClickEvents = (
       animation.state.tracks[0] as ModifiedTrackEntry
     ).animation.name;
 
-    const isChibi = animation.meta.config.fileName?.includes("Chibi");
+    const isChibi = animation.meta?.config.fileName?.includes("Chibi");
     const touchAnimationName = getTouchAnimationName(
       currentAnimationName,
       isChibi,
@@ -93,7 +93,7 @@ const setupDragEvents = (container: ModifiedContainer): void => {
     .on("pointerupoutside", onDragEnd);
 };
 
-const setupScrollEvents = (container: ModifiedContainer): (() => void) => {
+const setupScrollEvents = (container: ModifiedContainer): void => {
   const onWheel = (event: WheelEvent) => {
     // TODO: prevent scroll on document.body?
     return;
@@ -105,15 +105,13 @@ const setupScrollEvents = (container: ModifiedContainer): (() => void) => {
     container.scale.set(scaleChange);
   };
 
-  container.addEventListener("wheel", onWheel, { passive: false });
-
-  return () => container.removeEventListener("wheel", onWheel);
+  container.on("wheel", onWheel);
 };
 
 export const setupInteractionEvents = (
   container: ModifiedContainer,
   animation: ModifiedSpine | ModifiedLive2D,
-) => {
+): void => {
   container.allowClick = true;
   container.allowDrag = true;
 

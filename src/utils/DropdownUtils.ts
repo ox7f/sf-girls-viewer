@@ -13,12 +13,18 @@ export const mapToDropdownOption = (
   group?: string,
 ): DropdownOption => ({ value, label: value.replace(/_/g, " "), group });
 
-const createEntityOptions = (entityMap: EntityMap, type: string) =>
+const createEntityOptions = (
+  entityMap: EntityMap,
+  type: string,
+): DropdownOption[] =>
   Object.entries(entityMap)
     .filter(([, value]) => value.type === type)
     .map(([key]) => mapToDropdownOption(key, type));
 
-const createSceneOptions = (data: EntityData, type: SubFolderName) =>
+const createSceneOptions = (
+  data: EntityData,
+  type: SubFolderName,
+): DropdownOption[] =>
   Object.keys(data[type] ?? {})
     .filter((key) => !key.includes("Addition"))
     .map((key) => mapToDropdownOption(key, type));

@@ -32,10 +32,12 @@ export const PixiViewerSettingsAnimation = ({
   );
 
   const [settings, setSettings] = useState({
+    x: animation?.x ?? 0,
+    y: animation?.y ?? 0,
     // general
     alpha: animation?.parent.alpha ?? 0,
     angle: animation?.parent.angle ?? 0,
-    scale: animation?.parent.scale.x ?? 1.1,
+    scale: animation?.parent.scale.x ?? 1,
     skew: animation?.parent.scale.x ?? 0.5,
     timeScale: 1,
     allowClick: true,
@@ -58,6 +60,12 @@ export const PixiViewerSettingsAnimation = ({
       const { value } = event.target;
 
       switch (key) {
+        case "x":
+          animation.x = parseFloat(value);
+          break;
+        case "y":
+          animation.y = parseFloat(value);
+          break;
         case "alpha":
           animation.parent.alpha = parseFloat(value);
           break;
@@ -66,6 +74,7 @@ export const PixiViewerSettingsAnimation = ({
           break;
         case "scale":
           animation.parent.scale.set(parseFloat(value));
+          // animation.scale.set(parseFloat(value));
           break;
         case "skew":
           animation.parent.skew.set(parseFloat(value) * Math.PI - Math.PI / 2);
@@ -145,9 +154,41 @@ export const PixiViewerSettingsAnimation = ({
         </div>
       </div>
 
-      <fieldset className="u-flex u-flex-column animated fadeIn">
+      <fieldset
+        className="u-flex u-flex-column animated fadeIn u-overflow-x-auto"
+        style={{ maxHeight: "25rem" }}
+      >
         <details className="accordion">
           <summary className="accordion__summary u-no-outline">General</summary>
+          {/*
+          <div className="tooltip" data-tooltip={settings.x}>
+            <label htmlFor="x">X</label>
+            <input
+              id="x"
+              type="range"
+              name="x"
+              min="-1000"
+              max="1000"
+              step={1}
+              value={settings.x}
+              onChange={handleChange("x")}
+            />
+          </div>
+          <div className="tooltip" data-tooltip={settings.y}>
+            <label htmlFor="y">Y</label>
+            <input
+              id="y"
+              type="range"
+              name="y"
+              min="-1000"
+              max="1000"
+              step={1}
+              value={settings.y}
+              onChange={handleChange("y")}
+            />
+          </div>
+           */}
+
           <div className="tooltip" data-tooltip={settings.alpha}>
             <label htmlFor="alpha">Alpha</label>
             <input

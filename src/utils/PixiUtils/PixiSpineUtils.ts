@@ -4,7 +4,7 @@ import {
   addSprite,
   centerContainer,
   createContainer,
-  DEFAULT_SCALE,
+  setAnimationStyle,
 } from "./PixiElementUtils";
 import {
   setupInteractionEvents,
@@ -15,12 +15,8 @@ import type { FileMeta, ModifiedContainer, ModifiedSpine } from "../../types";
 // TODO: fix error for Chihiro Spine Skin1, Irina Spine Skin1, Riho X Spine Skin 1, Yukako X Playroom Skin1, Zi Long Spine
 // Uncaught (in promise) Error: Texture Error: frame does not fit inside the base Texture dimensions: X: 2 + 1750 = 1752 > 1024 and Y: 140 + 1612 = 1752 > 1024
 
-const createSpineAnimation = (
-  data: ISkeletonData,
-  scale: number = DEFAULT_SCALE,
-): Spine => {
+const createSpineAnimation = (data: ISkeletonData): Spine => {
   const animation = new Spine(data);
-  animation.scale.set(scale);
 
   const { spineData } = animation;
   const firstSkin = spineData.skins[1] ?? spineData.skins[0];
@@ -52,10 +48,15 @@ const loadAndSetupSpine = async (
     }
 
     const animation = createSpineAnimation(spineData) as ModifiedSpine;
+    const animationName = isAdditional
+      ? file.config.name + "_Addition"
+      : file.config.name;
 
     if (!isAdditional) {
       animation.meta = file;
     }
+
+    setAnimationStyle(animation, animationName);
 
     return animation;
   } catch (error) {
@@ -92,6 +93,7 @@ export const addSpine = async (
       }
     }
 
+    // TODO: Yukako Playroom Skin 2 + Rei Playroom Wedding => Background/Foreground is an animation...
     if (file.config.background) {
       addSprite(file.config.background, container);
     }
