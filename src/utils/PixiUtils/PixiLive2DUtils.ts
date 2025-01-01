@@ -9,6 +9,16 @@ import {
 import { setupInteractionEvents } from "./PixiEventUtils";
 import { FileMeta, ModifiedContainer, ModifiedLive2D } from "../../types";
 
+const playFirstAnimation = (animation: Live2DModel) => {
+  const firstIdleAnimationName = Object.keys(
+    animation.internalModel.motionManager.definitions,
+  ).find((animationName) => animationName.toLowerCase().includes("idle"));
+
+  if (firstIdleAnimationName) {
+    animation.internalModel.motionManager.groups.idle = firstIdleAnimationName;
+  }
+};
+
 const loadAndSetupLive2D = async (
   path: string,
   file: FileMeta,
@@ -16,16 +26,14 @@ const loadAndSetupLive2D = async (
 ): Promise<ModifiedLive2D | undefined> => {
   try {
     const filePath = `/${file.config.fileName}`;
-    const modelOptions = {
-      ticker: Ticker.shared,
-      idleMotionGroup: "Idle 1",
-    };
+    const modelOptions = { ticker: Ticker.shared };
 
     const animation = (await Live2DModel.from(
       filePath,
       modelOptions,
     )) as ModifiedLive2D;
 
+    animation.anchor.set(0.5);
     animation.scale.set(DEFAULT_SCALE);
 
     if (!animation) {
@@ -35,6 +43,8 @@ const loadAndSetupLive2D = async (
     if (!isAdditional) {
       animation.meta = file;
     }
+
+    playFirstAnimation(animation);
 
     return animation;
   } catch (error) {

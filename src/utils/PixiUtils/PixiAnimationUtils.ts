@@ -1,4 +1,4 @@
-import type { IAnimation, Spine } from "pixi-spine";
+import type { ModifiedLive2D, ModifiedSpine } from "../../types";
 
 const extractAnimationNumber = (name: string): number | null => {
   const match = name.match(/\d+/);
@@ -6,23 +6,23 @@ const extractAnimationNumber = (name: string): number | null => {
 };
 
 const findAnimationByName = (
-  animations: IAnimation[],
+  animationNames: string[],
   name: string,
-): IAnimation | undefined =>
-  animations.find((anim) =>
-    anim.name.toLowerCase().includes(name.toLowerCase()),
+): string | undefined =>
+  animationNames.find((animationName) =>
+    animationName.toLowerCase().includes(name.toLowerCase()),
   );
 
 const findIdleAnimation = (
-  animation: Spine,
+  animationNames: string[],
   animationNumber: number | null,
-): IAnimation | undefined => {
+): string | undefined => {
   const idleName = animationNumber ? `Idle ${animationNumber}` : "idle";
-  return findAnimationByName(animation.spineData.animations, idleName);
+  return findAnimationByName(animationNames, idleName);
 };
 
 const setupCompleteListener = (
-  animation: Spine,
+  animation: ModifiedSpine,
   idleAnimationName: string,
 ): void => {
   animation.state.tracks[0].listener = {
@@ -30,15 +30,63 @@ const setupCompleteListener = (
   };
 };
 
-export const handleTouchAnimation = (
-  animation: Spine,
+const setupCompleteListener2 = (
+  animation: ModifiedLive2D,
+  idleAnimationName: string,
+): void => {
+  animation.internalModel.motionManager.groups.idle = idleAnimationName;
+};
+
+export const getTouchAnimationName = (
+  animationName?: string,
+  isChibi = false,
+): string | undefined =>
+  animationName?.toLowerCase().replace("idle", isChibi ? "attack" : "Touch");
+
+export const handleTouchAnimationLive2D = (
+  animation: ModifiedLive2D,
   animationName: string,
 ) => {
+  const animationNames = Object.keys(
+    animation.internalModel.motionManager.definitions,
+  );
+
   const animationNumber = extractAnimationNumber(animationName);
   const correspondingIdleAnimation = findIdleAnimation(
-    animation,
+    animationNames,
     animationNumber,
   );
+
+  const isTouchAnimation = ["touch", "attack", "dead"].some((key) =>
+    animationName.toLowerCase().includes(key),
+  );
+
+  if (!animationNames.includes(animationName)) {
+    return;
+  }
+
+  animation.internalModel.motionManager.stopAllMotions();
+  animation.motion(animationName);
+
+  if (isTouchAnimation && correspondingIdleAnimation) {
+    setupCompleteListener2(animation, correspondingIdleAnimation);
+  }
+};
+
+export const handleTouchAnimationSpine = (
+  animation: ModifiedSpine,
+  animationName: string,
+) => {
+  const animationNames = animation.spineData.animations.map(
+    (animation) => animation.name,
+  );
+
+  const animationNumber = extractAnimationNumber(animationName);
+  const correspondingIdleAnimation = findIdleAnimation(
+    animationNames,
+    animationNumber,
+  );
+
   const isTouchAnimation = ["touch", "attack", "dead"].some((key) =>
     animationName.toLowerCase().includes(key),
   );
@@ -50,6 +98,6 @@ export const handleTouchAnimation = (
   animation.state.setAnimation(0, animationName, !isTouchAnimation);
 
   if (isTouchAnimation && correspondingIdleAnimation) {
-    setupCompleteListener(animation, correspondingIdleAnimation.name);
+    setupCompleteListener(animation, correspondingIdleAnimation);
   }
 };

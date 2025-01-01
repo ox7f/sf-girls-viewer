@@ -1,33 +1,31 @@
 import type { FederatedMouseEvent } from "pixi.js";
-import { handleTouchAnimation } from "./PixiAnimationUtils";
+import {
+  getTouchAnimationName,
+  handleTouchAnimationSpine,
+} from "./PixiAnimationUtils";
 import type {
   ModifiedContainer,
-  ModifiedSpine,
   ModifiedLive2D,
+  ModifiedSpine,
   ModifiedTrackEntry,
 } from "../../types";
 
-const getTouchAnimationName = (
-  animationName?: string,
-  isChibi = false,
-): string | undefined =>
-  animationName?.toLowerCase().replace("idle", isChibi ? "attack" : "Touch");
-
 export const setupLive2DClickEvents = (
   container: ModifiedContainer,
-  model: ModifiedLive2D,
+  animation: ModifiedLive2D,
 ): void => {
-  model.on("pointerdown", () => {
+  animation.on("pointerdown", () => {
     if (!container.allowClick) {
       return;
     }
 
     const newAnimationName = getTouchAnimationName(
-      model.internalModel.motionManager.state.currentGroup,
+      animation.internalModel.motionManager.state.currentGroup,
     );
 
     if (newAnimationName) {
-      model.motion(newAnimationName);
+      animation.internalModel.motionManager.stopAllMotions();
+      animation.motion(newAnimationName);
     }
   });
 };
@@ -52,7 +50,7 @@ export const setupSpineClickEvents = (
     );
 
     if (touchAnimationName) {
-      handleTouchAnimation(animation, touchAnimationName);
+      handleTouchAnimationSpine(animation, touchAnimationName);
     }
   };
 
