@@ -87,6 +87,7 @@ const SCENE_STYLE: SceneStyleType = {
   Selene_Playroom_A: { scale: 0.11 },
   Selene_Playroom_B: { scale: 0.11 },
   Selene_Playroom_C: { scale: 0.11 },
+  Partyroom_3: { scale: 0.25, x: -700, y: -450 },
 };
 
 export const setAnimationStyle = (

@@ -142,6 +142,16 @@ const loadDataForEntity = (entityPath) => {
   return { data, type };
 };
 
+const loadDataForPartyroom = (partyroom) => {
+  const partyroomPath = path.join(ASSETS_PATH, "Partyrooms", partyroom);
+  const files = getFoldersContents(partyroomPath);
+
+  return {
+    data: processAnimationFiles(partyroomPath, files)[partyroom],
+    type: "Partyrooms",
+  };
+};
+
 const loadAllEntities = () => {
   const entityMap = {};
   const entityTypes = ["Agents", "Seekers"];
@@ -159,8 +169,21 @@ const loadAllEntities = () => {
   return entityMap;
 };
 
+const loadAllPartyrooms = () => {
+  const partyroomMap = {};
+  const partyrooms = getFoldersContents(`${ASSETS_PATH}/Partyrooms`);
+
+  partyrooms.forEach((partyroom) => {
+    partyroomMap[partyroom] = loadDataForPartyroom(partyroom);
+  });
+
+  return partyroomMap;
+};
+
+const loadEverything = () => ({ ...loadAllEntities(), ...loadAllPartyrooms() });
+
 const generateEntityMap = async () => {
-  const entityMap = loadAllEntities();
+  const entityMap = loadEverything();
   const outputPath = path.join(ASSETS_PATH, "entityMap.json");
   fs.writeFile(outputPath, JSON.stringify(entityMap, null, 2), () => {});
   console.log("Config file generated at:", outputPath);

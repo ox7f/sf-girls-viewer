@@ -8,7 +8,7 @@ export type FileMeta = {
   type: FileType;
 };
 
-export type EntityType = "Agents" | "Seekers";
+export type EntityType = "Agents" | "Seekers" | "Partyrooms";
 
 export type EntityData = {
   [SubFolderName.CHIBI]?: SpineConfig;
@@ -37,7 +37,6 @@ export type SpineData = {
   background?: string;
   foreground?: string;
   addition?: string;
-  // optional data for scenes like scaling?
 };
 
 export enum SubFolderName {

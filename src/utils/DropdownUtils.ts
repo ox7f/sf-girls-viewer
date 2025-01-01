@@ -11,7 +11,11 @@ export const menuItems = ["Scene", "Global"];
 export const mapToDropdownOption = (
   value: string,
   group?: string,
-): DropdownOption => ({ value, label: value.replace(/_/g, " "), group });
+): DropdownOption => ({
+  value,
+  label: value.replace(/_/g, " "),
+  group,
+});
 
 const createEntityOptions = (
   entityMap: EntityMap,
@@ -38,13 +42,28 @@ export const getEntityOptions = (entityMap: EntityMap) => [
     label: "Seekers",
     options: createEntityOptions(entityMap, "Seekers"),
   },
+  {
+    label: "Partyrooms",
+    options: [
+      { value: "Partyrooms", label: "Partyrooms", group: "Partyrooms" },
+    ],
+  },
 ];
 
 export const getEntitySceneOptions = (
   entityMap: EntityMap,
   entityName?: string,
 ) => {
-  if (!entityName || !entityMap[entityName]) return [];
+  if (entityName === "Partyrooms") {
+    return Object.keys(entityMap)
+      .filter((key) => key.toLowerCase().includes("partyroom"))
+      .map((key) => mapToDropdownOption(key, "Partyrooms"));
+  }
+
+  if (!entityName || !entityMap[entityName]) {
+    return [];
+  }
+
   const data = entityMap[entityName].data;
 
   return [
@@ -63,11 +82,28 @@ export const getEntitySceneOptions = (
   ];
 };
 
+const getPartyroomData = (
+  entityData: EntityMap,
+  sceneName: string,
+): SpineData => {
+  const sceneData = entityData[sceneName]?.data;
+
+  if (!sceneData) {
+    throw new Error(`Scene "${sceneName}" not found in data.`);
+  }
+
+  return sceneData as SpineData;
+};
+
 export const getSceneData = (
   entityData: EntityMap,
   entityName: string,
   sceneName: string,
 ): SpineData => {
+  if (sceneName.toLowerCase().includes("partyroom")) {
+    return getPartyroomData(entityData, sceneName);
+  }
+
   const getFolderKey = (): keyof EntityData => {
     if (sceneName.includes(SubFolderName.CHIBI)) {
       return SubFolderName.CHIBI;

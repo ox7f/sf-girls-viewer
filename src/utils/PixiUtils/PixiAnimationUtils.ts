@@ -5,6 +5,10 @@ const extractAnimationNumber = (name: string): number | null => {
   return match ? parseInt(match[0], 10) : null;
 };
 
+const extractAnimationExtension = (name: string): string | undefined => {
+  return name.split(" ").pop();
+};
+
 const findAnimationByName = (
   animationNames: string[],
   name: string,
@@ -16,8 +20,11 @@ const findAnimationByName = (
 const findIdleAnimation = (
   animationNames: string[],
   animationNumber: number | null,
+  animationExtension?: string,
 ): string | undefined => {
-  const idleName = animationNumber ? `Idle ${animationNumber}` : "idle";
+  const idleName = animationNumber
+    ? `Idle ${animationNumber}${animationExtension ? ` ${animationExtension}` : ""}`
+    : "idle";
   return findAnimationByName(animationNames, idleName);
 };
 
@@ -52,9 +59,11 @@ export const handleTouchAnimationLive2D = (
   );
 
   const animationNumber = extractAnimationNumber(animationName);
+  const animationExtension = extractAnimationExtension(animationName);
   const correspondingIdleAnimation = findIdleAnimation(
     animationNames,
     animationNumber,
+    animationExtension,
   );
 
   const isTouchAnimation = ["touch", "attack", "dead"].some((key) =>
@@ -80,9 +89,11 @@ export const handleTouchAnimationSpine = (
   );
 
   const animationNumber = extractAnimationNumber(animationName);
+  const animationExtension = extractAnimationExtension(animationName);
   const correspondingIdleAnimation = findIdleAnimation(
     animationNames,
     animationNumber,
+    animationExtension,
   );
 
   const isTouchAnimation = ["touch", "attack", "dead"].some((key) =>
