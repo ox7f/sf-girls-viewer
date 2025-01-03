@@ -40,7 +40,7 @@ const processAnimationFiles = (subEntityPath, files) => {
   const spines = {};
 
   for (const spine of files) {
-    if (spine.endsWith(".json")) {
+    if (spine.endsWith(".json") && !spine.includes("physics3")) {
       const isLive2D = spine.includes(".model3");
       const animationName = path.basename(spine, ".json");
       const keyName = animationName.replace(".model3", "");
