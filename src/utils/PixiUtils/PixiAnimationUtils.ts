@@ -5,9 +5,8 @@ const extractAnimationNumber = (name: string): number | null => {
   return match ? parseInt(match[0], 10) : null;
 };
 
-const extractAnimationExtension = (name: string): string | undefined => {
-  return name.split(" ").pop();
-};
+const extractAnimationExtension = (name: string): string | undefined =>
+  name.match(/\d+\s*(.*)/)?.[1];
 
 const findAnimationByName = (
   animationNames: string[],
@@ -48,7 +47,9 @@ export const getTouchAnimationName = (
   animationName?: string,
   isChibi = false,
 ): string | undefined =>
-  animationName?.toLowerCase().replace("idle", isChibi ? "attack" : "Touch");
+  isChibi
+    ? animationName?.replace("idle", "attack")
+    : animationName?.replace("Idle", "Touch");
 
 export const handleTouchAnimationLive2D = (
   animation: ModifiedLive2D,
