@@ -1,3 +1,4 @@
+import type { Live2DModel } from "pixi-live2d-display/cubism4";
 import type { ModifiedLive2D, ModifiedSpine } from "../../types";
 
 const extractAnimationNumber = (name: string): number | null => {
@@ -107,5 +108,15 @@ export const handleTouchAnimationSpine = (
     if (isTouchAnimation && correspondingIdleAnimation) {
       setupCompleteListener(animation, correspondingIdleAnimation);
     }
+  }
+};
+
+export const playFirstLive2DAnimation = (animation: Live2DModel) => {
+  const firstIdleAnimationName = Object.keys(
+    animation.internalModel.motionManager.definitions,
+  ).find((animationName) => animationName.toLowerCase().includes("idle"));
+
+  if (firstIdleAnimationName) {
+    animation.internalModel.motionManager.groups.idle = firstIdleAnimationName;
   }
 };

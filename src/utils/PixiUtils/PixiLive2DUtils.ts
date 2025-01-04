@@ -8,16 +8,7 @@ import {
 } from "./PixiElementUtils";
 import { setupInteractionEvents } from "./PixiEventUtils";
 import { FileMeta, ModifiedContainer, ModifiedLive2D } from "../../types";
-
-const playFirstAnimation = (animation: Live2DModel) => {
-  const firstIdleAnimationName = Object.keys(
-    animation.internalModel.motionManager.definitions,
-  ).find((animationName) => animationName.toLowerCase().includes("idle"));
-
-  if (firstIdleAnimationName) {
-    animation.internalModel.motionManager.groups.idle = firstIdleAnimationName;
-  }
-};
+import { playFirstLive2DAnimation } from "./PixiAnimationUtils";
 
 const loadAndSetupLive2D = async (
   path: string,
@@ -46,7 +37,7 @@ const loadAndSetupLive2D = async (
     }
 
     setAnimationStyle(animation, animationName);
-    playFirstAnimation(animation);
+    playFirstLive2DAnimation(animation);
 
     return animation;
   } catch (error) {

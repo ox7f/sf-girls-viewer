@@ -1,6 +1,8 @@
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useEffect, useState } from "react";
 import { FaEllipsisH, FaTimes } from "react-icons/fa";
 import Select from "react-select";
+import { Spinner } from "../common/Spinner";
 import {
   dropdownSelectionAtom,
   entityMapAtom,
@@ -17,14 +19,22 @@ import {
 } from "../../utils";
 
 export const PixiViewerSettingsScene = () => {
-  const entityMap = useAtomValue(entityMapAtom);
-  const animationList = useAtomValue(pixiAnimationListAtom);
-  const setNewFile = useSetAtom(fileAtom);
-  const setSelectedTab = useSetAtom(selectedMenuTabAtom);
-
+  const [newFile, setNewFile] = useAtom(fileAtom);
   const [dropdownSelection, setDropdownSelection] = useAtom(
     dropdownSelectionAtom,
   );
+
+  const entityMap = useAtomValue(entityMapAtom);
+  const animationList = useAtomValue(pixiAnimationListAtom);
+  const setSelectedTab = useSetAtom(selectedMenuTabAtom);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!newFile) {
+      setIsLoading(false);
+    }
+  }, [newFile]);
 
   if (!entityMap) {
     return;
@@ -48,7 +58,7 @@ export const PixiViewerSettingsScene = () => {
       scene: option,
     }));
 
-  const viewScene = (index: number) => {
+  const loadScene = (index: number) => {
     const entity = dropdownSelection.entity?.value;
     const scene = dropdownSelection.scene?.value;
 
@@ -66,6 +76,7 @@ export const PixiViewerSettingsScene = () => {
       name: entity,
       type: isLive2D ? "live2d" : "spine",
     });
+    setIsLoading(true);
   };
 
   const renderAnimationTile = (file: FileMeta, index: number) => (
@@ -80,7 +91,7 @@ export const PixiViewerSettingsScene = () => {
       <div className="tile__buttons m-0 u-text-right">
         <div className="u-flex u-flex-column">
           <button
-            className="outline btn-dark border-white"
+            className="outline btn-plain border-white"
             onClick={() => setSelectedTab(file.index)}
           >
             <FaEllipsisH />
@@ -128,15 +139,16 @@ export const PixiViewerSettingsScene = () => {
         <button
           disabled={!dropdownSelection.scene}
           className="btn btn-info mb-0"
-          onClick={() => viewScene(animationList.length)}
+          onClick={() => loadScene(animationList.length)}
         >
-          View
+          Load
         </button>
       </div>
       {animationList.length > 0 &&
         animationList.map((animation, index) =>
           renderAnimationTile(animation.meta, index),
         )}
+      {isLoading && <Spinner />}
     </fieldset>
   );
 };
