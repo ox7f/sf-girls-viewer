@@ -12,9 +12,6 @@ import {
 } from "./PixiEventUtils";
 import type { FileMeta, ModifiedContainer, ModifiedSpine } from "../../types";
 
-// TODO: fix error for Chihiro Spine Skin1, Irina Spine Skin1, Riho X Spine Skin 1, Yukako X Playroom Skin1, Zi Long Spine
-// Uncaught (in promise) Error: Texture Error: frame does not fit inside the base Texture dimensions: X: 2 + 1750 = 1752 > 1024 and Y: 140 + 1612 = 1752 > 1024
-
 const createSpineAnimation = (data: ISkeletonData): Spine => {
   const animation = new Spine(data);
 
