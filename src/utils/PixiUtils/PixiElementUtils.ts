@@ -43,6 +43,7 @@ const SCENE_STYLE: SceneStyleType = {
   Mai_Playroom_Wedding: { scale: 0.17, x: 10, y: 270 },
   Midori_Playroom_Skin1: { scale: 0.13, x: -20, y: 200 },
   Mika_Playroom_Wedding: { scale: 0.12 },
+  Minami_Aizawa_Spine: { scale: 0.16 },
   Mitsu_Playroom_Skin1: { scale: 0.13, x: -310, y: 300 },
   Momoko_Playroom_Wedding: { scale: 0.13, y: 90 },
   Musuna_Playroom_Wedding: { scale: 0.13, y: -5 },
