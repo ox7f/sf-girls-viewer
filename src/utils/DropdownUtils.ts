@@ -72,12 +72,16 @@ export const getEntitySceneOptions = (
       options: createSceneOptions(data, SubFolderName.CHIBI),
     },
     {
-      label: "Spine",
-      options: createSceneOptions(data, SubFolderName.SPINE),
-    },
-    {
       label: "Playroom",
       options: createSceneOptions(data, SubFolderName.PLAYROOM),
+    },
+    {
+      label: "Scene",
+      options: createSceneOptions(data, SubFolderName.SCENE),
+    },
+    {
+      label: "Spine",
+      options: createSceneOptions(data, SubFolderName.SPINE),
     },
   ];
 };
@@ -104,19 +108,11 @@ export const getSceneData = (
     return getPartyroomData(entityData, sceneName);
   }
 
-  const getFolderKey = (): keyof EntityData => {
-    if (sceneName.includes(SubFolderName.CHIBI)) {
-      return SubFolderName.CHIBI;
-    }
+  const folderKey =
+    [SubFolderName.CHIBI, SubFolderName.PLAYROOM, SubFolderName.SCENE].find(
+      (key) => sceneName.includes(key),
+    ) || SubFolderName.SPINE;
 
-    if (sceneName.includes(SubFolderName.PLAYROOM)) {
-      return SubFolderName.PLAYROOM;
-    }
-
-    return SubFolderName.SPINE;
-  };
-
-  const folderKey = getFolderKey();
   const sceneData = entityData[entityName]?.data[folderKey]?.[sceneName];
 
   if (!sceneData) {

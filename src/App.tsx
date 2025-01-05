@@ -1,9 +1,19 @@
-import { Outlet } from "react-router-dom";
+import { canvas } from "@drincs/pixi-vn";
 import { Analytics } from "@vercel/analytics/react";
+import { useEffect, useRef } from "react";
+import { Outlet } from "react-router-dom";
 import { Footer, Header } from "./components/layout";
 import { DataInitializer } from "./components/DataInitializer";
 
 function App() {
+  const pixiRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (pixiRef.current) {
+      canvas.initialize(pixiRef.current, 1080, 720);
+    }
+  }, []);
+
   return (
     <>
       <Header />
@@ -22,6 +32,7 @@ function App() {
         <div className="u-absolute u-z-0 fullscreen">
           <Outlet />
         </div>
+        <div ref={pixiRef} className="u-none" />
         <DataInitializer />
         <Analytics />
       </main>

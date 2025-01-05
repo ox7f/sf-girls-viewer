@@ -1,7 +1,7 @@
 import type { Container } from "pixi.js";
+import type { Live2DModel } from "pixi-live2d-display/cubism4";
 import type { ITrackEntry, Spine } from "pixi-spine";
 import type { FileMeta } from "../types";
-import { Live2DModel } from "pixi-live2d-display/cubism4";
 
 export type ModifiedContainer = Container & {
   allowClick?: boolean;

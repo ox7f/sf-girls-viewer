@@ -28,7 +28,7 @@ const findIdleAnimation = (
   return findAnimationByName(animationNames, idleName);
 };
 
-const setupCompleteListener = (
+const setupCompleteListenerSpine = (
   animation: ModifiedSpine,
   idleAnimationName: string,
 ): void => {
@@ -37,7 +37,7 @@ const setupCompleteListener = (
   };
 };
 
-const setupCompleteListener2 = (
+const setupCompleteListenerLive2D = (
   animation: ModifiedLive2D,
   idleAnimationName: string,
 ): void => {
@@ -68,7 +68,7 @@ export const handleTouchAnimationLive2D = (
     animationExtension,
   );
 
-  const isTouchAnimation = ["touch", "attack", "dead"].some((key) =>
+  const isTouchAnimation = ["action", "touch", "attack", "dead"].some((key) =>
     animationName.toLowerCase().includes(key),
   );
 
@@ -77,7 +77,7 @@ export const handleTouchAnimationLive2D = (
     animation.motion(animationName);
 
     if (isTouchAnimation && correspondingIdleAnimation) {
-      setupCompleteListener2(animation, correspondingIdleAnimation);
+      setupCompleteListenerLive2D(animation, correspondingIdleAnimation);
     }
   }
 };
@@ -98,7 +98,7 @@ export const handleTouchAnimationSpine = (
     animationExtension,
   );
 
-  const isTouchAnimation = ["touch", "attack", "dead"].some((key) =>
+  const isTouchAnimation = ["action", "touch", "attack", "dead"].some((key) =>
     animationName.toLowerCase().includes(key),
   );
 
@@ -106,7 +106,7 @@ export const handleTouchAnimationSpine = (
     animation.state.setAnimation(0, animationName, !isTouchAnimation);
 
     if (isTouchAnimation && correspondingIdleAnimation) {
-      setupCompleteListener(animation, correspondingIdleAnimation);
+      setupCompleteListenerSpine(animation, correspondingIdleAnimation);
     }
   }
 };

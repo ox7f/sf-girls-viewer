@@ -7,8 +7,8 @@ import {
   setAnimationStyle,
 } from "./PixiElementUtils";
 import { setupInteractionEvents } from "./PixiEventUtils";
-import { FileMeta, ModifiedContainer, ModifiedLive2D } from "../../types";
 import { playFirstLive2DAnimation } from "./PixiAnimationUtils";
+import { FileMeta, ModifiedContainer, ModifiedLive2D } from "../../types";
 
 const loadAndSetupLive2D = async (
   path: string,

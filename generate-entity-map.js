@@ -40,7 +40,11 @@ const processAnimationFiles = (subEntityPath, files) => {
   const spines = {};
 
   for (const spine of files) {
-    if (spine.endsWith(".json") && !spine.includes("physics3")) {
+    if (
+      spine.endsWith(".json") &&
+      !spine.includes("physics3") &&
+      !spine.includes("Scene_Text")
+    ) {
       const isLive2D = spine.includes(".model3");
       const animationName = path.basename(spine, ".json");
       const keyName = animationName.replace(".model3", "");
@@ -115,6 +119,7 @@ const loadDataForEntity = (entityPath) => {
     Mini: {},
     Playroom: {},
     Portrait: {},
+    Scene: {},
     Spine: {},
   };
   const type = entityPath.includes("Agents") ? "Agents" : "Seekers";
@@ -126,9 +131,10 @@ const loadDataForEntity = (entityPath) => {
       const files = getFoldersContents(folderPath);
 
       switch (folder) {
-        case "Playroom":
-        case "Spine":
         case "Chibi":
+        case "Playroom":
+        case "Scene":
+        case "Spine":
           data[folder] = processAnimationFiles(folderPath, files);
           break;
         case "Mini":

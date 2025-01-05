@@ -15,6 +15,7 @@ export type EntityData = {
   [SubFolderName.MINI]?: MiniOrPortraitConfig;
   [SubFolderName.PLAYROOM]?: SpineConfig;
   [SubFolderName.PORTRAIT]?: MiniOrPortraitConfig;
+  [SubFolderName.SCENE]?: SpineConfig;
   [SubFolderName.SPINE]?: SpineConfig;
 };
 
@@ -44,5 +45,6 @@ export enum SubFolderName {
   MINI = "Mini",
   PLAYROOM = "Playroom",
   PORTRAIT = "Portrait",
+  SCENE = "Scene",
   SPINE = "Spine",
 }

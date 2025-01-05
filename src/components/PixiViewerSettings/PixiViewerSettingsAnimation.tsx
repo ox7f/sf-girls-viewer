@@ -73,8 +73,8 @@ export const PixiViewerSettingsAnimation = ({
           animation.parent.angle = parseFloat(value);
           break;
         case "scale":
-          animation.parent.scale.set(parseFloat(value));
-          // animation.scale.set(parseFloat(value));
+          // animation.parent.scale.set(parseFloat(value));
+          animation.scale.set(parseFloat(value));
           break;
         case "skew":
           animation.parent.skew.set(parseFloat(value) * Math.PI - Math.PI / 2);
@@ -160,7 +160,6 @@ export const PixiViewerSettingsAnimation = ({
       >
         <details className="accordion">
           <summary className="accordion__summary u-no-outline">General</summary>
-          {/*
           <div className="tooltip" data-tooltip={settings.x}>
             <label htmlFor="x">X</label>
             <input
@@ -187,7 +186,6 @@ export const PixiViewerSettingsAnimation = ({
               onChange={handleChange("y")}
             />
           </div>
-           */}
 
           <div className="tooltip" data-tooltip={settings.alpha}>
             <label htmlFor="alpha">Alpha</label>

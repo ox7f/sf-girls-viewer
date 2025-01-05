@@ -1,13 +1,13 @@
 import "react-image-gallery/styles/css/image-gallery.css";
 
+import { useAtomValue } from "jotai";
 import { type FC, useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import ReactImageGallery from "react-image-gallery";
-import { useAtomValue } from "jotai";
 import { entityMapAtom } from "../atoms";
+import { type EntityData, SubFolderName } from "../types";
 import { Spinner } from "../components/common/Spinner";
 import Button from "../components/common/Button/Button";
-import { type EntityData, SubFolderName } from "../types";
 
 const GalleryPage: FC = () => {
   const entityMap = useAtomValue(entityMapAtom);

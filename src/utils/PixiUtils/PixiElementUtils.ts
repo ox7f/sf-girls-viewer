@@ -32,6 +32,7 @@ const SCENE_STYLE: SceneStyleType = {
   Hami_Playroom_Skin1: { angle: 270, scale: 0.21 },
   Hitomi_Playroom_Skin2: { scale: 0.12 },
   Hitomi_Playroom_Wedding: { scale: 0.12 },
+  Hitomi_Scene: { scale: 0.11, x: 145, y: 155 },
   Irina_Playroom_Skin1: { scale: 0.11, x: -35 },
   Irina_Playroom_Wedding: { scale: 0.13, x: 15 },
   Kiyomi_Playroom_Skin2: { scale: 0.13, x: 10, y: 180 },

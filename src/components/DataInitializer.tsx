@@ -12,7 +12,8 @@ export const DataInitializer = () => {
         const data = await response.json();
         setEntityMap(data);
       } catch (error) {
-        console.error("Error fetching scene data:", error);
+        console.error("Error fetching initial data:", error);
+        throw new Error("Failed to load initial data.");
       }
     };
 
