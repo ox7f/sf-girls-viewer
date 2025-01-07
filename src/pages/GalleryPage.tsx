@@ -41,8 +41,8 @@ const GalleryPage: FC = () => {
   const getGalleryImages = () =>
     currentEntity
       ? [
-          ...Object.values(currentEntity[SubFolderName.PORTRAIT] || {}).flat(),
-          ...Object.values(currentEntity[SubFolderName.MINI] || {}).flat(),
+          ...Object.values(currentEntity[SubFolderName.PORTRAIT] ?? {}).flat(),
+          ...Object.values(currentEntity[SubFolderName.MINI] ?? {}).flat(),
         ].map((image) => ({
           original: `/${image}`,
           thumbnail: `/${image}`,

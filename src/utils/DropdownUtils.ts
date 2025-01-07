@@ -111,7 +111,7 @@ export const getSceneData = (
   const folderKey =
     [SubFolderName.CHIBI, SubFolderName.PLAYROOM, SubFolderName.SCENE].find(
       (key) => sceneName.includes(key),
-    ) || SubFolderName.SPINE;
+    ) ?? SubFolderName.SPINE;
 
   const sceneData = entityData[entityName]?.data[folderKey]?.[sceneName];
 

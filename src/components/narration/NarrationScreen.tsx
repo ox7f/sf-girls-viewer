@@ -1,41 +1,35 @@
 import type { FC } from "react";
-import {
-  useQueryCanGoBack,
-  useQueryCanGoNext,
-  useQueryDialogue,
-} from "../../use_query/useQueryInterface";
+import { useQueryDialogue } from "../../use_query/useQueryInterface";
 
 const NarrationScreen: FC = () => {
   const { data: { text, character } = {} } = useQueryDialogue();
-  const { data: canGoNext = false } = useQueryCanGoNext();
-  const { data: canGoBack = false } = useQueryCanGoBack();
 
   if (!text) {
     return null;
   }
 
   return (
-    <div>
-      {character && character.name && (
-        <div>
-          {character.name + (character.surname ? " " + character.surname : "")}
+    <div className="u-flex u-items-center">
+      {character?.icon && (
+        <div className="tile__icon">
+          <figure>
+            <img
+              style={{ maxWidth: "100px" }}
+              src={character?.icon}
+              loading="lazy"
+              alt=""
+            />
+          </figure>
         </div>
       )}
-      <div
-        style={{
-          overflow: "auto",
-          marginRight: canGoNext || canGoBack ? "40px" : undefined,
-          height: "100%",
-        }}
-      >
-        {character?.icon && (
-          <div>
-            <img src={character?.icon} loading="lazy" alt="" />
-          </div>
+
+      <div className="tile__container">
+        {character && character.name && (
+          <p className="tile__title m-0 u-text-bold u-text-primary">
+            {character.name}
+          </p>
         )}
-        <div>
-          <div>{text}</div>
-        </div>
+        <p className="tile__subtitle m-0 u-text-wrap">{text}</p>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ export const SettingsMenu = () => {
 
   const renderTabContent = () => {
     const SelectedComponent =
-      tabComponents[selectedTab] || tabComponents.default;
+      tabComponents[selectedTab] ?? tabComponents.default;
 
     return (
       <SelectedComponent

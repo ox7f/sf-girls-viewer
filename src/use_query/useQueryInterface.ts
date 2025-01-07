@@ -24,7 +24,7 @@ export function useQueryChoiceMenuOptions() {
   return useQuery({
     queryKey: [INTERFACE_DATA_USE_QUEY_KEY, CHOICE_MENU_OPTIONS_USE_QUEY_KEY],
     queryFn: () => {
-      return narration.choiceMenuOptions || [];
+      return narration.choiceMenuOptions ?? [];
     },
   });
 }
@@ -97,7 +97,7 @@ export function useQueryNarrativeHistory() {
             ? character.name +
               (character.surname ? " " + character.surname : "")
             : undefined,
-          text: step.dialoge?.text || "",
+          text: step.dialoge?.text ?? "",
           icon: character?.icon,
           choices: step.choices,
           inputValue: step.inputValue,

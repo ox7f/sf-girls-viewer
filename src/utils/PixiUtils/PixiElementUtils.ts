@@ -160,6 +160,6 @@ export const initializePixiApp = (): Application =>
   new Application({
     resizeTo: window,
     backgroundAlpha: 0,
-    resolution: window.devicePixelRatio || 1,
+    resolution: window.devicePixelRatio ?? 1,
     autoDensity: true,
   });

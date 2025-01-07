@@ -44,8 +44,13 @@ const NextButton: FC = () => {
   }
 
   return (
-    <button color="primary" onClick={nextOnClick} disabled={isLoading}>
-      Next
+    <button
+      color="btn-primary btn--sm"
+      style={{ marginBottom: "0" }}
+      onClick={nextOnClick}
+      disabled={isLoading}
+    >
+      {isLoading ? "Loading..." : "Next"}
     </button>
   );
 };
