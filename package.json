@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "format": "prettier --write .",
-    "generate-entity-map": "node generate-config.ts"
+    "generate-entity-map": "node generate-entity-map.js"
   },
   "dependencies": {
     "@drincs/pixi-vn": "^0.10.1",

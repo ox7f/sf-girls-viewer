@@ -73,8 +73,8 @@ export const PixiViewerSettingsAnimation = ({
           animation.parent.angle = parseFloat(value);
           break;
         case "scale":
-          // animation.parent.scale.set(parseFloat(value));
-          animation.scale.set(parseFloat(value));
+          animation.parent.scale.set(parseFloat(value));
+          // animation.scale.set(parseFloat(value));
           break;
         case "skew":
           animation.parent.skew.set(parseFloat(value) * Math.PI - Math.PI / 2);

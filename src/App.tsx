@@ -2,7 +2,7 @@ import { canvas } from "@drincs/pixi-vn";
 import { Analytics } from "@vercel/analytics/react";
 import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
-import { Footer, Header } from "./components/layout";
+import { /*Footer,*/ Header } from "./components/layout";
 import { DataInitializer } from "./components/DataInitializer";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <Header />
       <main className="grid-c-12">
         <div
-          className="hero fullscreen hero-img parallax-img"
+          className="hero fullscreen hero-img parallax-img background"
           style={{
             opacity: 0.1,
             backgroundColor: "rgb(229, 229, 247)",
@@ -29,14 +29,14 @@ function App() {
             backgroundPosition: "-2px -2px, -2px -2px, -1px -1px, -1px -1px",
           }}
         />
-        <div className="u-absolute u-z-0 fullscreen">
+        <div className="u-absolute u-z-0 fullscreen" id="app">
           <Outlet />
         </div>
         <div ref={pixiRef} className="u-none" />
         <DataInitializer />
         <Analytics />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

@@ -16,6 +16,10 @@ input:focus {
   box-shadow: none !important;
 }
 
+.background {
+  min-height: calc(100vh - 102px) !important;
+}
+
 @keyframes animate-slide {
   0% {
     background-position: 0 0;

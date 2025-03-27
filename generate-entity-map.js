@@ -1,6 +1,20 @@
 import fs from "fs";
 import path from "path";
 
+const UNRELEASED_AGENT_LIST = [
+  "Miva_Takahashi",
+  "Uusas",
+  "Tomoe_Yamazaki",
+  "Ysabella",
+  "Admiral_Thoka",
+  "Lily",
+  "Woodbloom",
+  "Sichigen",
+  "Minami_Aizawa",
+  "Choco",
+  "Blancmange",
+];
+
 const ASSETS_PATH = path.join(process.cwd(), "public/assets");
 
 // Checks if a path exists and is a directory
@@ -165,9 +179,11 @@ const loadAllEntities = () => {
   entityTypes.forEach((entityType) => {
     const entities = getFoldersContents(`${ASSETS_PATH}/${entityType}`);
     entities.forEach((entity) => {
-      const entityPath = path.join(ASSETS_PATH, entityType, entity);
-      if (isDirectory(entityPath)) {
-        entityMap[entity] = loadDataForEntity(entityPath);
+      if (!UNRELEASED_AGENT_LIST.includes(entity)) {
+        const entityPath = path.join(ASSETS_PATH, entityType, entity);
+        if (isDirectory(entityPath)) {
+          entityMap[entity] = loadDataForEntity(entityPath);
+        }
       }
     });
   });
