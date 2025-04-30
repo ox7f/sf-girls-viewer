@@ -1,7 +1,3 @@
-Here's an updated version of your README reflecting the changes to asset handling with the `public/sf-girls-assets/` submodule and Git LFS setup:
-
----
-
 # SF-Girls Viewer
 
 ## Overview
