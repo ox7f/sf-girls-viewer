@@ -1,3 +1,7 @@
+Here's an updated version of your README reflecting the changes to asset handling with the `public/sf-girls-assets/` submodule and Git LFS setup:
+
+---
+
 # SF-Girls Viewer
 
 ## Overview
@@ -15,37 +19,57 @@ The **SF-Girls Viewer** is a web-based tool that allows players to explore in-ga
 
 ## Getting Started
 
-1. Clone this repository:
+1. Clone this repository (with submodules):
+
    ```bash
-   git clone https://github.com/ox7f/sf-girls-viewer
+   git clone --recurse-submodules https://github.com/ox7f/sf-girls-viewer
    ```
+
+   > If you already cloned the repo without `--recurse-submodules`, initialize the submodule manually:
+   >
+   > ```bash
+   > git submodule update --init --recursive
+   > ```
+
 2. Navigate to the project directory:
+
    ```bash
    cd sf-girls-viewer
    ```
-3. Pull all necessary files:
+
+3. Pull LFS (Large File Storage) assets inside the submodule:
+
    ```bash
+   cd public/sf-girls-assets
    git lfs pull
+   cd ../../
    ```
+
 4. Install dependencies:
+
    ```bash
    npm install
    ```
+
 5. Run the development server:
+
    ```bash
    npm run dev
    ```
-   Or use alternative package managers:
+
+   Or use an alternative package manager:
+
    ```bash
    yarn dev
    pnpm dev
    bun dev
    ```
+
 6. Open your browser and go to [http://localhost:5173](http://localhost:5173) to access the viewer.
 
 ## Updating Assets
 
-When updating assets, ensure you regenerate the entity map with:
+If you update the assets in the submodule, be sure to regenerate the entity map:
 
 ```bash
 npm run generate-entity-map
@@ -54,6 +78,7 @@ npm run generate-entity-map
 ## Requirements
 
 - **Node.js** (Latest LTS version recommended)
+- **Git LFS** (required for large asset files)
 - **NPM, Yarn, PNPM, or Bun** for package management
 - **Modern Web Browser** (Chrome, Firefox, Edge, etc.)
 
