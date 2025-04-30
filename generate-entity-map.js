@@ -15,7 +15,8 @@ const UNRELEASED_AGENT_LIST = [
   "Blancmange",
 ];
 
-const ASSETS_PATH = path.join(process.cwd(), "public/assets");
+const PUBLIC_PATH = path.join(process.cwd(), "public");
+const ASSETS_PATH = path.join(process.cwd(), "public/sf-girls-assets");
 
 // Checks if a path exists and is a directory
 const isDirectory = (filePath) => {
@@ -193,11 +194,11 @@ const loadAllEntities = () => {
 
 const loadAllPartyrooms = () => {
   const partyroomMap = {};
-  const partyrooms = getFoldersContents(`${ASSETS_PATH}/Partyrooms`);
+  // const partyrooms = getFoldersContents(`${ASSETS_PATH}/Partyrooms`);
 
-  partyrooms.forEach((partyroom) => {
-    partyroomMap[partyroom] = loadDataForPartyroom(partyroom);
-  });
+  // partyrooms.forEach((partyroom) => {
+  //   partyroomMap[partyroom] = loadDataForPartyroom(partyroom);
+  // });
 
   return partyroomMap;
 };
@@ -206,7 +207,7 @@ const loadEverything = () => ({ ...loadAllEntities(), ...loadAllPartyrooms() });
 
 const generateEntityMap = async () => {
   const entityMap = loadEverything();
-  const outputPath = path.join(ASSETS_PATH, "entityMap.json");
+  const outputPath = path.join(PUBLIC_PATH, "entityMap.json");
   fs.writeFile(outputPath, JSON.stringify(entityMap, null, 2), () => {});
   console.log("Config file generated at:", outputPath);
 };

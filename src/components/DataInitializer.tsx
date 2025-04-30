@@ -8,7 +8,7 @@ export const DataInitializer = () => {
   useEffect(() => {
     const fetchSceneData = async () => {
       try {
-        const response = await fetch("/assets/entityMap.json");
+        const response = await fetch("/entityMap.json");
         const data = await response.json();
         setEntityMap(data);
       } catch (error) {
