@@ -57,7 +57,7 @@ export const Header = () => {
 
           {menuItems.map((menuItem) => (
             <div className="nav-item" key={menuItem.name}>
-              <Link to={menuItem.href}>
+              <Link to={menuItem.href} onClick={() => setIsOpen(false)}>
                 <span>{menuItem.name}</span>
               </Link>
             </div>

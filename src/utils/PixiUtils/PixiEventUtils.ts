@@ -54,7 +54,7 @@ export const setupSpineClickEvents = (
     }
   };
 
-  container.on("click", onTouch);
+  container.on("pointerdown", onTouch);
 };
 
 const setupDragEvents = (container: ModifiedContainer): void => {
