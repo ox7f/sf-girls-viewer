@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Clone submodules with auth
-echo "Setting up submodules..."
-git submodule init
-git submodule update --remote --recursive
+# Inject token into submodule URL
+echo "Injecting token into submodule URL..."
+git config -f .gitmodules submodule.public/sf-girls-assets.url https://$GIT_TOKEN@github.com/ox7f/sf-girls-assets.git
 
-# Git LFS pull
-echo "Fetching LFS files..."
+git submodule sync
+git submodule update --init --recursive
+
+# Setup LFS
 git lfs install
 cd public/sf-girls-assets
 git lfs pull
 cd ../../
 
-# Proceed with the React build
-echo "Building React app..."
+# React build
 npm install
 npm run build
