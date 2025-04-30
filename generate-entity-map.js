@@ -3,7 +3,7 @@ import path from "path";
 
 const UNRELEASED_AGENT_LIST = [
   "Miva_Takahashi",
-  "Uusas",
+  "Uthas",
   "Tomoe_Yamazaki",
   "Ysabella",
   "Admiral_Thoka",
