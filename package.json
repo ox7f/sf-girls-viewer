@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "format": "prettier --write .",
-    "generate-entity-map": "node generate-entity-map.js"
+    "generate-entity-map": "node generate-entity-map.js",
+    "postinstall": "git lfs install"
   },
   "dependencies": {
     "@drincs/pixi-vn": "^0.10.1",
