@@ -9,7 +9,7 @@ git submodule update --remote --recursive
 echo "Fetching LFS files..."
 git lfs install
 cd public/sf-girls-assets
-git lfs pull --include="*" --recursive
+git lfs pull
 cd ../../
 
 # Proceed with the React build
