@@ -65,8 +65,8 @@ const processAnimationFiles = (subEntityPath, files) => {
       const keyName = animationName.replace(".model3", "");
       const paths = [
         isLive2D ? ".model3.json" : ".json",
-        "_Background.png",
-        "_Foreground.png",
+        // "_Background.png",
+        // "_Foreground.png",
         "_Addition.json",
       ].map((ext) => path.join(subEntityPath, `${keyName}${ext}`));
 

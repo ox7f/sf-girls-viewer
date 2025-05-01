@@ -159,8 +159,7 @@
       "Playroom": {
         "Akina_Playroom_Skin1": {
           "name": "Akina_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Akina/Playroom/Akina_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Akina/Playroom/Akina_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Akina/Playroom/Akina_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -304,13 +303,11 @@
       "Playroom": {
         "Aoi_Playroom_Skin2": {
           "name": "Aoi_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Aoi/Playroom/Aoi_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Aoi/Playroom/Aoi_Playroom_Skin2_Background.png"
+          "fileName": "sf-girls-assets/Agents/Aoi/Playroom/Aoi_Playroom_Skin2.json"
         },
         "Aoi_Playroom_Wedding": {
           "name": "Aoi_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Aoi/Playroom/Aoi_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Aoi/Playroom/Aoi_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Aoi/Playroom/Aoi_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -428,8 +425,7 @@
       "Playroom": {
         "Ari_Playroom_Wedding": {
           "name": "Ari_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Ari/Playroom/Ari_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Ari/Playroom/Ari_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Ari/Playroom/Ari_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -556,8 +552,7 @@
       "Playroom": {
         "Ayu_Playroom_Wedding": {
           "name": "Ayu_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Ayu/Playroom/Ayu_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Ayu/Playroom/Ayu_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Ayu/Playroom/Ayu_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -643,8 +638,7 @@
       "Playroom": {
         "Bia_Playroom_Skin1": {
           "name": "Bia_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Bia/Playroom/Bia_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Bia/Playroom/Bia_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Bia/Playroom/Bia_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -715,8 +709,7 @@
       "Playroom": {
         "Cadence_Playroom_Skin1": {
           "name": "Cadence_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Cadence/Playroom/Cadence_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Cadence/Playroom/Cadence_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Cadence/Playroom/Cadence_Playroom_Skin1.json"
         },
         "Cadence_Playroom_Skin2": {
           "name": "Cadence_Playroom_Skin2",
@@ -933,8 +926,7 @@
       "Playroom": {
         "Chihiro_Playroom_Skin1": {
           "name": "Chihiro_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Chihiro/Playroom/Chihiro_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Chihiro/Playroom/Chihiro_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Chihiro/Playroom/Chihiro_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -1059,9 +1051,7 @@
       "Playroom": {
         "Coco_Playroom_Skin2": {
           "name": "Coco_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Coco/Playroom/Coco_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Coco/Playroom/Coco_Playroom_Skin2_Background.png",
-          "foreground": "sf-girls-assets/Agents/Coco/Playroom/Coco_Playroom_Skin2_Foreground.png"
+          "fileName": "sf-girls-assets/Agents/Coco/Playroom/Coco_Playroom_Skin2.json"
         }
       },
       "Portrait": {
@@ -1133,8 +1123,7 @@
       "Playroom": {
         "Denka_Playroom_Wedding": {
           "name": "Denka_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Denka/Playroom/Denka_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Denka/Playroom/Denka_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Denka/Playroom/Denka_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -1216,8 +1205,7 @@
       "Playroom": {
         "Eiko_Playroom_Wedding": {
           "name": "Eiko_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Eiko/Playroom/Eiko_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Eiko/Playroom/Eiko_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Eiko/Playroom/Eiko_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -1344,8 +1332,7 @@
       "Playroom": {
         "Ember_X_Playroom_Skin1": {
           "name": "Ember_X_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Ember_X/Playroom/Ember_X_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Ember_X/Playroom/Ember_X_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Ember_X/Playroom/Ember_X_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -1520,8 +1507,7 @@
       "Playroom": {
         "Gai_gai_Playroom_Skin1": {
           "name": "Gai_gai_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Gai_Gai/Playroom/Gai_gai_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Gai_Gai/Playroom/Gai_gai_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Gai_Gai/Playroom/Gai_gai_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -1587,8 +1573,7 @@
       "Playroom": {
         "Goi_Playroom_Skin1": {
           "name": "Goi_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Goi/Playroom/Goi_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Goi/Playroom/Goi_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Goi/Playroom/Goi_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -1637,8 +1622,7 @@
       "Playroom": {
         "Hami_Playroom_Skin1": {
           "name": "Hami_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Hami/Playroom/Hami_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Hami/Playroom/Hami_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Hami/Playroom/Hami_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -1717,13 +1701,11 @@
       "Playroom": {
         "Hitomi_Playroom_Skin2": {
           "name": "Hitomi_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Hitomi/Playroom/Hitomi_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Hitomi/Playroom/Hitomi_Playroom_Skin2_Background.png"
+          "fileName": "sf-girls-assets/Agents/Hitomi/Playroom/Hitomi_Playroom_Skin2.json"
         },
         "Hitomi_Playroom_Wedding": {
           "name": "Hitomi_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Hitomi/Playroom/Hitomi_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Hitomi/Playroom/Hitomi_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Hitomi/Playroom/Hitomi_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -1749,8 +1731,7 @@
       "Scene": {
         "Hitomi_Scene": {
           "name": "Hitomi_Scene",
-          "fileName": "sf-girls-assets/Agents/Hitomi/Scene/Hitomi_Scene.json",
-          "background": "sf-girls-assets/Agents/Hitomi/Scene/Hitomi_Scene_Background.png"
+          "fileName": "sf-girls-assets/Agents/Hitomi/Scene/Hitomi_Scene.json"
         }
       },
       "Spine": {
@@ -1946,13 +1927,11 @@
       "Playroom": {
         "Irina_Playroom_Skin1": {
           "name": "Irina_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Irina/Playroom/Irina_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Irina/Playroom/Irina_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Irina/Playroom/Irina_Playroom_Skin1.json"
         },
         "Irina_Playroom_Wedding": {
           "name": "Irina_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Irina/Playroom/Irina_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Irina/Playroom/Irina_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Irina/Playroom/Irina_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -2175,8 +2154,7 @@
       "Playroom": {
         "Kiyomi_Playroom_Skin2": {
           "name": "Kiyomi_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Kiyomi/Playroom/Kiyomi_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Kiyomi/Playroom/Kiyomi_Playroom_Skin2_Background.png"
+          "fileName": "sf-girls-assets/Agents/Kiyomi/Playroom/Kiyomi_Playroom_Skin2.json"
         }
       },
       "Portrait": {
@@ -2348,13 +2326,11 @@
       "Playroom": {
         "Kura_Playroom_Skin1": {
           "name": "Kura_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Kura/Playroom/Kura_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Kura/Playroom/Kura_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Kura/Playroom/Kura_Playroom_Skin1.json"
         },
         "Kura_Playroom_Skin2": {
           "name": "Kura_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Kura/Playroom/Kura_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Kura/Playroom/Kura_Playroom_Skin2_Background.png"
+          "fileName": "sf-girls-assets/Agents/Kura/Playroom/Kura_Playroom_Skin2.json"
         }
       },
       "Portrait": {
@@ -2513,8 +2489,7 @@
       "Playroom": {
         "Livia_Playroom_Wedding": {
           "name": "Livia_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Livia/Playroom/Livia_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Livia/Playroom/Livia_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Livia/Playroom/Livia_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -2571,20 +2546,15 @@
       "Playroom": {
         "Mai_Playroom_Eri": {
           "name": "Mai_Playroom_Eri",
-          "fileName": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Eri.json",
-          "background": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Eri_Background.png",
-          "foreground": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Eri_Foreground.png"
+          "fileName": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Eri.json"
         },
         "Mai_Playroom_Skin1": {
           "name": "Mai_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Skin1_Background.png",
-          "foreground": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Skin1_Foreground.png"
+          "fileName": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Skin1.json"
         },
         "Mai_Playroom_Wedding": {
           "name": "Mai_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Mai/Playroom/Mai_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -2612,7 +2582,7 @@
         "Mai_Spine_Skin1": {
           "name": "Mai_Spine_Skin1",
           "fileName": "sf-girls-assets/Agents/Mai/Spine/Mai_Spine_Skin1.json",
-          "addition": "sf-girls-assets/Agents/Mai/Spine/Mai_Spine_Skin1_Addition.json"
+          "background": "sf-girls-assets/Agents/Mai/Spine/Mai_Spine_Skin1_Addition.json"
         },
         "Mai_Spine_Skin1_Addition": {
           "name": "Mai_Spine_Skin1_Addition",
@@ -2748,7 +2718,7 @@
         "Meteli_Spine": {
           "name": "Meteli_Spine",
           "fileName": "sf-girls-assets/Agents/Meteli/Spine/Meteli_Spine.json",
-          "addition": "sf-girls-assets/Agents/Meteli/Spine/Meteli_Spine_Addition.json"
+          "background": "sf-girls-assets/Agents/Meteli/Spine/Meteli_Spine_Addition.json"
         },
         "Meteli_Spine_Addition": {
           "name": "Meteli_Spine_Addition",
@@ -2757,7 +2727,7 @@
         "Meteli_Spine_Skin1": {
           "name": "Meteli_Spine_Skin1",
           "fileName": "sf-girls-assets/Agents/Meteli/Spine/Meteli_Spine_Skin1.json",
-          "addition": "sf-girls-assets/Agents/Meteli/Spine/Meteli_Spine_Skin1_Addition.json"
+          "background": "sf-girls-assets/Agents/Meteli/Spine/Meteli_Spine_Skin1_Addition.json"
         },
         "Meteli_Spine_Skin1_Addition": {
           "name": "Meteli_Spine_Skin1_Addition",
@@ -2794,8 +2764,7 @@
       "Playroom": {
         "Midori_Playroom_Skin1": {
           "name": "Midori_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Midori/Playroom/Midori_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Midori/Playroom/Midori_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Midori/Playroom/Midori_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -2855,8 +2824,7 @@
       "Playroom": {
         "Mika_Playroom_Wedding": {
           "name": "Mika_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Mika/Playroom/Mika_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Mika/Playroom/Mika_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Mika/Playroom/Mika_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -2905,8 +2873,7 @@
       "Playroom": {
         "Mitsu_Playroom_Skin1": {
           "name": "Mitsu_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Mitsu/Playroom/Mitsu_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Mitsu/Playroom/Mitsu_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Mitsu/Playroom/Mitsu_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -2986,8 +2953,7 @@
         },
         "Momoko_Playroom_Wedding": {
           "name": "Momoko_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Momoko/Playroom/Momoko_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Momoko/Playroom/Momoko_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Momoko/Playroom/Momoko_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -3160,8 +3126,7 @@
       "Playroom": {
         "Musuna_Playroom_Wedding": {
           "name": "Musuna_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Musuna/Playroom/Musuna_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Musuna/Playroom/Musuna_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Musuna/Playroom/Musuna_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -3374,14 +3339,11 @@
       "Playroom": {
         "Neve_X_Playroom_Skin1": {
           "name": "Neve_X_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Neve_X/Playroom/Neve_X_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Neve_X/Playroom/Neve_X_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Neve_X/Playroom/Neve_X_Playroom_Skin1.json"
         },
         "Neve_X_Playroom_Wedding": {
           "name": "Neve_X_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Neve_X/Playroom/Neve_X_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Neve_X/Playroom/Neve_X_Playroom_Wedding_Background.png",
-          "foreground": "sf-girls-assets/Agents/Neve_X/Playroom/Neve_X_Playroom_Wedding_Foreground.png"
+          "fileName": "sf-girls-assets/Agents/Neve_X/Playroom/Neve_X_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -3470,13 +3432,11 @@
       "Playroom": {
         "Noa_Playroom_Skin3": {
           "name": "Noa_Playroom_Skin3",
-          "fileName": "sf-girls-assets/Agents/Noa/Playroom/Noa_Playroom_Skin3.json",
-          "background": "sf-girls-assets/Agents/Noa/Playroom/Noa_Playroom_Skin3_Background.png"
+          "fileName": "sf-girls-assets/Agents/Noa/Playroom/Noa_Playroom_Skin3.json"
         },
         "Noa_Playroom_Wedding": {
           "name": "Noa_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Noa/Playroom/Noa_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Noa/Playroom/Noa_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Noa/Playroom/Noa_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -3569,8 +3529,7 @@
       "Playroom": {
         "O_Playroom_Wedding": {
           "name": "O_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/O/Playroom/O_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/O/Playroom/O_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/O/Playroom/O_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -3606,7 +3565,7 @@
         "O_Spine_Wedding": {
           "name": "O_Spine_Wedding",
           "fileName": "sf-girls-assets/Agents/O/Spine/O_Spine_Wedding.json",
-          "addition": "sf-girls-assets/Agents/O/Spine/O_Spine_Wedding_Addition.json"
+          "background": "sf-girls-assets/Agents/O/Spine/O_Spine_Wedding_Addition.json"
         },
         "O_Spine_Wedding_Addition": {
           "name": "O_Spine_Wedding_Addition",
@@ -3672,8 +3631,7 @@
       "Playroom": {
         "Pan_Playroom_Skin1": {
           "name": "Pan_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Pan/Playroom/Pan_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Pan/Playroom/Pan_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Pan/Playroom/Pan_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -3765,8 +3723,7 @@
       "Playroom": {
         "Rei_Playroom_Wedding": {
           "name": "Rei_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Rei/Playroom/Rei_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Rei/Playroom/Rei_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Rei/Playroom/Rei_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -3788,7 +3745,7 @@
         "Rei_Spine_Skin1": {
           "name": "Rei_Spine_Skin1",
           "fileName": "sf-girls-assets/Agents/Rei/Spine/Rei_Spine_Skin1.json",
-          "addition": "sf-girls-assets/Agents/Rei/Spine/Rei_Spine_Skin1_Addition.json"
+          "background": "sf-girls-assets/Agents/Rei/Spine/Rei_Spine_Skin1_Addition.json"
         },
         "Rei_Spine_Skin1_Addition": {
           "name": "Rei_Spine_Skin1_Addition",
@@ -3797,7 +3754,7 @@
         "Rei_Spine_Wedding": {
           "name": "Rei_Spine_Wedding",
           "fileName": "sf-girls-assets/Agents/Rei/Spine/Rei_Spine_Wedding.json",
-          "addition": "sf-girls-assets/Agents/Rei/Spine/Rei_Spine_Wedding_Addition.json"
+          "background": "sf-girls-assets/Agents/Rei/Spine/Rei_Spine_Wedding_Addition.json"
         },
         "Rei_Spine_Wedding_Addition": {
           "name": "Rei_Spine_Wedding_Addition",
@@ -3838,13 +3795,11 @@
       "Playroom": {
         "Reika_Playroom_Skin1": {
           "name": "Reika_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Reika/Playroom/Reika_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Reika/Playroom/Reika_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Reika/Playroom/Reika_Playroom_Skin1.json"
         },
         "Reika_Playroom_Wedding": {
           "name": "Reika_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Reika/Playroom/Reika_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Reika/Playroom/Reika_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Reika/Playroom/Reika_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -3916,8 +3871,7 @@
       "Playroom": {
         "Rei_JK_Playroom_Skin1": {
           "name": "Rei_JK_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Rei_JK/Playroom/Rei_JK_Playroom_Skin1.json",
-          "foreground": "sf-girls-assets/Agents/Rei_JK/Playroom/Rei_JK_Playroom_Skin1_Foreground.png"
+          "fileName": "sf-girls-assets/Agents/Rei_JK/Playroom/Rei_JK_Playroom_Skin1.json"
         },
         "Rei_JK_Playroom_Skin3": {
           "name": "Rei_JK_Playroom_Skin3",
@@ -3991,8 +3945,7 @@
       "Playroom": {
         "Riho_Playroom_Skin1": {
           "name": "Riho_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Riho/Playroom/Riho_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Riho/Playroom/Riho_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Riho/Playroom/Riho_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -4014,7 +3967,7 @@
         "Riho_Spine_Skin1": {
           "name": "Riho_Spine_Skin1",
           "fileName": "sf-girls-assets/Agents/Riho/Spine/Riho_Spine_Skin1.json",
-          "addition": "sf-girls-assets/Agents/Riho/Spine/Riho_Spine_Skin1_Addition.json"
+          "background": "sf-girls-assets/Agents/Riho/Spine/Riho_Spine_Skin1_Addition.json"
         },
         "Riho_Spine_Skin1_Addition": {
           "name": "Riho_Spine_Skin1_Addition",
@@ -4064,8 +4017,7 @@
       "Playroom": {
         "Riho_X_Playroom_Wedding": {
           "name": "Riho_X_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Riho_X/Playroom/Riho_X_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Riho_X/Playroom/Riho_X_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Riho_X/Playroom/Riho_X_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -4138,8 +4090,7 @@
       "Playroom": {
         "Rosalie_Playroom_Skin1": {
           "name": "Rosalie_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Rosalie/Playroom/Rosalie_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Rosalie/Playroom/Rosalie_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Rosalie/Playroom/Rosalie_Playroom_Skin1.json"
         },
         "Rosalie_Playroom_Skin2": {
           "name": "Rosalie_Playroom_Skin2",
@@ -4211,8 +4162,7 @@
       "Playroom": {
         "Rui_Playroom": {
           "name": "Rui_Playroom",
-          "fileName": "sf-girls-assets/Agents/Rui/Playroom/Rui_Playroom.json",
-          "background": "sf-girls-assets/Agents/Rui/Playroom/Rui_Playroom_Background.png"
+          "fileName": "sf-girls-assets/Agents/Rui/Playroom/Rui_Playroom.json"
         }
       },
       "Portrait": {
@@ -4327,8 +4277,7 @@
       "Playroom": {
         "Sara_Playroom_Skin1": {
           "name": "Sara_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Sara/Playroom/Sara_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Sara/Playroom/Sara_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Sara/Playroom/Sara_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -4432,13 +4381,11 @@
       "Playroom": {
         "Sayaka_Playroom_Skin1": {
           "name": "Sayaka_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Sayaka/Playroom/Sayaka_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Sayaka/Playroom/Sayaka_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Sayaka/Playroom/Sayaka_Playroom_Skin1.json"
         },
         "Sayaka_Playroom_Wedding": {
           "name": "Sayaka_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Sayaka/Playroom/Sayaka_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Sayaka/Playroom/Sayaka_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Sayaka/Playroom/Sayaka_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -4594,8 +4541,7 @@
       "Playroom": {
         "Setsuna_Playroom_Skin2": {
           "name": "Setsuna_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Setsuna/Playroom/Setsuna_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Setsuna/Playroom/Setsuna_Playroom_Skin2_Background.png"
+          "fileName": "sf-girls-assets/Agents/Setsuna/Playroom/Setsuna_Playroom_Skin2.json"
         }
       },
       "Portrait": {
@@ -4668,8 +4614,7 @@
       "Playroom": {
         "Shiko_Playroom_Skin1": {
           "name": "Shiko_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Shiko/Playroom/Shiko_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Shiko/Playroom/Shiko_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Shiko/Playroom/Shiko_Playroom_Skin1.json"
         },
         "Shiko_Playroom_Skin2": {
           "name": "Shiko_Playroom_Skin2",
@@ -4770,8 +4715,7 @@
         },
         "Sizuko_Playroom_Skin3": {
           "name": "Sizuko_Playroom_Skin3",
-          "fileName": "sf-girls-assets/Agents/Sizuko/Playroom/Sizuko_Playroom_Skin3.json",
-          "background": "sf-girls-assets/Agents/Sizuko/Playroom/Sizuko_Playroom_Skin3_Background.png"
+          "fileName": "sf-girls-assets/Agents/Sizuko/Playroom/Sizuko_Playroom_Skin3.json"
         },
         "Sizuko_Playroom_Wedding": {
           "name": "Sizuko_Playroom_Wedding",
@@ -4901,7 +4845,7 @@
         "Sora_X_Spine": {
           "name": "Sora_X_Spine",
           "fileName": "sf-girls-assets/Agents/Sora_X/Spine/Sora_X_Spine.json",
-          "addition": "sf-girls-assets/Agents/Sora_X/Spine/Sora_X_Spine_Addition.json"
+          "background": "sf-girls-assets/Agents/Sora_X/Spine/Sora_X_Spine_Addition.json"
         },
         "Sora_X_Spine_Addition": {
           "name": "Sora_X_Spine_Addition",
@@ -4947,8 +4891,7 @@
       "Playroom": {
         "Toki_Playroom_Skin1": {
           "name": "Toki_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Toki/Playroom/Toki_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Toki/Playroom/Toki_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Toki/Playroom/Toki_Playroom_Skin1.json"
         },
         "Toki_Playroom_Skin2": {
           "name": "Toki_Playroom_Skin2",
@@ -5029,9 +4972,7 @@
       "Playroom": {
         "Tsukiko_Playroom_Wedding": {
           "name": "Tsukiko_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Tsukiko/Playroom/Tsukiko_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Tsukiko/Playroom/Tsukiko_Playroom_Wedding_Background.png",
-          "foreground": "sf-girls-assets/Agents/Tsukiko/Playroom/Tsukiko_Playroom_Wedding_Foreground.png"
+          "fileName": "sf-girls-assets/Agents/Tsukiko/Playroom/Tsukiko_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -5146,7 +5087,7 @@
         "Tyrla_Spine": {
           "name": "Tyrla_Spine",
           "fileName": "sf-girls-assets/Agents/Tyrla/Spine/Tyrla_Spine.json",
-          "addition": "sf-girls-assets/Agents/Tyrla/Spine/Tyrla_Spine_Addition.json"
+          "background": "sf-girls-assets/Agents/Tyrla/Spine/Tyrla_Spine_Addition.json"
         },
         "Tyrla_Spine_Addition": {
           "name": "Tyrla_Spine_Addition",
@@ -5200,8 +5141,7 @@
       "Playroom": {
         "Uni_Playroom_Skin2": {
           "name": "Uni_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Uni/Playroom/Uni_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Uni/Playroom/Uni_Playroom_Skin2_Background.png"
+          "fileName": "sf-girls-assets/Agents/Uni/Playroom/Uni_Playroom_Skin2.json"
         },
         "Uni_Playroom_Wedding": {
           "name": "Uni_Playroom_Wedding",
@@ -5300,28 +5240,6 @@
     },
     "type": "Agents"
   },
-  "Uthas": {
-    "data": {
-      "Chibi": {},
-      "Mini": {},
-      "Playroom": {},
-      "Portrait": {},
-      "Scene": {
-        "Uthas_Scene": {
-          "name": "Uthas_Scene",
-          "fileName": "sf-girls-assets/Agents/Uthas/Scene/Uthas_Scene.json",
-          "background": "sf-girls-assets/Agents/Uthas/Scene/Uthas_Scene_Background.png"
-        }
-      },
-      "Spine": {
-        "Uthas_Spine": {
-          "name": "Uthas_Spine",
-          "fileName": "sf-girls-assets/Agents/Uthas/Spine/Uthas_Spine.json"
-        }
-      }
-    },
-    "type": "Agents"
-  },
   "Uzu": {
     "data": {
       "Chibi": {
@@ -5353,13 +5271,11 @@
       "Playroom": {
         "Uzu_Playroom_Skin1": {
           "name": "Uzu_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Uzu/Playroom/Uzu_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Uzu/Playroom/Uzu_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Uzu/Playroom/Uzu_Playroom_Skin1.json"
         },
         "Uzu_Playroom_Wedding": {
           "name": "Uzu_Playroom_Wedding",
-          "fileName": "sf-girls-assets/Agents/Uzu/Playroom/Uzu_Playroom_Wedding.json",
-          "background": "sf-girls-assets/Agents/Uzu/Playroom/Uzu_Playroom_Wedding_Background.png"
+          "fileName": "sf-girls-assets/Agents/Uzu/Playroom/Uzu_Playroom_Wedding.json"
         }
       },
       "Portrait": {
@@ -5442,8 +5358,7 @@
       "Playroom": {
         "Vanessa_Playroom_Skin2": {
           "name": "Vanessa_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Vanessa/Playroom/Vanessa_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Vanessa/Playroom/Vanessa_Playroom_Skin2_Background.png"
+          "fileName": "sf-girls-assets/Agents/Vanessa/Playroom/Vanessa_Playroom_Skin2.json"
         }
       },
       "Portrait": {
@@ -5545,8 +5460,7 @@
       "Playroom": {
         "Victoria_Playroom_Skin1": {
           "name": "Victoria_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Victoria/Playroom/Victoria_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Victoria/Playroom/Victoria_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Victoria/Playroom/Victoria_Playroom_Skin1.json"
         },
         "Victoria_Playroom_Skin2": {
           "name": "Victoria_Playroom_Skin2",
@@ -5657,8 +5571,7 @@
       "Playroom": {
         "Wu_Playroom_Skin1": {
           "name": "Wu_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Wu/Playroom/Wu_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Wu/Playroom/Wu_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Wu/Playroom/Wu_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -5785,8 +5698,7 @@
       "Playroom": {
         "Yukako_X_Playroom_Skin1": {
           "name": "Yukako_X_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Yukako_X/Playroom/Yukako_X_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Yukako_X/Playroom/Yukako_X_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Yukako_X/Playroom/Yukako_X_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -5927,8 +5839,7 @@
       "Playroom": {
         "Yuuha_Playroom_Skin2": {
           "name": "Yuuha_Playroom_Skin2",
-          "fileName": "sf-girls-assets/Agents/Yuuha/Playroom/Yuuha_Playroom_Skin2.json",
-          "background": "sf-girls-assets/Agents/Yuuha/Playroom/Yuuha_Playroom_Skin2_Background.png"
+          "fileName": "sf-girls-assets/Agents/Yuuha/Playroom/Yuuha_Playroom_Skin2.json"
         }
       },
       "Portrait": {
@@ -5992,8 +5903,7 @@
       "Playroom": {
         "Zi_Long_Playroom_Skin1": {
           "name": "Zi_Long_Playroom_Skin1",
-          "fileName": "sf-girls-assets/Agents/Zi_Long/Playroom/Zi_Long_Playroom_Skin1.json",
-          "background": "sf-girls-assets/Agents/Zi_Long/Playroom/Zi_Long_Playroom_Skin1_Background.png"
+          "fileName": "sf-girls-assets/Agents/Zi_Long/Playroom/Zi_Long_Playroom_Skin1.json"
         }
       },
       "Portrait": {
@@ -6019,7 +5929,7 @@
         "Zi_Long_Spine_Skin1": {
           "name": "Zi_Long_Spine_Skin1",
           "fileName": "sf-girls-assets/Agents/Zi_Long/Spine/Zi_Long_Spine_Skin1.json",
-          "addition": "sf-girls-assets/Agents/Zi_Long/Spine/Zi_Long_Spine_Skin1_Addition.json"
+          "background": "sf-girls-assets/Agents/Zi_Long/Spine/Zi_Long_Spine_Skin1_Addition.json"
         },
         "Zi_Long_Spine_Skin1_Addition": {
           "name": "Zi_Long_Spine_Skin1_Addition",
@@ -6047,18 +5957,15 @@
       "Playroom": {
         "Gaia_Playroom_A": {
           "name": "Gaia_Playroom_A",
-          "fileName": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_A.model3.json",
-          "background": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_A_Background.png"
+          "fileName": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_A.model3.json"
         },
         "Gaia_Playroom_B": {
           "name": "Gaia_Playroom_B",
-          "fileName": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_B.model3.json",
-          "background": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_B_Background.png"
+          "fileName": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_B.model3.json"
         },
         "Gaia_Playroom_C": {
           "name": "Gaia_Playroom_C",
-          "fileName": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_C.model3.json",
-          "background": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_C_Background.png"
+          "fileName": "sf-girls-assets/Seekers/Gaia/Playroom/Gaia_Playroom_C.model3.json"
         }
       },
       "Portrait": {
@@ -6105,20 +6012,15 @@
       "Playroom": {
         "Hestia_Playroom_A": {
           "name": "Hestia_Playroom_A",
-          "fileName": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_A.json",
-          "background": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_A_Background.png"
+          "fileName": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_A.json"
         },
         "Hestia_Playroom_B": {
           "name": "Hestia_Playroom_B",
-          "fileName": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_B.json",
-          "background": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_B_Background.png",
-          "foreground": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_B_Foreground.png"
+          "fileName": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_B.json"
         },
         "Hestia_Playroom_C": {
           "name": "Hestia_Playroom_C",
-          "fileName": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_C.json",
-          "background": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_C_Background.png",
-          "foreground": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_C_Foreground.png"
+          "fileName": "sf-girls-assets/Seekers/Hestia/Playroom/Hestia_Playroom_C.json"
         }
       },
       "Portrait": {
@@ -6157,18 +6059,15 @@
       "Playroom": {
         "Selene_Playroom_A": {
           "name": "Selene_Playroom_A",
-          "fileName": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_A.json",
-          "background": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_A_Background.png"
+          "fileName": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_A.json"
         },
         "Selene_Playroom_B": {
           "name": "Selene_Playroom_B",
-          "fileName": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_B.json",
-          "background": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_B_Background.png"
+          "fileName": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_B.json"
         },
         "Selene_Playroom_C": {
           "name": "Selene_Playroom_C",
-          "fileName": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_C.json",
-          "background": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_C_Background.png"
+          "fileName": "sf-girls-assets/Seekers/Selene/Playroom/Selene_Playroom_C.json"
         }
       },
       "Portrait": {
