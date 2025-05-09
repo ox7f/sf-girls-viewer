@@ -28,15 +28,11 @@ const loadAndSetupLive2D = async (
       throw new Error(`Invalid Live2D data at ${path}`);
     }
 
-    const animationName = isAdditional
-      ? file.config.name + "_Addition"
-      : file.config.name;
-
     if (!isAdditional) {
       animation.meta = file;
     }
 
-    setAnimationStyle(animation, animationName);
+    setAnimationStyle(animation);
     playFirstLive2DAnimation(animation);
 
     return animation;

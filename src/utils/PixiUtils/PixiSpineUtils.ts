@@ -45,15 +45,12 @@ const loadAndSetupSpine = async (
     }
 
     const animation = createSpineAnimation(spineData) as ModifiedSpine;
-    const animationName = isAdditional
-      ? file.config.name + "_Addition"
-      : file.config.name;
 
     if (!isAdditional) {
       animation.meta = file;
     }
 
-    setAnimationStyle(animation, animationName);
+    setAnimationStyle(animation);
 
     return animation;
   } catch (error) {
