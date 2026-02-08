@@ -2,7 +2,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 
 import { useEffect, useState } from "react";
 
-import type { FC} from "react";
+import type { FC } from "react";
 import type { EntityData } from "../types";
 
 import Button from "../components/common/Button/Button";
@@ -65,7 +65,12 @@ const GalleryPage: FC = () => {
 
   const renderItem = (item: any) => (
     <div className="gallery-image-wrap">
-      <img src={item.original} alt={item.originalAlt ?? ""} onLoad={() => setIsLoading(false)} className="gallery-image" />
+      <img
+        src={item.original}
+        alt={item.originalAlt ?? ""}
+        onLoad={() => setIsLoading(false)}
+        className="gallery-image"
+      />
     </div>
   );
 
@@ -111,13 +116,16 @@ const GalleryPage: FC = () => {
 
       <ul className="justify-center gallery-list m-0">
         {Object.entries(entityMap)
-          .filter(([entityKey]) => entityKey.toLowerCase().includes(query.toLowerCase()))
+          .filter(([entityKey]) =>
+            entityKey.toLowerCase().includes(query.toLowerCase()),
+          )
           .map(([entityKey, entity]) => {
             const previews = getPreviewImagesFor(entity.data);
-            const totalCount = (
-              Object.values(entity.data[SubFolderName.PORTRAIT] ?? {}).flat().length +
-              Object.values(entity.data[SubFolderName.MINI] ?? {}).flat().length
-            );
+            const totalCount =
+              Object.values(entity.data[SubFolderName.PORTRAIT] ?? {}).flat()
+                .length +
+              Object.values(entity.data[SubFolderName.MINI] ?? {}).flat()
+                .length;
 
             return (
               <li
@@ -127,7 +135,8 @@ const GalleryPage: FC = () => {
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") openModal(entity.data);
+                  if (e.key === "Enter" || e.key === " ")
+                    openModal(entity.data);
                 }}
               >
                 {/* <div className="agent-card-previews">
@@ -141,7 +150,9 @@ const GalleryPage: FC = () => {
                 </div> */}
                 <div className="agent-card-body">
                   <div style={{ fontWeight: 600 }}>{entityKey}</div>
-                  <div style={{ fontSize: 12, color: "#666" }}>{totalCount} image{totalCount !== 1 ? "s" : ""}</div>
+                  <div style={{ fontSize: 12, color: "#666" }}>
+                    {totalCount} image{totalCount !== 1 ? "s" : ""}
+                  </div>
                 </div>
               </li>
             );

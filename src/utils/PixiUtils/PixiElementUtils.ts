@@ -63,8 +63,14 @@ export const setAnimationStyle = (
   // If the element's source/name indicates a "chibi" variant, render
   // it at half the computed scale so chibi assets appear smaller.
   try {
-    const metaName = (element as any)?.meta?.config?.fileName || (element as any)?.meta?.name || (element as any)?.name;
-    if (typeof metaName === "string" && metaName.toLowerCase().includes("chibi")) {
+    const metaName =
+      (element as any)?.meta?.config?.fileName ||
+      (element as any)?.meta?.name ||
+      (element as any)?.name;
+    if (
+      typeof metaName === "string" &&
+      metaName.toLowerCase().includes("chibi")
+    ) {
       scaleFactor = scaleFactor / 2;
     }
   } catch (e) {

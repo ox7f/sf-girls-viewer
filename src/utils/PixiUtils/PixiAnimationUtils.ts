@@ -111,7 +111,9 @@ export const handleTouchAnimationSpine = (
   }
 };
 
-export const playFirstLive2DAnimation = (animation: Live2DModel): string | undefined => {
+export const playFirstLive2DAnimation = (
+  animation: Live2DModel,
+): string | undefined => {
   const animationNames = Object.keys(
     animation.internalModel.motionManager.definitions,
   );
@@ -134,5 +136,5 @@ export const playFirstLive2DAnimation = (animation: Live2DModel): string | undef
     }
   }
 
-  return preferred
+  return preferred;
 };

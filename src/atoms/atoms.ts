@@ -19,7 +19,9 @@ export const pixiAppSettingsGlobalAtom = atomWithStorage<SettingsGlobal>(
     backgroundColor: "#000000",
   },
 );
-export const pixiAnimationListAtom = atom<Array<ModifiedLive2D | ModifiedSpine>>([]);
+export const pixiAnimationListAtom = atom<
+  Array<ModifiedLive2D | ModifiedSpine>
+>([]);
 export const dropdownSelectionAtom = atom<DropdownSelection>({
   entity: null,
   scene: null,

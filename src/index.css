@@ -86,10 +86,10 @@ input:focus {
   margin: 8px;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.06);
-  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(6px);
-  box-shadow: 0 6px 18px rgba(3,6,23,0.06);
+  box-shadow: 0 6px 18px rgba(3, 6, 23, 0.06);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -124,15 +124,15 @@ input:focus {
 }
 
 .modal-content--glass {
-  background: rgba(255,255,255,0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
   border-radius: 10px;
   max-width: 95vw;
-  box-shadow: 0 12px 40px rgba(3,6,23,0.2);
+  box-shadow: 0 12px 40px rgba(3, 6, 23, 0.2);
 }
 
 .modal-overlay--dark {
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
 }
 
 .gallery-image-wrap {
@@ -152,12 +152,12 @@ input:focus {
   max-height: calc(100vh - var(--modal-reserve));
 }
 
-  .gallery-scroll {
-    max-height: calc(100vh - var(--gallery-toolbar-height));
-    overflow: auto;
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
+.gallery-scroll {
+  max-height: calc(100vh - var(--gallery-toolbar-height));
+  overflow: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
 
 /* Ensure react-image-gallery thumbnails are visible and don't overflow */
 .image-gallery {
@@ -176,12 +176,13 @@ input:focus {
   max-height: clamp(56px, 12vh, 120px);
 }
 
-
 /* Place modal content lower on the page so it doesn't sit under a fixed header */
 .modal.modal--visible {
   align-items: flex-start !important;
   padding: 0 !important;
-  padding-top: calc(var(--header-height) + 1rem) !important; /* adjust to match header height */
+  padding-top: calc(
+    var(--header-height) + 1rem
+  ) !important; /* adjust to match header height */
 }
 
 .modal .modal-content {

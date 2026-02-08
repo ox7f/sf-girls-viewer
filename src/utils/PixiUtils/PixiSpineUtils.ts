@@ -17,21 +17,22 @@ const createSpineAnimation = (data: ISkeletonData): Spine => {
 
   const { spineData } = animation;
   const firstSkin = spineData.skins[1] ?? spineData.skins[0];
-    const animations = spineData.animations.map((a) => a.name);
+  const animations = spineData.animations.map((a) => a.name);
 
-    // Prefer an exact "Idle 1" animation if present, otherwise fall back
-    // to the first animation whose name contains "idle".
-    const preferredIdle = animations.find((n) => n.toLowerCase() === "idle 1")
-      || animations.find((n) => n.toLowerCase() === "idle")
-      || animations.find((n) => n.toLowerCase().includes("idle"));
+  // Prefer an exact "Idle 1" animation if present, otherwise fall back
+  // to the first animation whose name contains "idle".
+  const preferredIdle =
+    animations.find((n) => n.toLowerCase() === "idle 1") ||
+    animations.find((n) => n.toLowerCase() === "idle") ||
+    animations.find((n) => n.toLowerCase().includes("idle"));
 
-    if (firstSkin) {
-      animation.skeleton.setSkinByName(firstSkin.name);
-    }
+  if (firstSkin) {
+    animation.skeleton.setSkinByName(firstSkin.name);
+  }
 
-    if (preferredIdle) {
-      animation.state.setAnimation(0, preferredIdle, true);
-    }
+  if (preferredIdle) {
+    animation.state.setAnimation(0, preferredIdle, true);
+  }
 
   return animation;
 };
