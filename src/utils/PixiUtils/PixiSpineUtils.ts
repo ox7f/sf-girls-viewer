@@ -17,17 +17,21 @@ const createSpineAnimation = (data: ISkeletonData): Spine => {
 
   const { spineData } = animation;
   const firstSkin = spineData.skins[1] ?? spineData.skins[0];
-  const firstIdleAnimationName = spineData.animations.find((animation) =>
-    animation.name.toLowerCase().includes("idle"),
-  );
+    const animations = spineData.animations.map((a) => a.name);
 
-  if (firstSkin) {
-    animation.skeleton.setSkinByName(firstSkin.name);
-  }
+    // Prefer an exact "Idle 1" animation if present, otherwise fall back
+    // to the first animation whose name contains "idle".
+    const preferredIdle = animations.find((n) => n.toLowerCase() === "idle 1")
+      || animations.find((n) => n.toLowerCase() === "idle")
+      || animations.find((n) => n.toLowerCase().includes("idle"));
 
-  if (firstIdleAnimationName) {
-    animation.state.setAnimation(0, firstIdleAnimationName.name, true);
-  }
+    if (firstSkin) {
+      animation.skeleton.setSkinByName(firstSkin.name);
+    }
+
+    if (preferredIdle) {
+      animation.state.setAnimation(0, preferredIdle, true);
+    }
 
   return animation;
 };
@@ -100,6 +104,14 @@ export const addSpine = async (
 
     centerContainer(container, app);
     setupInteractionEvents(container, animation);
+
+    // Force an initial render to ensure renderer internals are prepared
+    // (prevents runtime errors in some Spine/renderer edge-cases).
+    try {
+      app.render();
+    } catch (e) {
+      console.warn("Initial PIXI render failed:", e);
+    }
 
     return animation;
   } catch (error) {

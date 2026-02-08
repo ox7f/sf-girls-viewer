@@ -71,6 +71,34 @@ export const addLive2D = async (
     centerContainer(container, app);
     setupInteractionEvents(container, animation);
 
+    // Force an initial render to ensure renderer internals (like the
+    // clipping manager used by Live2D) are initialized. Some Live2D models
+    // throw on their first update if the renderer hasn't prepared these
+    // structures yet
+    try {
+      app.render();
+      animation.update(0); // also trigger an update to initialize Live2D internals that run on the first update call
+      // Attempt to start the preferred idle motion after a short delay so the
+      // renderer and internal motion manager are fully ready.
+      try {
+        const preferred = playFirstLive2DAnimation(animation);
+        if (preferred) {
+          setTimeout(() => {
+            try {
+              (animation as any).motion(preferred);
+            } catch (e) {
+              console.warn("Failed to start Live2D motion:", e);
+            }
+          }, 50);
+        }
+      } catch (e) {
+        /* ignore */
+      }
+    } catch (e) {
+      // ignore render failures — the ticker will still try later
+      console.warn("Initial PIXI render failed:", e);
+    }
+
     return animation;
   } catch (error) {
     console.error("Error loading Live2D:", { error, file });

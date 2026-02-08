@@ -111,12 +111,28 @@ export const handleTouchAnimationSpine = (
   }
 };
 
-export const playFirstLive2DAnimation = (animation: Live2DModel) => {
-  const firstIdleAnimationName = Object.keys(
+export const playFirstLive2DAnimation = (animation: Live2DModel): string | undefined => {
+  const animationNames = Object.keys(
     animation.internalModel.motionManager.definitions,
-  ).find((animationName) => animationName.toLowerCase().includes("idle"));
+  );
 
-  if (firstIdleAnimationName) {
-    animation.internalModel.motionManager.groups.idle = firstIdleAnimationName;
+  // Prefer exact "Idle 1", then "Idle", then any name containing "idle".
+  const preferred =
+    animationNames.find((n) => n.toLowerCase() === "idle 1") ||
+    animationNames.find((n) => n.toLowerCase() === "idle") ||
+    animationNames.find((n) => n.toLowerCase().includes("idle"));
+
+  if (preferred) {
+    try {
+      animation.internalModel.motionManager.groups.idle = preferred;
+      // start the idle motion immediately
+      if (typeof (animation as any).motion === "function") {
+        (animation as any).motion(preferred);
+      }
+    } catch (e) {
+      console.warn("Failed to start Live2D idle motion:", e);
+    }
   }
+
+  return preferred
 };
