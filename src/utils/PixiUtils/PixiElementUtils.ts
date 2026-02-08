@@ -23,13 +23,22 @@ const calculateScaleFactor = (
     skeletonHeight = 1024;
   }
 
-  let scaleFactor = Math.min(
+  // Compute how much the skeleton would need to be scaled to fit the
+  // viewport. If the skeleton already fits (ratio >= 1) we keep its
+  // original size (no upscaling). If it's larger than the viewport we
+  // scale it down to fit and apply a small buffer factor.
+  const fitRatio = Math.min(
     viewportWidth / skeletonWidth,
     viewportHeight / skeletonHeight,
   );
 
-  scaleFactor *= getBufferFactor(skeletonWidth);
-  return Math.abs(scaleFactor);
+  if (fitRatio >= 1) {
+    return 1; // keep original size, do not upscale
+  }
+
+  // apply buffer when scaling down to avoid edges touching viewport
+  const scaleFactor = Math.abs(fitRatio * getBufferFactor(skeletonWidth));
+  return scaleFactor;
 };
 
 export const setAnimationStyle = (
@@ -45,11 +54,22 @@ export const setAnimationStyle = (
   }
 
   // Calculate scale
-  const scaleFactor = calculateScaleFactor(
+  let scaleFactor = calculateScaleFactor(
     { height, width },
     viewportWidth,
     viewportHeight,
   );
+
+  // If the element's source/name indicates a "chibi" variant, render
+  // it at half the computed scale so chibi assets appear smaller.
+  try {
+    const metaName = (element as any)?.meta?.config?.fileName || (element as any)?.meta?.name || (element as any)?.name;
+    if (typeof metaName === "string" && metaName.toLowerCase().includes("chibi")) {
+      scaleFactor = scaleFactor / 2;
+    }
+  } catch (e) {
+    // ignore and use computed scaleFactor
+  }
 
   element.scale.set(scaleFactor);
 

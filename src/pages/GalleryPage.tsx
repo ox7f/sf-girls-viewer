@@ -1,13 +1,17 @@
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import { useAtomValue } from "jotai";
-import { type FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
+import type { FC} from "react";
+import type { EntityData } from "../types";
+
+import Button from "../components/common/Button/Button";
+import { entityMapAtom } from "../atoms";
 import { FaTimes } from "react-icons/fa";
 import ReactImageGallery from "react-image-gallery";
-import { entityMapAtom } from "../atoms";
-import { type EntityData, SubFolderName } from "../types";
 import { Spinner } from "../components/common/Spinner";
-import Button from "../components/common/Button/Button";
+import { SubFolderName } from "../types";
+import { useAtomValue } from "jotai";
 
 const GalleryPage: FC = () => {
   const entityMap = useAtomValue(entityMapAtom);
@@ -15,6 +19,7 @@ const GalleryPage: FC = () => {
   const [currentEntity, setCurrentEntity] = useState<EntityData | undefined>();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -49,6 +54,21 @@ const GalleryPage: FC = () => {
         }))
       : [];
 
+  const getPreviewImagesFor = (entityData?: EntityData) => {
+    if (!entityData) return [] as string[];
+    const imgs = [
+      ...Object.values(entityData[SubFolderName.PORTRAIT] ?? {}).flat(),
+      ...Object.values(entityData[SubFolderName.MINI] ?? {}).flat(),
+    ];
+    return imgs.slice(0, 3).map((i) => `/${i}`);
+  };
+
+  const renderItem = (item: any) => (
+    <div className="gallery-image-wrap">
+      <img src={item.original} alt={item.originalAlt ?? ""} onLoad={() => setIsLoading(false)} className="gallery-image" />
+    </div>
+  );
+
   const renderModal = () =>
     isOpen && (
       <div className="modal modal--visible">
@@ -63,25 +83,69 @@ const GalleryPage: FC = () => {
             {isLoading && <Spinner />}
             <ReactImageGallery
               items={getGalleryImages()}
+              renderItem={renderItem}
               showFullscreenButton
               showPlayButton={false}
-              onImageLoad={() => setIsLoading(false)}
             />
           </div>
         </div>
-        <div className="modal-overlay" onClick={closeModal} />
+        <div
+          className="modal-overlay"
+          onClick={closeModal}
+          style={{ background: "rgba(0,0,0,0.55)" }}
+        />
       </div>
     );
 
   return (
-    <div className="container mt-10">
-      <h1 className="text-center mb-10">Gallery</h1>
-      <ul className="row justify-center u-col-gap-5 px-5">
-        {Object.entries(entityMap).map(([entityKey, entity]) => (
-          <li key={entityKey} onClick={() => openModal(entity.data)}>
-            {entityKey}
-          </li>
-        ))}
+    <div className="container mt-10 h-100">
+      <div className="mb-6 px-5 u-flex u-center">
+        <input
+          aria-label="Filter agents"
+          placeholder="Search agents..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="gallery-search"
+        />
+      </div>
+
+      <ul className="justify-center gallery-list m-0">
+        {Object.entries(entityMap)
+          .filter(([entityKey]) => entityKey.toLowerCase().includes(query.toLowerCase()))
+          .map(([entityKey, entity]) => {
+            const previews = getPreviewImagesFor(entity.data);
+            const totalCount = (
+              Object.values(entity.data[SubFolderName.PORTRAIT] ?? {}).flat().length +
+              Object.values(entity.data[SubFolderName.MINI] ?? {}).flat().length
+            );
+
+            return (
+              <li
+                key={entityKey}
+                onClick={() => openModal(entity.data)}
+                className="agent-card"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") openModal(entity.data);
+                }}
+              >
+                {/* <div className="agent-card-previews">
+                  {previews.length > 0 ? (
+                    previews.map((src, i) => (
+                      <img key={i} src={src} alt={`${entityKey} preview ${i + 1}`} className="preview-img" />
+                    ))
+                  ) : (
+                    <div className="preview-placeholder">—</div>
+                  )}
+                </div> */}
+                <div className="agent-card-body">
+                  <div style={{ fontWeight: 600 }}>{entityKey}</div>
+                  <div style={{ fontSize: 12, color: "#666" }}>{totalCount} image{totalCount !== 1 ? "s" : ""}</div>
+                </div>
+              </li>
+            );
+          })}
       </ul>
       {renderModal()}
     </div>

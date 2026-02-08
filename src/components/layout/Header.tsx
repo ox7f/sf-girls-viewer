@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const menuItems = [
+  { name: "Home", href: "/" },
   { name: "Gallery", href: "/gallery" },
-  { name: "Scene", href: "/scene" },
 ];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const pathname = location?.pathname ?? "/";
 
   useEffect(() => {
     if (isOpen) {
@@ -57,7 +59,11 @@ export const Header = () => {
 
           {menuItems.map((menuItem) => (
             <div className="nav-item" key={menuItem.name}>
-              <Link to={menuItem.href} onClick={() => setIsOpen(false)}>
+              <Link
+                to={menuItem.href}
+                onClick={() => setIsOpen(false)}
+                className={pathname === menuItem.href ? "is-active" : undefined}
+              >
                 <span>{menuItem.name}</span>
               </Link>
             </div>

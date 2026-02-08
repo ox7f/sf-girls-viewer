@@ -9,7 +9,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
 import ErrorBoundary from "./pages/ErrorBoundary.tsx";
-import { Gallery, Home, Scenes } from "./pages/index.tsx";
+import { Gallery, Scenes } from "./pages/index.tsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -18,9 +18,8 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorBoundary />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: "/", element: <Scenes /> },
       { path: "/gallery", element: <Gallery /> },
-      { path: "/scene", element: <Scenes /> },
     ],
   },
 ]);

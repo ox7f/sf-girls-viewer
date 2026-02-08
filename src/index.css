@@ -7,6 +7,18 @@
   will-change: background-position;
 }
 
+/* Keep the animated hero background fixed behind the page content so
+   scrolling content doesn't replace it with the body background. */
+.hero.background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
 .tooltip {
   white-space: normal !important;
 }
@@ -30,4 +42,156 @@ input:focus {
   100% {
     background-position: -200px 0;
   }
+}
+
+:root {
+  --header-height: 64px;
+  --gallery-toolbar-height: 120px;
+  --modal-reserve: 260px; /* space reserved for thumbnails, controls, paddings */
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 56px;
+    --gallery-toolbar-height: 110px;
+    --modal-reserve: 200px;
+  }
+}
+
+/* GalleryPage styles moved from inline styles */
+.gallery-search {
+  width: 100%;
+  max-width: clamp(280px, 80vw, 680px);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.gallery-toolbar .gallery-search {
+  display: block;
+  margin: 0 auto;
+}
+
+.gallery-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.agent-card {
+  cursor: pointer;
+  width: clamp(120px, 30vw, 160px);
+  margin: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(3,6,23,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.agent-card-previews {
+  display: flex;
+  padding: 12px;
+  justify-content: center;
+}
+
+.preview-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.preview-placeholder {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.agent-card-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.modal-content--glass {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  max-width: 95vw;
+  box-shadow: 0 12px 40px rgba(3,6,23,0.2);
+}
+
+.modal-overlay--dark {
+  background: rgba(0,0,0,0.55);
+}
+
+.gallery-image-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.gallery-image {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  /* leave space for header + thumbnails + modal paddings so previews stay visible */
+  max-height: calc(100vh - var(--modal-reserve));
+}
+
+  .gallery-scroll {
+    max-height: calc(100vh - var(--gallery-toolbar-height));
+    overflow: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+/* Ensure react-image-gallery thumbnails are visible and don't overflow */
+.image-gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-gallery-slide-wrapper,
+.image-gallery-content {
+  flex: 1 1 auto;
+}
+
+.image-gallery-thumbnails-wrapper {
+  flex: 0 0 auto;
+  overflow: auto;
+  max-height: clamp(56px, 12vh, 120px);
+}
+
+
+/* Place modal content lower on the page so it doesn't sit under a fixed header */
+.modal.modal--visible {
+  align-items: flex-start !important;
+  padding: 0 !important;
+  padding-top: calc(var(--header-height) + 1rem) !important; /* adjust to match header height */
+}
+
+.modal .modal-content {
+  margin-top: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Header active link styling */
+.header-nav .nav-item a.is-active,
+.header-nav .nav-item a.is-active span {
+  text-decoration: underline;
+  font-weight: 700;
 }
