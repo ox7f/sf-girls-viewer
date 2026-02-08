@@ -54,15 +54,6 @@ const GalleryPage: FC = () => {
         }))
       : [];
 
-  const getPreviewImagesFor = (entityData?: EntityData) => {
-    if (!entityData) return [] as string[];
-    const imgs = [
-      ...Object.values(entityData[SubFolderName.PORTRAIT] ?? {}).flat(),
-      ...Object.values(entityData[SubFolderName.MINI] ?? {}).flat(),
-    ];
-    return imgs.slice(0, 3).map((i) => `/${i}`);
-  };
-
   const renderItem = (item: any) => (
     <div className="gallery-image-wrap">
       <img
@@ -120,7 +111,6 @@ const GalleryPage: FC = () => {
             entityKey.toLowerCase().includes(query.toLowerCase()),
           )
           .map(([entityKey, entity]) => {
-            const previews = getPreviewImagesFor(entity.data);
             const totalCount =
               Object.values(entity.data[SubFolderName.PORTRAIT] ?? {}).flat()
                 .length +
@@ -139,15 +129,6 @@ const GalleryPage: FC = () => {
                     openModal(entity.data);
                 }}
               >
-                {/* <div className="agent-card-previews">
-                  {previews.length > 0 ? (
-                    previews.map((src, i) => (
-                      <img key={i} src={src} alt={`${entityKey} preview ${i + 1}`} className="preview-img" />
-                    ))
-                  ) : (
-                    <div className="preview-placeholder">—</div>
-                  )}
-                </div> */}
                 <div className="agent-card-body">
                   <div style={{ fontWeight: 600 }}>{entityKey}</div>
                   <div style={{ fontSize: 12, color: "#666" }}>
